@@ -1,0 +1,33 @@
+{
+  "name": "contentify",
+  "version": "0.0.1",
+  "description": "Fun thing that makes fun stuff.",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "build-css": "node-sass --include-path scss scss/contentify.scss public/stylesheets/contentify.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+  },
+  "dependencies": {
+    "body-parser": "~1.15.1",
+    "cheerio": "latest",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "^2.4.2",
+    "express": "latest",
+    "morgan": "~1.7.0",
+    "node-sass": "latest",
+    "request": "latest",
+    "serve-favicon": "~2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mtsferreirasilva/Contentify.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mtsferreirasilva/Contentify/issues"
+  },
+  "homepage": "https://github.com/Mtsferreirasilva/Contentify"
+}
