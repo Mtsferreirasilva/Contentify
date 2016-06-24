@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <% title= 'Contentify - Reader'; %>
     <% include partials/head.ejs %>
   </head>
   <body>
     <h1>This will be the reader</h1>
+    <% if (typeof json !== "undefined" && json !== null) { %>
+      <em><%= JSON.stringify(json, null, 4) %></em>
+    <% } %>
   </body>
 </html>

@@ -4,8 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var request = require('request');
+var cheerio = require('cheerio');
 
-var routes = require('./routes/routes');
+var routes = require('./controllers/routes');
 
 var app = express();
 
