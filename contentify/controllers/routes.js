@@ -2,10 +2,9 @@ var express = require('express');
 var request = require('request');
 var cheerio = require('cheerio');
 var validUrl = require('valid-url');
-var url = require('url');
 var router = express.Router();
 
-var contentify = require('./contentify.js');
+var contentify = require('./contentify');
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Contentify' });
@@ -45,11 +44,11 @@ router.get('/scrape', function(req, res, next) {
         }
       });
     } else {
-      result.error = 'Invalid URL. Make sure that you have include http:// or https://'
+      result.error = 'Invalid URL. Make sure that you have included http:// or https://'
       res.send(result);
     }
   }else{
-    result.error = 'No URL specified.';
+    result.error = 'No URL specified';
     res.send(result);
   }
 });
