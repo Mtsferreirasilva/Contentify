@@ -1,7 +1,7 @@
 var express = require('express');
 var request = require('request');
 var cheerio = require('cheerio');
-var validUrl = require('valid-url');
+var validator = require('validator');
 var router = express.Router();
 
 var contentify = require('./contentify');
@@ -21,7 +21,7 @@ router.get('/scrape', function(req, res, next) {
   if (typeof urlTarget !== "undefined" && urlTarget !== null && urlTarget.length > 0) {
     result.url = urlTarget;
 
-    if (validUrl.isUri(result.url) && contentify.hasURLProtocol(result.url)){
+    if (validator.isURL(result.url)){
       result.data = {};
 
       var options = {
