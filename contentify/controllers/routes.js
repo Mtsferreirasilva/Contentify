@@ -50,7 +50,7 @@ router.get('/scrape', function(req, res, next) {
         }
       });
     } else {
-      result.error = 'Invalid URL. Make sure that you have included http:// or https://'
+      result.error = 'Invalid URL. Looking for something like [http://|https://].example.com';
       res.send(result);
     }
   }else{
