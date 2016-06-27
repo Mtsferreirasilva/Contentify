@@ -1,13 +1,13 @@
-Contentify.Reader = (function(){
-  function Reader(){
-    this.url = '';
+var Contentify = (function(){
+  function Contentify(){}
+
+  Contentify.prototype.hasURLProtocol = function(url) {
+    return url.match(/^http:\/\/|https:\/\//) !== null;
   }
 
-  Reader.prototype.sayHello = function(){
-    console.log("HELLO");
-  }
-
-  return Reader;
+  return Contentify;
 })();
 
-module.exports = Contentify.Reader;
+var contentify = new Contentify();
+
+module.exports = contentify;
