@@ -21,7 +21,13 @@ router.get('/scrape', function(req, res, next) {
   if (typeof urlTarget !== "undefined" && urlTarget !== null && urlTarget.length > 0) {
     result.url = urlTarget;
 
-    if (validator.isURL(result.url)){
+    var validatorOptions = {
+      protocols: ['http','https'],
+      require_protocol: true,
+      allow_underscores: true,
+    }
+
+    if (validator.isURL(result.url, validatorOptions)){
       result.data = {};
 
       var options = {
