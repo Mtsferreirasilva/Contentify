@@ -1,7 +1,6 @@
 var express = require('express');
 var request = require('request');
 var validator = require('validator');
-var extractor = require('article-extractor');
 var router = express.Router();
 
 var contentify = require('./contentify');
@@ -39,10 +38,11 @@ router.get('/scrape', function(req, res, next) {
       request.get(options, function(error, response, html){
         if (!error && response.statusCode == 200) {
           contentify.setPageHTML(html);
-          contentify.ogTags();
 
           result.statusCode = response.statusCode;
-          result.data.openGraph = contentify.ogTags();
+          result.title = contentify.getTitle();
+          result.description = contentify.getDescription();
+          result.data.openGraph = contentify.getOGTags();
           result.data.html = contentify.getHTML();
           res.send(result);
         }else{
