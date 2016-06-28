@@ -1,7 +1,7 @@
 var express = require('express');
 var request = require('request');
-var cheerio = require('cheerio');
 var validator = require('validator');
+var extractor = require('article-extractor');
 var router = express.Router();
 
 var contentify = require('./contentify');
@@ -38,10 +38,12 @@ router.get('/scrape', function(req, res, next) {
 
       request.get(options, function(error, response, html){
         if (!error && response.statusCode == 200) {
-          var $ = cheerio.load(html);
+          contentify.setPageHTML(html);
+          contentify.ogTags();
 
           result.statusCode = response.statusCode;
-          result.data.html = $.html();
+          result.data.openGraph = contentify.ogTags();
+          result.data.html = contentify.getHTML();
           res.send(result);
         }else{
           result.statusCode = response.statusCode;
@@ -50,7 +52,7 @@ router.get('/scrape', function(req, res, next) {
         }
       });
     } else {
-      result.error = 'Invalid URL. Looking for something like [http://|https://].example.com';
+      result.error = 'Invalid URL! Looking for something like [http://|https://].example.com';
       res.send(result);
     }
   }else{
