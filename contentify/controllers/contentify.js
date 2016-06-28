@@ -19,12 +19,28 @@ var Contentify = (function(){
     this.$ = cheerio.load(this.pageHTML);
   }
 
-  Contentify.prototype.getHTML = function(){
-    return this.pageHTML;
-  }
-
   Contentify.prototype.hasTag = function(tagName){
     return this.$(tagName).length > 0;
+  }
+
+  Contentify.prototype.getHTML = function(){
+    return this.pageHTML.trim();
+  }
+
+  Contentify.prototype.getHead = function(){
+    var head = '';
+    if (this.hasTag('head')) {
+      head = this.$('head').html();
+    }
+    return head.trim();
+  }
+
+  Contentify.prototype.getBody = function(){
+    var body = '';
+    if (this.hasTag('body')) {
+      body = this.$('body').html();
+    }
+    return body.trim();
   }
 
   Contentify.prototype.getTitle = function(){
@@ -32,15 +48,31 @@ var Contentify = (function(){
     if (this.hasTag('title')) {
       title = this.$('title').text();
     }
-    return title;
+    return title.trim();
   }
 
   Contentify.prototype.getDescription = function(){
     var description = '';
     if (this.hasTag('meta')) {
-      var description = this.$('meta[name=description]').attr('content');
+      description = this.$('meta[name=description]').attr('content');
     }
-    return description;
+    return description.trim();
+  }
+
+  Contentify.prototype.getAuthor = function(){
+    var author = '';
+    if (this.hasTag('meta')) {
+      author = this.$('meta[name=author]').attr('content');
+    }
+    return author.trim();
+  }
+
+  Contentify.prototype.getLang = function(){
+    var lang = '';
+    if (this.hasTag('html')) {
+      lang = this.$('html').attr('lang');
+    }
+    return lang.trim();
   }
 
   Contentify.prototype.getOGTags = function(){

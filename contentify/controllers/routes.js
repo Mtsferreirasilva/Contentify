@@ -27,7 +27,9 @@ router.get('/scrape', function(req, res, next) {
     }
 
     if (validator.isURL(result.url, validatorOptions)){
-      result.data = {};
+      result.result = {};
+      result.sourceCode = {};
+      result.request = {};
 
       var options = {
         url: urlTarget,
@@ -41,11 +43,18 @@ router.get('/scrape', function(req, res, next) {
 
           result.statusCode = response.statusCode;
 
-          result.data.title = contentify.getTitle();
-          result.data.description = contentify.getDescription();
-          result.data.openGraph = contentify.getOGTags();
-          result.data.twitterCards = contentify.getTwitterCards();
-          result.data.html = contentify.getHTML();
+          result.request.headers = response.headers;
+
+          result.result.title = contentify.getTitle();
+          result.result.description = contentify.getDescription();
+          result.result.language = contentify.getLang();
+          result.result.author = contentify.getAuthor();
+          result.result.openGraph = contentify.getOGTags();
+          result.result.twitterCards = contentify.getTwitterCards();
+
+          result.sourceCode.html = contentify.getHTML();
+          result.sourceCode.body = contentify.getBody();
+          result.sourceCode.head = contentify.getHead();
 
           res.send(result);
         }else{
