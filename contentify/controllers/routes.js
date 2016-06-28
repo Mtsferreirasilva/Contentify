@@ -40,10 +40,12 @@ router.get('/scrape', function(req, res, next) {
           contentify.setPageHTML(html);
 
           result.statusCode = response.statusCode;
-          result.title = contentify.getTitle();
-          result.description = contentify.getDescription();
+
+          result.data.title = contentify.getTitle();
+          result.data.description = contentify.getDescription();
           result.data.openGraph = contentify.getOGTags();
           result.data.html = contentify.getHTML();
+
           res.send(result);
         }else{
           result.statusCode = response.statusCode;
