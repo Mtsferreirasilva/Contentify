@@ -44,6 +44,7 @@ router.get('/scrape', function(req, res, next) {
           result.data.title = contentify.getTitle();
           result.data.description = contentify.getDescription();
           result.data.openGraph = contentify.getOGTags();
+          result.data.twitterCards = contentify.getTwitterCards();
           result.data.html = contentify.getHTML();
 
           res.send(result);
