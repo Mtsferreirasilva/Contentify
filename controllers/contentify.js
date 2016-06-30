@@ -53,7 +53,7 @@ var Contentify = (function(){
 
   Contentify.prototype.getDescription = function(){
     var description = '';
-    if (this.hasTag('meta')) {
+    if (this.hasTag('meta[name=description]')) {
       description = this.$('meta[name=description]').attr('content');
     }
     return description.trim();
@@ -61,7 +61,7 @@ var Contentify = (function(){
 
   Contentify.prototype.getAuthor = function(){
     var author = '';
-    if (this.hasTag('meta')) {
+    if (this.hasTag('meta[name=author]')) {
       author = this.$('meta[name=author]').attr('content');
     }
     return author.trim();
