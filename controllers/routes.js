@@ -27,11 +27,12 @@ router.get('/scrape', function(req, res, next) {
       allow_underscores: true,
     }
 
-    if (validator.isURL(result.url, validatorOptions) && !validator.isIP(result.url.replace(/.*?:\/\//g, ""))){
+    if (validator.isURL(result.url, validatorOptions)){
       var options = {
         url: urlTarget,
         followAllRedirects: true,
-        jar: true
+        jar: true,
+        timeout: 10000
       }
 
       request.get(options, function(error, response, html){
@@ -78,18 +79,18 @@ router.get('/scrape', function(req, res, next) {
             result.result.content = contentify.getContent();
 
             // HTML ===
-            // var pageHTML = contentify.getHTML();
-            // if (pageHTML.length > 0) {
-            //   result.sourceCode.html = pageHTML;
-            // }
-            // var pageBody = contentify.getBody();
-            // if (pageBody.length > 0) {
-            //   result.sourceCode.body = pageBody;
-            // }
-            // var pageHead = contentify.getHead();
-            // if (pageHead.length > 0) {
-            //   result.sourceCode.head = pageHead;
-            // }
+            var pageHTML = contentify.getHTML();
+            if (pageHTML.length > 0) {
+              result.sourceCode.html = pageHTML;
+            }
+            var pageBody = contentify.getBody();
+            if (pageBody.length > 0) {
+              result.sourceCode.body = pageBody;
+            }
+            var pageHead = contentify.getHead();
+            if (pageHead.length > 0) {
+              result.sourceCode.head = pageHead;
+            }
 
 
             res.send(result);
