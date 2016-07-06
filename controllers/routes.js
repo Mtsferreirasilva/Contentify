@@ -22,12 +22,12 @@ router.get('/scrape', function(req, res, next) {
     result.url = urlTarget;
 
     var validatorOptions = {
-      protocols: ['http','https'],
+      protocols: ['http', 'https'],
       require_protocol: true,
       allow_underscores: true,
     }
 
-    if (validator.isURL(result.url, validatorOptions)){
+    if (validator.isURL(result.url, validatorOptions) && !validator.isIP(result.url.replace(/.*?:\/\//g, ""))){
       var options = {
         url: urlTarget,
         followAllRedirects: true,
@@ -75,19 +75,22 @@ router.get('/scrape', function(req, res, next) {
               result.result.twitterCards = pageTwitterCards;
             }
 
+            result.result.content = contentify.getContent();
+
             // HTML ===
-            var pageHTML = contentify.getHTML();
-            if (pageHTML.length > 0) {
-              result.sourceCode.html = pageHTML;
-            }
-            var pageBody = contentify.getBody();
-            if (pageBody.length > 0) {
-              result.sourceCode.body = pageBody;
-            }
-            var pageHead = contentify.getHead();
-            if (pageHead.length > 0) {
-              result.sourceCode.head = pageHead;
-            }
+            // var pageHTML = contentify.getHTML();
+            // if (pageHTML.length > 0) {
+            //   result.sourceCode.html = pageHTML;
+            // }
+            // var pageBody = contentify.getBody();
+            // if (pageBody.length > 0) {
+            //   result.sourceCode.body = pageBody;
+            // }
+            // var pageHead = contentify.getHead();
+            // if (pageHead.length > 0) {
+            //   result.sourceCode.head = pageHead;
+            // }
+
 
             res.send(result);
           }else{

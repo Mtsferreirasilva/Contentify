@@ -3,6 +3,7 @@ var cheerio = require('cheerio');
 var Contentify = (function(){
   function Contentify(){
     this.pageHTML = '';
+    this.pageBody = '';
     this.$;
   }
 
@@ -47,11 +48,15 @@ var Contentify = (function(){
   }
 
   Contentify.prototype.getBody = function(){
-    var body = '';
     if (this.hasTag('body')) {
-      body = this.$('body').html();
+      this.pageHTML = this.$('body').html();
     }
-    return body.trim();
+    return this.pageHTML.trim();
+  }
+
+  Contentify.prototype.getContent = function(){
+    var content = '';
+    return content;
   }
 
   Contentify.prototype.getTitle = function(){
