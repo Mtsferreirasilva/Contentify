@@ -6,6 +6,17 @@ var Contentify = (function(){
     this.$;
   }
 
+  Contentify.prototype.isContentTypeText = function(content_type){
+    var isTextHtml = false;
+    content_type.split(';').forEach(function(element){
+      console.log(element);
+      if (element.trim() === 'text/html') {
+        isTextHtml = true;
+      }
+    });
+    return isTextHtml;
+  }
+
   Contentify.prototype.hasURLProtocol = function(url){
     return url.match(/^http:\/\/|https:\/\//) !== null;
   }

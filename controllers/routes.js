@@ -14,6 +14,7 @@ router.get('/reader', function(req, res, next) {
 });
 
 router.get('/scrape', function(req, res, next) {
+  res.set({ 'content-type': 'application/json; charset=utf-8' })
   var urlTarget = req.param('url');
   var result = {};
 
@@ -27,10 +28,6 @@ router.get('/scrape', function(req, res, next) {
     }
 
     if (validator.isURL(result.url, validatorOptions)){
-      result.result = {};
-      result.sourceCode = {};
-      result.request = {};
-
       var options = {
         url: urlTarget,
         followAllRedirects: true,
@@ -39,24 +36,64 @@ router.get('/scrape', function(req, res, next) {
 
       request.get(options, function(error, response, html){
         if (!error && response.statusCode == 200) {
-          contentify.setPageHTML(html);
+          if (contentify.isContentTypeText(response.headers['content-type'])) {
+            result.result = {};
+            result.sourceCode = {};
+            result.request = {};
 
-          result.statusCode = response.statusCode;
+            contentify.setPageHTML(html);
 
-          result.request.headers = response.headers;
+            // Page status code ===
+            result.statusCode = response.statusCode;
 
-          result.result.title = contentify.getTitle();
-          result.result.description = contentify.getDescription();
-          result.result.language = contentify.getLang();
-          result.result.author = contentify.getAuthor();
-          result.result.openGraph = contentify.getOGTags();
-          result.result.twitterCards = contentify.getTwitterCards();
+            // Headers ===
+            result.request.headers = response.headers;
 
-          result.sourceCode.html = contentify.getHTML();
-          result.sourceCode.body = contentify.getBody();
-          result.sourceCode.head = contentify.getHead();
+            // Scrape Result ===
+            var pageTitle = contentify.getTitle();
+            if (pageTitle.length > 0) {
+              result.result.title = pageTitle;
+            }
+            var pageDescription = contentify.getDescription();
+            if (pageDescription.length > 0) {
+              result.result.description = pageDescription;
+            }
+            var pageLang = contentify.getLang();
+            if (pageLang.length > 0) {
+              result.result.language = pageLang;
+            }
+            var pageAuthor = contentify.getAuthor();
+            if (pageAuthor.length > 0) {
+              result.result.author = pageAuthor;
+            }
+            var pageOGTags = contentify.getOGTags();
+            if (Object.keys(pageOGTags).length > 0) {
+              result.result.openGraph = pageOGTags;
+            }
+            var pageTwitterCards = contentify.getTwitterCards();
+            if (Object.keys(pageTwitterCards).length > 0) {
+              result.result.twitterCards = pageTwitterCards;
+            }
 
-          res.send(result);
+            // HTML ===
+            var pageHTML = contentify.getHTML();
+            if (pageHTML.length > 0) {
+              result.sourceCode.html = pageHTML;
+            }
+            var pageBody = contentify.getBody();
+            if (pageBody.length > 0) {
+              result.sourceCode.body = pageBody;
+            }
+            var pageHead = contentify.getHead();
+            if (pageHead.length > 0) {
+              result.sourceCode.head = pageHead;
+            }
+
+            res.send(result);
+          }else{
+            result.error = 'Invalid call! We only support Content-Type: text/html';
+            res.send(result);
+          }
         }else{
           result.statusCode = 404;
           result.error = error;
