@@ -69,7 +69,7 @@ var Contentify = (function(){
 
   Contentify.prototype.getLang = function(){
     var lang = '';
-    if (this.hasTag('html')) {
+    if (this.hasTag('html[lang]')) {
       lang = this.$('html').attr('lang');
     }
     return lang.trim();
