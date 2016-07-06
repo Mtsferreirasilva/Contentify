@@ -4,13 +4,13 @@ var Contentify = (function(){
   function Contentify(){
     this.pageHTML = '';
     this.pageBody = '';
+    this.pageContent = '';
     this.$;
   }
 
   Contentify.prototype.isContentTypeText = function(content_type){
     var isTextHtml = false;
     content_type.split(';').forEach(function(element){
-      console.log(element);
       if (element.trim() === 'text/html') {
         isTextHtml = true;
       }
@@ -42,29 +42,54 @@ var Contentify = (function(){
   Contentify.prototype.getHead = function(){
     var head = '';
     if (this.hasTag('head')) {
-      head = this.$('head').html();
+      head = this.$('head').html().trim();
     }
-    return head.trim();
+    return head;
   }
 
   Contentify.prototype.getBody = function(){
     if (this.hasTag('body')) {
-      this.pageHTML = this.$('body').html();
+      this.pageBody = this.$('body').html().trim();
     }
-    return this.pageHTML.trim();
+    return this.pageBody;
   }
 
   Contentify.prototype.getContent = function(){
-    var content = '';
-    return content;
+    return this.pageContent;
+  }
+
+  Contentify.prototype.scrapeContent = function(){
+    this.pageContent = this.pageHTML;
+    this.pageContent = cheerio.load(this.pageContent);
+
+    // Removing unnecessary nodes
+    this.pageContent('script').remove();
+    this.pageContent('noscript').remove();
+    this.pageContent('style').remove();
+    this.pageContent('iframe').remove();
+
+    // Make this recursive ===== What's the break point?
+    var bodyChildNodes = this.pageContent('body').toArray()[0].childNodes;
+    for (var i = 0; i < bodyChildNodes.length; i++) {
+      if (typeof bodyChildNodes[i].name !== 'undefined') {
+        console.log('LEVEL 1', bodyChildNodes[i].tagName);
+        for (var k = 0; k < bodyChildNodes[i].childNodes.length; k++) {
+          if (typeof bodyChildNodes[i].childNodes[k].name !== 'undefined') {
+            console.log('LEVEL 2', bodyChildNodes[i].childNodes[k].tagName);
+          }
+        }
+      }
+    }
+
+    return this.pageContent.html();
   }
 
   Contentify.prototype.getTitle = function(){
     var title = '';
     if (this.hasTag('title')) {
-      title = this.$('title').text();
+      title = this.$('title').text().trim();
     }
-    return title.trim();
+    return title;
   }
 
   Contentify.prototype.getDescription = function(){
@@ -78,17 +103,17 @@ var Contentify = (function(){
   Contentify.prototype.getAuthor = function(){
     var author = '';
     if (this.hasTag('meta[name=author]')) {
-      author = this.$('meta[name=author]').attr('content');
+      author = this.$('meta[name=author]').attr('content').trim();
     }
-    return author.trim();
+    return author;
   }
 
   Contentify.prototype.getLang = function(){
     var lang = '';
     if (this.hasTag('html[lang]')) {
-      lang = this.$('html').attr('lang');
+      lang = this.$('html').attr('lang').trim();
     }
-    return lang.trim();
+    return lang;
   }
 
   Contentify.prototype.getOGTags = function(){

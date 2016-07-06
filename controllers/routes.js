@@ -50,6 +50,20 @@ router.get('/scrape', function(req, res, next) {
             // Headers ===
             result.request.headers = response.headers;
 
+            // HTML ===
+            var pageHTML = contentify.getHTML();
+            if (pageHTML.length > 0) {
+              // result.sourceCode.html = pageHTML;
+            }
+            var pageBody = contentify.getBody();
+            if (pageBody.length > 0) {
+              // result.sourceCode.body = pageBody;
+            }
+            var pageHead = contentify.getHead();
+            if (pageHead.length > 0) {
+              // result.sourceCode.head = pageHead;
+            }
+
             // Scrape Result ===
             var pageTitle = contentify.getTitle();
             if (pageTitle.length > 0) {
@@ -76,22 +90,7 @@ router.get('/scrape', function(req, res, next) {
               result.result.twitterCards = pageTwitterCards;
             }
 
-            result.result.content = contentify.getContent();
-
-            // HTML ===
-            var pageHTML = contentify.getHTML();
-            if (pageHTML.length > 0) {
-              result.sourceCode.html = pageHTML;
-            }
-            var pageBody = contentify.getBody();
-            if (pageBody.length > 0) {
-              result.sourceCode.body = pageBody;
-            }
-            var pageHead = contentify.getHead();
-            if (pageHead.length > 0) {
-              result.sourceCode.head = pageHead;
-            }
-
+            result.result.scrapedContent = contentify.scrapeContent();
 
             res.send(result);
           }else{
