@@ -58,7 +58,7 @@ router.get('/scrape', function(req, res, next) {
 
           res.send(result);
         }else{
-          result.statusCode = response.statusCode;
+          result.statusCode = 404;
           result.error = error;
           res.send(result);
         }
