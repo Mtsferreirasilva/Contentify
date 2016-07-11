@@ -70,11 +70,11 @@ var Contentify = (function(){
 
     var nodeResult = this.searchContent(this.pageContent('body').toArray()[0].childNodes);
     console.log(nodeResult);
-    var content = this.pageContent.html(nodeResult.tagName + '' + nodeResult.class + ' > p');
+    var content = this.pageContent.html(nodeResult.tagName + '' + nodeResult.class + ' > p, ' + nodeResult.tagName + '' + nodeResult.class + ' > ul, ' + nodeResult.tagName + '' + nodeResult.class + ' > ol');
 
     return {
       content: content,
-      node: nodeResult.tagName + '' + nodeResult.class + ' > p'
+      node: nodeResult.tagName + '' + nodeResult.class + ' > p, ' + nodeResult.tagName + '' + nodeResult.class + ' > ul, ' + nodeResult.tagName + '' + nodeResult.class + ' > ol'
     };
   }
 
