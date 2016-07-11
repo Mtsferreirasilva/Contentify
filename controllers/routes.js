@@ -53,15 +53,15 @@ router.get('/scrape', function(req, res, next) {
             // HTML ===
             var pageHTML = contentify.getHTML();
             if (pageHTML.length > 0) {
-              // result.sourceCode.html = pageHTML;
+              result.sourceCode.html = pageHTML;
             }
             var pageBody = contentify.getBody();
             if (pageBody.length > 0) {
-              // result.sourceCode.body = pageBody;
+              result.sourceCode.body = pageBody;
             }
             var pageHead = contentify.getHead();
             if (pageHead.length > 0) {
-              // result.sourceCode.head = pageHead;
+              result.sourceCode.head = pageHead;
             }
 
             // Scrape Result ===
@@ -90,7 +90,8 @@ router.get('/scrape', function(req, res, next) {
               result.result.twitterCards = pageTwitterCards;
             }
 
-            result.result.scrapedContent = contentify.scrapeContent();
+            result.result.scrapedContent = contentify.scrapeContent().content;
+            result.result.scrapedNode = contentify.scrapeContent().node;
 
             res.send(result);
           }else{

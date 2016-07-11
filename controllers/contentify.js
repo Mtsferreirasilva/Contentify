@@ -68,20 +68,35 @@ var Contentify = (function(){
     this.pageContent('style').remove();
     this.pageContent('iframe').remove();
 
-    // Make this recursive ===== What's the break point?
-    var bodyChildNodes = this.pageContent('body').toArray()[0].childNodes;
-    for (var i = 0; i < bodyChildNodes.length; i++) {
-      if (typeof bodyChildNodes[i].name !== 'undefined') {
-        console.log('LEVEL 1', bodyChildNodes[i].tagName);
-        for (var k = 0; k < bodyChildNodes[i].childNodes.length; k++) {
-          if (typeof bodyChildNodes[i].childNodes[k].name !== 'undefined') {
-            console.log('LEVEL 2', bodyChildNodes[i].childNodes[k].tagName);
-          }
+    var nodeResult = this.searchContent(this.pageContent('body').toArray()[0].childNodes);
+    console.log(nodeResult);
+    var content = this.pageContent.html(nodeResult.tagName + '' + nodeResult.class + ' > p');
+
+    return {
+      content: content,
+      node: nodeResult.tagName + '' + nodeResult.class + ' > p'
+    };
+  }
+
+  Contentify.prototype.searchContent = function(nodes, highest){
+    var highest = typeof highest !== 'undefined' ? highest : { total: 0 };
+
+    for (var i = 0; i < nodes.length; i++) {
+      if (typeof nodes[i].name !== 'undefined') {
+        var totalPTags = nodes[i].childNodes.filter(function(el){return el.tagName === 'p'}).length;
+        console.log(nodes[i].tagName, nodes[i].attribs.class, totalPTags);
+        if (totalPTags > highest.total) {
+          highest.total = totalPTags;
+          highest.class = nodes[i].attribs.class.length > 0 ? '.' + nodes[i].attribs.class.split(' ').join('.') : '';
+          highest.id = nodes[i].attribs.class;
+          highest.tagName = nodes[i].tagName;
+        }
+        if (nodes[i].childNodes.length > 0) {
+          highest = this.searchContent(nodes[i].childNodes, highest)
         }
       }
     }
-
-    return this.pageContent.html();
+    return highest;
   }
 
   Contentify.prototype.getTitle = function(){
