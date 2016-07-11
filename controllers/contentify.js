@@ -70,28 +70,37 @@ var Contentify = (function(){
 
     var nodeResult = this.searchContent(this.pageContent('body').toArray()[0].childNodes);
     console.log(nodeResult);
-    var content = this.pageContent.html(nodeResult.tagName + '' + nodeResult.class + ' > p, ' + nodeResult.tagName + '' + nodeResult.class + ' > ul, ' + nodeResult.tagName + '' + nodeResult.class + ' > ol');
+    var nodeString = nodeResult.tag + ((nodeResult.id.length > 0) ? nodeResult.id : nodeResult.class);
+    var content = this.pageContent.html(nodeString + ' > p, ' + nodeString + ' > ul, ' + nodeString + ' > ol');
 
     return {
       content: content,
-      node: nodeResult.tagName + '' + nodeResult.class + ' > p, ' + nodeResult.tagName + '' + nodeResult.class + ' > ul, ' + nodeResult.tagName + '' + nodeResult.class + ' > ol'
+      node: nodeString + ' > p, ' + nodeString + ' > ul, ' + nodeString + ' > ol'
     };
   }
 
   Contentify.prototype.searchContent = function(nodes, highest){
-    var highest = typeof highest !== 'undefined' ? highest : { total: 0 };
+    var highest = typeof highest !== 'undefined' ? highest : { total: 0, class: '', id: '', tag: '' };
 
     for (var i = 0; i < nodes.length; i++) {
       if (typeof nodes[i].name !== 'undefined') {
         var totalPTags = nodes[i].childNodes.filter(function(el){return el.tagName === 'p'}).length;
-        console.log(nodes[i].tagName, nodes[i].attribs.class, totalPTags);
+        // console.log(nodes[i].tagName, nodes[i].attribs.class, totalPTags);
         if (totalPTags > highest.total) {
           highest.total = totalPTags;
           // TESTING 1 CLASS only
-          // highest.class = nodes[i].attribs.class.length > 0 ? '.' + nodes[i].attribs.class.split(' ').join('.') : '';
-          highest.class = nodes[i].attribs.class.length > 0 ? '.' + nodes[i].attribs.class.split(' ')[0] : '';
-          highest.id = nodes[i].attribs.class;
-          highest.tagName = nodes[i].tagName;
+          if (typeof nodes[i].attribs.class !== 'undefined') {
+            // highest.class = nodes[i].attribs.class.length > 0 ? '.' + nodes[i].attribs.class.split(' ').join('.') : '';
+            highest.class = (nodes[i].attribs.class.length > 0 && typeof nodes[i].attribs.class !== 'undefined') ? '.' + nodes[i].attribs.class.split(' ')[0] : '';
+          }else{
+            highest.class = '';
+          }
+          if (typeof nodes[i].attribs.id !== 'undefined') {
+            highest.id = '#' + nodes[i].attribs.id;
+          }else{
+            highest.id = '';
+          }
+          highest.tag = nodes[i].tagName;
         }
         if (nodes[i].childNodes.length > 0) {
           highest = this.searchContent(nodes[i].childNodes, highest)
