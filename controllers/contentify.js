@@ -87,7 +87,9 @@ var Contentify = (function(){
         console.log(nodes[i].tagName, nodes[i].attribs.class, totalPTags);
         if (totalPTags > highest.total) {
           highest.total = totalPTags;
-          highest.class = nodes[i].attribs.class.length > 0 ? '.' + nodes[i].attribs.class.split(' ').join('.') : '';
+          // TESTING 1 CLASS only
+          // highest.class = nodes[i].attribs.class.length > 0 ? '.' + nodes[i].attribs.class.split(' ').join('.') : '';
+          highest.class = nodes[i].attribs.class.length > 0 ? '.' + nodes[i].attribs.class.split(' ')[0] : '';
           highest.id = nodes[i].attribs.class;
           highest.tagName = nodes[i].tagName;
         }
