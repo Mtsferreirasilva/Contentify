@@ -10,12 +10,42 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/reader', function(req, res, next) {
-  res.render('reader', { title: 'Contentify - Reader'});
+  var urlTarget = req.param('url');
+  var apiURL = req.headers.host + '/scrape?url=';
+  var data = null;
+  var showReader = false;
+
+  if (typeof urlTarget !== "undefined" && urlTarget !== null && urlTarget.length > 0) {
+    var validatorOptions = {
+      protocols: ['http', 'https'],
+      require_protocol: true,
+      allow_underscores: true,
+    }
+
+    if (validator.isURL(urlTarget, validatorOptions)) {
+      var options = {
+        url: 'https://contentify.herokuapp.com/scrape?url=' + urlTarget,
+      }
+
+      request.get(options, function(error, response, html) {
+        if (!error && response.statusCode == 200) {
+          console.log(response);
+          res.render('reader', { title: 'Contentify - Reader', data: JSON.parse(html)});
+        }else{
+          res.render('reader', { title: 'Contentify - Reader', error: 2});
+        }
+      });
+    }else{
+      res.render('reader', { title: 'Contentify - Reader', error: 1});
+    }
+  }else{
+    res.render('reader', { title: 'Contentify - Reader', error: 0});
+  }
 });
 
 router.get('/scrape', function(req, res, next) {
   res.header("Content-Type", "application/json; charset=utf-8");
-  
+
   var urlTarget = req.param('url');
   var result = {};
 

@@ -4,6 +4,19 @@
     <% include partials/head.ejs %>
   </head>
   <body>
-    <h1>This will be the reader</h1>
+    <% errorList = ['No URL', 'Invalid URL', 'API Request Error'] %>
+    <% if (data !== null && data.result !== null) { %>
+      <% if (data.result.openGraph !== null) { %>
+        <h1><%= data.result.openGraph.title %></h1>
+      <% } %>
+      <% if (data.result.openGraph !== null) { %>
+        <img src="<%= data.result.openGraph.image %>">
+      <% } %>
+      <% if (data.result.scrapedContent !== null) { %>
+        <%- data.result.scrapedContent %>
+      <% } %>
+    <% } else { %>
+      <h1><%= errorList[error] %></h1>
+    <% } %>
   </body>
 </html>
