@@ -14,7 +14,8 @@ router.get('/reader', function(req, res, next) {
 });
 
 router.get('/scrape', function(req, res, next) {
-  res.set({ 'content-type': 'application/json; charset=utf-8' })
+  res.header("Content-Type", "application/json; charset=utf-8");
+  
   var urlTarget = req.param('url');
   var result = {};
 
@@ -90,8 +91,9 @@ router.get('/scrape', function(req, res, next) {
               result.result.twitterCards = pageTwitterCards;
             }
 
-            result.result.scrapedContent = contentify.scrapeContent().content;
-            result.result.scrapedNode = contentify.scrapeContent().node;
+            var pageScrapeContent = contentify.scrapeContent();
+            result.result.scrapedContent = pageScrapeContent.content;
+            result.result.scrapedNode = pageScrapeContent.node;
 
             res.send(result);
           }else{

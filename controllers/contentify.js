@@ -68,14 +68,16 @@ var Contentify = (function(){
     this.pageContent('style').remove();
     this.pageContent('iframe').remove();
 
+    var acceptableTagList = ['p', 'ul', 'ol', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7'];
+
     var nodeResult = this.searchContent(this.pageContent('body').toArray()[0].childNodes);
-    console.log(nodeResult);
     var nodeString = nodeResult.tag + ((nodeResult.id.length > 0) ? nodeResult.id : nodeResult.class);
-    var content = this.pageContent.html(nodeString + ' > p, ' + nodeString + ' > ul, ' + nodeString + ' > ol');
+    var scrapedNode = acceptableTagList.map(function(el){return nodeString + ' > ' + el}).join(', ');
+    var content = this.pageContent.html(scrapedNode).replace(/<\s*(\w+).*?>/gi, '<$1>');
 
     return {
       content: content,
-      node: nodeString + ' > p, ' + nodeString + ' > ul, ' + nodeString + ' > ol'
+      node: scrapedNode
     };
   }
 
