@@ -19,7 +19,7 @@ router.get('/reader', function(req, res, next) {
     var validatorOptions = {
       protocols: ['http', 'https'],
       require_protocol: true,
-      allow_underscores: true,
+      allow_underscores: true
     }
 
     if (validator.isURL(urlTarget, validatorOptions)) {
@@ -55,7 +55,7 @@ router.get('/scrape', function(req, res, next) {
     var validatorOptions = {
       protocols: ['http', 'https'],
       require_protocol: true,
-      allow_underscores: true,
+      allow_underscores: true
     }
 
     if (validator.isURL(result.url, validatorOptions)){
