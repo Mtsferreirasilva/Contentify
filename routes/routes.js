@@ -1,7 +1,14 @@
 var express = require('express');
 var request = require('request');
-var scraper = require('../src/scraper.js');
 var router = express.Router();
+
+var scraper = require('../src/scraper.js');
+var React = require('react');
+var ReactDOMServer = require('react-dom/server');
+/* Components */
+var Contentify404 = require('../src/components/Contentify404.jsx');
+var ContentifyReaderError = require('../src/components/ContentifyReaderError.jsx');
+var ContentifyReader = require('../src/components/ContentifyReader.jsx');
 
 var config = require('../config');
 
@@ -12,22 +19,54 @@ router.get('/', function(req, res, next) {
 
 router.get('/reader', function(req, res, next) {
   var urlTarget = req.param('url');
+  var html = '<!DOCTYPE html>';
 
   if (typeof urlTarget !== "undefined" && urlTarget !== null && urlTarget.length > 0) {
     request
       .get({
         url: 'http://' + req.headers.host + '/scrape?url=' + urlTarget
-      }, function(error, response, html) {
+      }, function(error, response, context) {
         if (!error && response.statusCode == 200) {
-          res.render('reader', { title: 'Contentify - Reader', data: JSON.parse(html) });
+          var props = {
+            title: 'Contentify - Reader',
+            data: context
+          };
+          html += ReactDOMServer.renderToString(
+            React.createElement(ContentifyReader, props)
+          );
         }else{
-          res.render('404', { title: 'Contentify - Page not found', data: error });
+          var props = {
+            title: 'Contentify - Reader Error',
+            error: error
+          };
+          html += ReactDOMServer.renderToString(
+            React.createElement(ContentifyReaderError, props)
+          );
         }
+        res.send(html);
       });
   } else {
-    res.render('404', { title: 'Contentify - Page not found' });
+    var props = {
+      title: 'Contentify - Reader Error',
+      error: 'URL not provided.'
+    };
+    html += ReactDOMServer.renderToString(
+      React.createElement(ContentifyReaderError, props)
+    );
+    res.send(html);
   }
-})
+});
+
+router.get('/404', function(req, res, next) {
+  var props = {
+    title: 'Contentify - Page not found'
+  };
+  var html = '<!DOCTYPE html>';
+  html += ReactDOMServer.renderToString(
+    React.createElement(Contentify404, props)
+  );
+  res.send(html);
+});
 
 router.get('/scrape', function(req, res, next) {
   console.log(config);
