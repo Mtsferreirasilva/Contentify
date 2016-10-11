@@ -21433,9 +21433,6 @@
 	module.exports = React.createClass({
 	  displayName: 'exports',
 
-	  _handleClick: function () {
-	    alert('VAAi');
-	  },
 	  componentWillMount: function () {
 	    this.data = JSON.parse(this.props.data);
 	  },
@@ -21477,11 +21474,6 @@
 	      React.createElement(
 	        'body',
 	        null,
-	        React.createElement(
-	          'button',
-	          { onClick: this._handleClick },
-	          'Click me bitch'
-	        ),
 	        this.hasImage(),
 	        this.hasTitle(),
 	        this.hasPublisedDate(),

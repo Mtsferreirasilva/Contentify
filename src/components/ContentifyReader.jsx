@@ -3,9 +3,6 @@ var React = require('react');
 var ContentifyHead = require('./ContentifyHead.jsx');
 
 module.exports = React.createClass({
-  _handleClick: function() {
-    alert('VAAi');
-  },
   componentWillMount: function() {
     this.data = JSON.parse(this.props.data);
   },
@@ -47,7 +44,6 @@ module.exports = React.createClass({
       <html>
         <ContentifyHead title={this.props.title}/>
         <body>
-          <button onClick={this._handleClick}>Click me bitch</button>
           {this.hasImage()}
           {this.hasTitle()}
           {this.hasPublisedDate()}

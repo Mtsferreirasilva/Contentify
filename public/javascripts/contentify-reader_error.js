@@ -21461,9 +21461,6 @@
 	module.exports = React.createClass({
 	  displayName: 'exports',
 
-	  _handleClick: function () {
-	    alert('VAAi');
-	  },
 	  render: function () {
 	    return React.createElement(
 	      'html',
@@ -21481,11 +21478,6 @@
 	          'p',
 	          null,
 	          this.props.error
-	        ),
-	        React.createElement(
-	          'button',
-	          { onClick: this._handleClick },
-	          'Click me bitch'
 	        ),
 	        React.createElement('script', { dangerouslySetInnerHTML: {
 	            __html: 'window.PROPS=' + JSON.stringify(this.props)
