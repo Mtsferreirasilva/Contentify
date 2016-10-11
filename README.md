@@ -5,5 +5,7 @@ Fun thing that makes fun stuff.
 
 ## Run project
 Configure `config.js`
+
 `$ npm run-script webpack`
+
 `$ sudo npm start`
