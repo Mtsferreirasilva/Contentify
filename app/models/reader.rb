@@ -1,6 +1,6 @@
 class Reader
   include HTTParty
-  
+
   base_uri 'https://mercury.postlight.com'
 
   def initialize

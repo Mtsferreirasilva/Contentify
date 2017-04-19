@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ReadersController < ApplicationController
   def index
     @reader = Reader.new.page(reader_params[:url])
