@@ -36,7 +36,8 @@ module.exports = {
   plugins: [
     new webpack.EnvironmentPlugin(JSON.parse(JSON.stringify(env))),
     new ExtractTextPlugin(env.NODE_ENV === 'production' ? '[name]-[hash].css' : '[name].css'),
-    new ManifestPlugin({ fileName: paths.manifest, publicPath, writeToFileEmit: true })
+    new ManifestPlugin({ fileName: paths.manifest, publicPath, writeToFileEmit: true }),
+    new webpack.ProvidePlugin({$: 'jquery', jquery: 'jquery', jQuery: 'jquery'}),
   ],
 
   resolve: {
@@ -44,7 +45,10 @@ module.exports = {
     modules: [
       resolve(paths.source),
       resolve(paths.node_modules)
-    ]
+    ],
+    alias: {
+      jquery: "jquery/src/jquery",
+    }
   },
 
   resolveLoader: {

@@ -6,21 +6,18 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.0.2'
-gem 'pg', '~> 0.18'
+gem 'sqlite3'
 gem 'puma', '~> 3.0'
-gem 'turbolinks', '~> 5'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
 gem 'httparty', '~> 0.14.0'
 gem 'dotenv-rails', '~> 2.2'
 
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'jquery-rails'
-gem 'react-rails'
+gem 'turbolinks', '~> 5'
 gem 'webpacker', github: 'rails/webpacker'
 
+
 group :development, :test do
-  gem 'sqlite3'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
 
@@ -33,4 +30,5 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
