@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 class ReaderController < ApplicationController
-  ALLOWED_TAGS = %w(img p a h1 h2 h3 h4 h5 h6 h7 em i b strong code mark small sub sup ins del)
-  ALLOWED_ATTR = %w(href src)
-
   def index
-    reader = Reader.new.page(reader_params[:url])
-    sanitizer = Rails::Html::WhiteListSanitizer.new
+    reader = Reader.new(reader_params[:url])
 
-    @title = reader["title"].html_safe
-    @content = sanitizer.sanitize(reader["content"], tags: ALLOWED_TAGS, attributes: ALLOWED_ATTR).html_safe
+    @title = reader.title
+    @content = reader.content
+    @author = reader.author
+    @date_published = reader.date_published
+    @domain = reader.domain
+    @min_read = reader.min_read
   end
 
   private
