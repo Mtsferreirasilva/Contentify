@@ -1,10 +1,14 @@
-<%- title @article.title %>
+<% if @article.errors.any? %>
+  <h1>Hmmm Looks like <%= @article.errors.messages[:url].first %> </h1>
+<% else %>
+  <%- title @article.title %>
 
-<h1><%= @article.title %></h1>
-<p>Author: <%= @article.author %></p>
-<p>From: <%= @article.domain %></p>
-<p>Date Published: <%= @article.date_published %></p>
-<p><%= @article.min_read %> min read.</p>
-<article>
-  <%= @article.content %>
-</article>
+  <h1><%= @article.title %></h1>
+  <p>Author: <%= @article.author %></p>
+  <p>From: <%= @article.domain %></p>
+  <p>Date Published: <%= @article.date_published %></p>
+  <p><%= @article.min_read %> min read.</p>
+  <article>
+    <%= @article.content %>
+  </article>
+<% end %>
