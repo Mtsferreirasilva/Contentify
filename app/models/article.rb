@@ -1,4 +1,6 @@
+# frozen_string_literal: true
 class Article
+  include UrlValidator
   include HTTParty
 
   base_uri 'https://mercury.postlight.com'
@@ -6,10 +8,14 @@ class Article
   ALLOWED_TAGS = %w(img p a h1 h2 h3 h4 h5 h6 h7 em i b strong code mark small sub sup ins del)
   ALLOWED_ATTR = %w(href src)
 
+  attr_reader :url
+
   def initialize(url)
+    @url = url
     @header = { headers: { 'x-api-key' => ENV.fetch('MERCURY_API_KEY') } }
-    @article = fetch(url)
     @sanitizer = Rails::Html::WhiteListSanitizer.new
+    @article = fetch(url)
+    ensure_valid_url
   end
 
   def title
