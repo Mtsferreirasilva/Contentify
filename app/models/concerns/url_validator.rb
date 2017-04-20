@@ -3,7 +3,14 @@ module UrlValidator
   extend ActiveSupport::Concern
 
   included do
+    include ActiveModel::Validations
+  end
+
+  def ensure_valid_url
     validates_with Validator
+    return unless valid?
+    invalid_url = @article.parsed_response.nil? || @article.parsed_response['error']
+    return errors[:url] << 'your url suck bitch!' if invalid_url
   end
 
   class Validator < ActiveModel::Validator

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class Article
-  include ActiveModel::Validations
   include UrlValidator
   include HTTParty
 
@@ -13,11 +12,10 @@ class Article
 
   def initialize(url)
     @url = url
-    validates_with UrlValidator::Validator
-    return unless valid?
     @header = { headers: { 'x-api-key' => ENV.fetch('MERCURY_API_KEY') } }
-    @article = fetch(url)
     @sanitizer = Rails::Html::WhiteListSanitizer.new
+    @article = fetch(url)
+    ensure_valid_url
   end
 
   def title
