@@ -1,4 +1,4 @@
-class Reader
+class Article
   include HTTParty
 
   base_uri 'https://mercury.postlight.com'
@@ -8,32 +8,32 @@ class Reader
 
   def initialize(url)
     @header = { headers: { 'x-api-key' => ENV.fetch('MERCURY_API_KEY') } }
-    @reader = fetch(url)
+    @article = fetch(url)
     @sanitizer = Rails::Html::WhiteListSanitizer.new
   end
 
   def title
-    @reader['title']
+    @article['title']
   end
 
   def content
-    @sanitizer.sanitize(@reader["content"], tags: ALLOWED_TAGS, attributes: ALLOWED_ATTR).html_safe
+    @sanitizer.sanitize(@article["content"], tags: ALLOWED_TAGS, attributes: ALLOWED_ATTR).html_safe
   end
 
   def author
-    @reader["author"]
+    @article["author"]
   end
 
   def date_published
-    @reader["date_published"]
+    @article["date_published"]
   end
 
   def domain
-    @reader["domain"]
+    @article["domain"]
   end
 
   def min_read
-    (Integer(@reader["word_count"]) / 200).round
+    (Integer(@article["word_count"]) / 200).round
   end
 
   private
