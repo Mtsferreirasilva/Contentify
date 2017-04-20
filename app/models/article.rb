@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Article
   include ActiveModel::Validations
   include UrlValidator
@@ -13,7 +14,7 @@ class Article
   def initialize(url)
     @url = url
     validates_with UrlValidator::Validator
-    return unless self.valid?
+    return unless valid?
     @header = { headers: { 'x-api-key' => ENV.fetch('MERCURY_API_KEY') } }
     @article = fetch(url)
     @sanitizer = Rails::Html::WhiteListSanitizer.new
