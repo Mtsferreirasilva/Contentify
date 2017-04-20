@@ -14,35 +14,44 @@ const CLASSES = {
 export default function searchIcon(){
   const $iconNode = $(`.${CLASSES.ICON.BASE}`);
 
-  $iconNode.on('click', openSearch);
+  $iconNode.on('click', toggleSearch);
 }
 
-function openSearch(evt) {
-  evt.preventDefault();
+function toggleSearch(evt) {
+  if (evt !== undefined) {
+    evt.preventDefault();
+  }
 
-  const $iconNode = $(`.${CLASSES.ICON.BASE}`);
   const $inputNode = $(`.${CLASSES.INPUT.BASE}`);
 
   requestAnimationFrame(() => {
-    $iconNode.addClass(CLASSES.ICON.CLOSED);
+    $inputNode.toggleClass(CLASSES.INPUT.OPEN);
+    $inputNode.focus();
+  });
+}
+
+function openSearch() {
+  const $inputNode = $(`.${CLASSES.INPUT.BASE}`);
+
+  requestAnimationFrame(() => {
     $inputNode.addClass(CLASSES.INPUT.OPEN);
     $inputNode.focus();
   });
 }
 
 function closeSearch() {
-
-  const $iconNode = $(`.${CLASSES.ICON.BASE}`);
   const $inputNode = $(`.${CLASSES.INPUT.BASE}`);
 
   requestAnimationFrame(() => {
-    $iconNode.removeClass(CLASSES.ICON.CLOSED);
     $inputNode.removeClass(CLASSES.INPUT.OPEN);
+    $inputNode.blur();
   });
 }
 
 $(document).keyup((e) => {
-   if (e.keyCode === 27) {
+   if (e.keyCode === 191) {
+    openSearch();
+  } else if (e.keyCode === 27) {
     closeSearch();
   }
 });
