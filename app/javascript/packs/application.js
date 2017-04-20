@@ -11,6 +11,10 @@ import Reader from 'reader';
 import $ from 'jquery';
 import moment from 'moment';
 
+import searchIcon from '../searchIcon';
+
 $(document).ready(() => {
   new Reader();
+
+  searchIcon();
 });

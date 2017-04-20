@@ -11,7 +11,56 @@
   </head>
 
   <body>
-    <div class="page">
+    <nav class="nav">
+      <div class="nav__container container">
+        <div class="nav__brand">
+          <span>Contentify</span>
+        </div>
+        <div class="nav__action-list">
+          <ul class="action-list">
+            <li class="action-list__item search">
+              <%= text_field_tag 'search-input-field', '', class: "search__input", placeholder: 'Search' %>
+            </l1>
+            <li class="action-list__item search-icon">
+              <a class="action-list__action" href="#!">
+                <%= image_tag "Search.svg", class: 'action-list__image' %>
+              </a>
+            </l1>
+            <li class="action-list__item">
+              <a class="action-list__action" href="#!">
+                <%= image_tag "NormalMode.svg", class: 'action-list__image' %>
+              </a>
+            </l1>
+            <li class="action-list__item">
+              <a class="action-list__action" href="#!">
+                <%= image_tag "LightMode.svg", class: 'action-list__image' %>
+              </a>
+            </l1>
+            <li class="action-list__item">
+              <a class="action-list__action" href="#!">
+                <%= image_tag "NightMode.svg", class: 'action-list__image' %>
+              </a>
+            </l1>
+            <li class="action-list__item">
+              <a class="action-list__action" href="#!">
+                <%= image_tag "FontSize.svg", class: 'action-list__image' %>
+              </a>
+            </l1>
+            <li class="action-list__item">
+              <a class="action-list__action" href="#!">
+                <%= image_tag "SpeedReadMode.svg", class: 'action-list__image' %>
+              </a>
+            </l1>
+            <li class="action-list__item">
+              <a class="action-list__action" href="#!">
+                <%= image_tag "SoundMode.svg", class: 'action-list__image' %>
+              </a>
+            </l1>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
       <%= yield %>
     </div>
   </body>

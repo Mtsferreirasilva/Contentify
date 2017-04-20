@@ -1,0 +1,58 @@
+@import '../variables';
+
+.search {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 0;
+  overflow: hidden;
+
+  &:hover {
+    transform: scale(1);
+  }
+}
+
+.search__input {
+  padding: 8px;
+  width: 0%;
+  background-color: #F1F1F1;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font-size: 1.2em;
+  opacity: 0;
+  transition: all 0.3s linear;
+
+  &:focus {
+    border: 1px solid #ddd;
+    outline: none;
+  }
+}
+
+.search__input--open {
+  opacity: 1;
+  width: 100%;
+}
+
+.search-icon {
+  flex: 1 0 auto;
+  overflow: hidden;
+  opacity: 1;
+  width: 40px;
+  transition: all 0.3s linear;
+}
+
+.search-icon--closed {
+  width: 0;
+  padding: 0;
+  opacity: 0;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #9B9B9B;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #9B9B9B;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #9B9B9B;
+}

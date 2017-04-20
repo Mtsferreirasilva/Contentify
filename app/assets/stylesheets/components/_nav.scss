@@ -1,0 +1,28 @@
+@import '../variables';
+
+.nav {
+  background-color: #FAFAFA;
+}
+
+.nav__container {
+  display: flex;
+  border-bottom: 1px solid #4A4A4A;
+  padding-top: $spacing-super-loose;
+  padding-bottom: $spacing-loose;
+}
+
+.nav__brand {
+  font-size: 1.8em;
+  font-family: Sentinel;
+  font-weight: 500;
+  font-style: italic;
+  color: #4A4A4A;
+  margin-right: $spacing;
+}
+
+.nav__action-list {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1 1 auto;
+}

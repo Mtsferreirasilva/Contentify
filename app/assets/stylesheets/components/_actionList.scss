@@ -1,0 +1,40 @@
+@import '../variables';
+
+.action-list {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.action-list__item {
+  display: flex;
+  align-items: center;
+  transform: scale(1);
+  transition: transform .15s ease-in-out;
+  padding: 0 $spacing-tight + $spacing-tight;
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.action-list__image {
+  width: $spacing-loose;
+  height: $spacing-loose;
+}
+
+.action-list__action {
+  display: block;
+  cursor: pointer;
+}
