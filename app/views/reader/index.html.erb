@@ -8,7 +8,6 @@
   <p>From: <%= @article.domain %></p>
   <p>Date Published: <%= @article.date_published %></p>
   <p><%= @article.min_read %> min read.</p>
-  <article>
-    <%= @article.content %>
-  </article>
+  
+  <%= render 'shared/article_content', article: @article.content %>
 <% end %>
