@@ -23,6 +23,8 @@ gem 'nokogiri', '~> 1.7'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'sqlite3', '~> 1.3'
+  gem 'pry-rails', '~> 0.3.6'
+  gem 'pry-byebug', '~> 3.4'
 end
 
 group :development do
