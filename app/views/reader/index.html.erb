@@ -8,12 +8,20 @@
     <h1>Hmmm Looks like <%= @article.errors.messages[:url].first %> </h1>
   <% else %>
     <article class="article article--small">
-      <h1 class="article__title"><%= @article.title %>.</h1>
+      <h1 class="article__title"><%= @article.title %></h1>
       <div class="article__details">
-        <span><%= @article.author %></span>
-        <span><%= @article.domain %></span>
-        <span><%= @article.date_published %></span>
-        <span><%= @article.min_read %> min read</span>
+        <% if @article.author %>
+          <span><%= @article.author %></span>
+        <% end %>
+        <% if @article.domain %>
+          <span><%= @article.domain %></span>
+        <% end %>
+        <% if @article.date_published %>
+          <span><%= @article.date_published %></span>
+        <% end %>
+        <% if @article.min_read %>
+          <span><%= @article.min_read %> min read</span>
+        <% end %>
       </div>
       <% if @article.lead_image_url %>
         <%= image_tag @article.lead_image_url, class: "article__lead-image" %>

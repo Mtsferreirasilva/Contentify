@@ -23,6 +23,8 @@ class Article
   end
 
   def content
+    return false unless @article["content"]
+
     @sanitizer.sanitize(@article["content"], tags: ALLOWED_TAGS, attributes: ALLOWED_ATTR).html_safe
   end
 
@@ -31,6 +33,8 @@ class Article
   end
 
   def date_published
+    return false unless @article["date_published"]
+
     DateTime.parse(@article["date_published"]).strftime('%B %d, %Y')
   end
 
@@ -43,6 +47,7 @@ class Article
   end
 
   def lead_image_url
+
     @article["lead_image_url"]
   end
 
