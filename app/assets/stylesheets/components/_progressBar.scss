@@ -1,5 +1,8 @@
 .progress-bar {
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   overflow: hidden;
 }
 
@@ -7,4 +10,9 @@
   display: block;
   height: 4px;
   background-color: $black;
+  width: 0%;
+}
+
+.progress-bar__level--animate {
+  transition: width 0.3s ease-in-out;
 }

@@ -1,7 +1,13 @@
 <%- title @article.title ? @article.title : 'Error' %>
 
+<script>
+  $(document).ready(function(){
+    progressBar();
+  });
+</script>
+
 <div class="progress-bar">
-  <span class="progress-bar__level" style="width: 100%;"></span>
+  <span class="progress-bar__level progress-bar__level--animate"></span>
 </div>
 <div class="container">
   <% if @article.errors.any? %>
