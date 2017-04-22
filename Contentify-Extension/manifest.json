@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Contentify",
+  "version": "0.0.1",
+
+  "browser_action": {
+    "default_icon": {
+      "38": "icon.png"
+    },
+    "default_title": "Contentify",
+    "default_popup": "popup.html"
+  },
+
+  "author": ["Mateus Ferreira Silva", "Kai Daniels"],
+
+  "permissions": ["tabs"]
+}
