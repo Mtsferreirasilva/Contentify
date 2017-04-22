@@ -1,11 +1,16 @@
-if Rails.env.development? || Rails.env.test?
-  require 'pry-rails'
-  require 'pry-byebug'
+require 'pry-rails'
+require 'pry-byebug'
+
+old_prompt = Pry.config.prompt
+env = Rails.env.upcase
+
+if Rails.env.development?
+  env = Pry::Helpers::Text.green(env)
 else
-  old_prompt = Pry.config.prompt
-  env = Pry::Helpers::Text.red(Rails.env.upcase)
-  Pry.config.prompt = [
-    proc {|*a| "#{env} #{old_prompt.first.call(*a)}"},
-    proc {|*a| "#{env} #{old_prompt.second.call(*a)}"},
-  ]
+  env = Pry::Helpers::Text.red(env)
 end
+
+Pry.config.prompt = [
+  proc {|*a| "#{env} #{old_prompt.first.call(*a)}"},
+  proc {|*a| "#{env} #{old_prompt.second.call(*a)}"},
+]
