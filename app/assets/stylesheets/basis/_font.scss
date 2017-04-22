@@ -1,38 +1,41 @@
+// Import only the ones being used at the moment
+
 @font-face {
   font-family: TiemposText;
   font-weight: 400;
-  src: asset-url("TiemposText-Regular.otf") format("opentype");
+  src: asset-url("TiemposTextWeb-Regular.otf") format("opentype");
+  src: asset-url('TiemposTextWeb-Regular.woff') format('woff'),
+       asset-url('TiemposTextWeb-Regular.woff2') format('woff2'),
+       asset-url('TiemposTextWeb-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: TiemposText;
   font-weight: 400;
   font-style: italic;
-  src: asset-url("TiemposText-RegularItalic.otf") format("opentype");
+  src: asset-url("TiemposTextWeb-RegularItalic.otf") format("opentype");
+  src: asset-url('TiemposTextWeb-RegularItalic.woff') format('woff'),
+       asset-url('TiemposTextWeb-RegularItalic.woff2') format('woff2'),
+       asset-url('TiemposTextWeb-RegularItalic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: TiemposText;
   font-weight: 500;
-  src: asset-url("TiemposText-Medium.otf") format("opentype");
+  src: asset-url("TiemposTextWeb-Medium.otf") format("opentype");
+  src: asset-url('TiemposTextWeb-Medium.woff') format('woff'),
+       asset-url('TiemposTextWeb-Medium.woff2') format('woff2'),
+       asset-url('TiemposTextWeb-Medium.ttf') format('truetype');
+
 }
 
 @font-face {
   font-family: TiemposText;
   font-weight: 500;
   font-style: italic;
-  src: asset-url("TiemposText-Medium.otf") format("opentype");
-}
+  src: asset-url("TiemposTextWeb-MediumItalic.otf") format("opentype");
+  src: asset-url('TiemposTextWeb-MediumItalic.woff') format('woff'),
+       asset-url('TiemposTextWeb-MediumItalic.woff2') format('woff2'),
+       asset-url('TiemposTextWeb-MediumItalic.ttf') format('truetype');
 
-@font-face {
-  font-family: TiemposText;
-  font-weight: 600;
-  src: asset-url("TiemposText-Semibold.otf") format("opentype");
-}
-
-@font-face {
-  font-family: TiemposText;
-  font-weight: 600;
-  font-style: italic;
-  src: asset-url("TiemposText-Semibold.otf") format("opentype");
 }
