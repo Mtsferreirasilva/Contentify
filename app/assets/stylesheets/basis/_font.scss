@@ -1,38 +1,38 @@
 @font-face {
   font-family: TiemposText;
   font-weight: 400;
-  src: font-url("/assets/TiemposText-Regular.otf") format("opentype");
+  src: asset-url("TiemposText-Regular.otf") format("opentype");
 }
 
 @font-face {
   font-family: TiemposText;
   font-weight: 400;
   font-style: italic;
-  src: font-url("/assets/TiemposText-RegularItalic.otf") format("opentype");
+  src: asset-url("TiemposText-RegularItalic.otf") format("opentype");
 }
 
 @font-face {
   font-family: TiemposText;
   font-weight: 500;
-  src: font-url("/assets/TiemposText-Medium.otf") format("opentype");
+  src: asset-url("TiemposText-Medium.otf") format("opentype");
 }
 
 @font-face {
   font-family: TiemposText;
   font-weight: 500;
   font-style: italic;
-  src: font-url("/assets/TiemposText-Medium.otf") format("opentype");
+  src: asset-url("TiemposText-Medium.otf") format("opentype");
 }
 
 @font-face {
   font-family: TiemposText;
   font-weight: 600;
-  src: font-url("/assets/TiemposText-Semibold.otf") format("opentype");
+  src: asset-url("TiemposText-Semibold.otf") format("opentype");
 }
 
 @font-face {
   font-family: TiemposText;
   font-weight: 600;
   font-style: italic;
-  src: font-url("/assets/TiemposText-Semibold.otf") format("opentype");
+  src: asset-url("TiemposText-Semibold.otf") format("opentype");
 }
