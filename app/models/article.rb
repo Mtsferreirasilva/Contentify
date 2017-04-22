@@ -5,7 +5,7 @@ class Article
 
   base_uri 'https://mercury.postlight.com'
 
-  ALLOWED_TAGS = %w(img p a h1 h2 h3 h4 h5 h6 h7 em i b strong code mark small sub sup ins del)
+  ALLOWED_TAGS = %w(img p a h1 h2 h3 h4 h5 h6 h7 em i b strong code mark small blockquote sub sup ins del)
   ALLOWED_ATTR = %w(href src)
 
   attr_reader :url
@@ -31,7 +31,7 @@ class Article
   end
 
   def date_published
-    @article["date_published"]
+    DateTime.parse(@article["date_published"]).strftime('%B %d, %Y')
   end
 
   def domain
@@ -40,6 +40,10 @@ class Article
 
   def min_read
     (Integer(@article["word_count"]) / 200).round
+  end
+
+  def lead_image_url
+    @article["lead_image_url"]
   end
 
   private
