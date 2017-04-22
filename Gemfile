@@ -19,6 +19,8 @@ gem 'webpacker', github: 'rails/webpacker'
 gem 'rails-html-sanitizer'
 gem 'autoprefixer-rails'
 gem 'nokogiri', '~> 1.7'
+gem 'pry-rails', '~> 0.3.6'
+gem 'pry-byebug', '~> 3.4'
 
 group :development, :test do
   gem 'byebug', platform: :mri
