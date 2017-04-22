@@ -21,16 +21,36 @@ h1 {
   font-weight: 500;
 }
 
-h2, h3, h4, h5, h6 {
+h2, h3 {
+  font-size: 1.4em;
   font-weight: 500;
+  margin-top: $spacing-loose * 2;
+  margin-bottom: $spacing-loose;
+
+  + p {
+    margin-top: 0;
+  }
+}
+
+h4, h5, h6 {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin-top: $spacing-loose;
   margin-bottom: $spacing;
+
+  + p {
+    margin-top: 0;
+  }
 }
 
 p {
   font-weight: 400;
   line-height: 1.5em;
-  margin-top: $spacing-super-loose;
-  margin-bottom: $spacing-super-loose;
+  margin: $spacing-super-loose 0;
+
+  @media screen and (max-width: $b-tablet) {
+    margin: $spacing-loose 0;
+  }
 
   &:first-child {
     margin-top: 0;
@@ -44,18 +64,11 @@ img {
 
 figure {
   margin: 0;
+  text-align: center;
 }
 
 a {
   color: $blue;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
-  text-decoration: none;
-  transition: border-bottom .1s ease-in-out;
-
-  &:hover {
-    border-bottom: 1px solid $blue;
-  }
 }
 
 blockquote {
@@ -67,6 +80,10 @@ blockquote {
   border-left: 2px solid #676767;
   padding: $spacing-tight 0;
   padding-left: $spacing-loose;
+
+  p {
+    margin: 0;
+  }
 }
 
 pre {
@@ -86,6 +103,10 @@ code {
 
 strong {
   font-weight: 500;
+}
+
+caption {
+  font-size: 0.6em;
 }
 
 ul {
