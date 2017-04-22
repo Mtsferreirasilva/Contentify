@@ -16,7 +16,8 @@ gem 'dotenv-rails', '~> 2.2'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', github: 'rails/webpacker'
 gem 'rails-html-sanitizer'
-gem "autoprefixer-rails"
+gem 'autoprefixer-rails'
+gem 'nokogiri'
 
 group :development, :test do
   gem 'byebug', platform: :mri

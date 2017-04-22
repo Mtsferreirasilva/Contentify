@@ -25,7 +25,15 @@ class Article
   def content
     return false unless @article["content"]
 
-    @sanitizer.sanitize(@article["content"], tags: ALLOWED_TAGS, attributes: ALLOWED_ATTR).html_safe
+    content = @sanitizer.sanitize(@article["content"], tags: ALLOWED_TAGS, attributes: ALLOWED_ATTR).html_safe
+
+    # Remove first tag if it is image.
+    html_doc = Nokogiri::HTML(content)
+    if html_doc.root.first_element_child.children.first.name == 'img'
+      html_doc.root.first_element_child.children.first.remove
+    end
+
+    html_doc.to_s.html_safe
   end
 
   def author
@@ -47,7 +55,6 @@ class Article
   end
 
   def lead_image_url
-
     @article["lead_image_url"]
   end
 
