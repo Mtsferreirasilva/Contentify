@@ -8,14 +8,16 @@ class Article
   ALLOWED_TAGS = %w(img p a h1 h2 h3 h4 h5 h6 h7 em i b strong code mark small blockquote sub sup ins del pre)
   ALLOWED_ATTR = %w(href src)
 
-  attr_reader :url
+  attr_reader :url, :article
 
   def initialize(url)
+    @sanitizer = Rails::Html::WhiteListSanitizer.new
+    @article = Rails.cache.fetch(url)
+    return @article if @article.present?
     @url = url
     @header = { headers: { 'x-api-key' => ENV.fetch('MERCURY_API_KEY') } }
-    @sanitizer = Rails::Html::WhiteListSanitizer.new
     @article = fetch(url)
-    ensure_valid_url
+    Rails.cache.write("#{url}", @article.to_h, expires_in: 1.month) if ensure_valid_url
   end
 
   def title
