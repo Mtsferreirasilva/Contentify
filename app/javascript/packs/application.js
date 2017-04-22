@@ -9,12 +9,12 @@
 
 import Reader from 'reader';
 import $ from 'jquery';
-import moment from 'moment';
 
 import searchIcon from '../searchIcon';
+import progressBar from '../progressBar';
 
 $(document).ready(() => {
-  new Reader();
+  // new Reader();
 
   searchIcon();
 });

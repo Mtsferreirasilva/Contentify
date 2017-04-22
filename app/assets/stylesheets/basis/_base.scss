@@ -73,11 +73,11 @@ a {
 
 blockquote {
   position: relative;
-  color: #676767;
+  color: $black-3;
   font-style: italic;
   margin: $spacing-super-loose 0;
   line-height: 1.4;
-  border-left: 2px solid #676767;
+  border-left: 2px solid $black-3;
   padding: $spacing-tight 0;
   padding-left: $spacing-loose;
 
