@@ -11,7 +11,7 @@
       <h1 class="article__title"><%= @article.title %></h1>
       <div class="article__details">
         <% if @article.author %>
-          <span><%= @article.author %></span>
+          <span>By <%= @article.author %></span>
         <% end %>
         <% if @article.domain %>
           <span><%= @article.domain %></span>
