@@ -5,8 +5,9 @@ class Article
 
   base_uri 'https://mercury.postlight.com'
 
-  ALLOWED_TAGS = %w(img p a h1 h2 h3 h4 h5 h6 h7 em i b strong code mark small blockquote sub sup ins del pre)
-  ALLOWED_ATTR = %w(href src)
+  ALLOWED_TAGS = %w(img p a h h1 h2 h3 h4 h5 h6 h7 em i b strong code
+                    mark small blockquote sub sup ins del pre br ul li span figure label)
+  ALLOWED_ATTR = %w(href src for alt title)
 
   attr_reader :url
 
@@ -29,7 +30,8 @@ class Article
 
     # Remove first tag if it is image.
     html_doc = Nokogiri::HTML(content)
-    if html_doc.root.first_element_child.children.first.name == 'img'
+    first_element = html_doc.root.first_element_child.children.first.name
+    if first_element == 'figure' || first_element == 'img'
       html_doc.root.first_element_child.children.first.remove
     end
 

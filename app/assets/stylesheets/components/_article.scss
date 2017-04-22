@@ -1,6 +1,14 @@
 .article {
   padding: 0 $spacing;
-  margin: $spacing-loose * 4 auto;
+  margin: $spacing-loose * 3 auto;
+
+  @media screen and (max-width: $b-tablet) {
+    margin: $spacing-loose * 2 auto;
+  }
+
+  @media screen and (max-width: $b-mobile) {
+    margin: $spacing-loose auto;
+  }
 }
 
 .article--small {
@@ -19,27 +27,30 @@
   margin: 0;
   font-weight: 500;
   font-style: italic;
-  font-size: 2em;
   margin-bottom: $spacing;
 }
 
 .article__details {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: $spacing-super-loose;
   font-size: 0.8em;
 
   span {
     border-right: 1px solid $black;
-    padding: 0 $spacing;
-
-    &:first-child {
-      padding-left: 0;
-    }
+    padding-right: $spacing;
+    margin-right: $spacing;
+    margin-bottom: $spacing;
 
     &:last-child {
+      margin-right: 0;
       border-right: 0;
       padding-right: 0;
     }
+  }
+
+  @media screen and (max-width: $b-mobile) {
+    margin-bottom: $spacing;
   }
 }
 
@@ -56,5 +67,9 @@
     margin: 0 auto;
     margin-bottom: 20px;
     max-width: 100%;
+  }
+
+  @media screen and (max-width: $b-tablet) {
+    padding: $spacing-loose 0;
   }
 }
