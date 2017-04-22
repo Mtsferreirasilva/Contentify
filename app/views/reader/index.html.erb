@@ -1,13 +1,34 @@
-<% if @article.errors.any? %>
-  <h1>Hmmm Looks like <%= @article.errors.messages[:url].first %> </h1>
-<% else %>
-  <%- title @article.title %>
+<%- title @article.title ? @article.title : 'Error' %>
 
-  <h1><%= @article.title %></h1>
-  <p>Author: <%= @article.author %></p>
-  <p>From: <%= @article.domain %></p>
-  <p>Date Published: <%= @article.date_published %></p>
-  <p><%= @article.min_read %> min read.</p>
-  
-  <%= render 'shared/article_content', article: @article.content %>
-<% end %>
+<div class="progress-bar">
+  <span class="progress-bar__level" style="width: 100%;"></span>
+</div>
+<div class="container">
+  <% if @article.errors.any? %>
+    <h1>Hmmm Looks like <%= @article.errors.messages[:url].first %> </h1>
+  <% else %>
+    <article class="article article--small">
+      <h1 class="article__title"><%= @article.title %></h1>
+      <div class="article__details">
+        <% if @article.author %>
+          <span><%= @article.author %></span>
+        <% end %>
+        <% if @article.domain %>
+          <span><%= @article.domain %></span>
+        <% end %>
+        <% if @article.date_published %>
+          <span><%= @article.date_published %></span>
+        <% end %>
+        <% if @article.min_read %>
+          <span><%= @article.min_read %> min read</span>
+        <% end %>
+      </div>
+      <% if @article.lead_image_url %>
+        <%= image_tag @article.lead_image_url, class: "article__lead-image" %>
+      <% end %>
+      <div class="article__content">
+        <%= @article.content %>
+      </div>
+    </article>
+  <% end %>
+</div>

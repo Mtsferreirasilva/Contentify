@@ -1,0 +1,10 @@
+.progress-bar {
+  width: 100%;
+  overflow: hidden;
+}
+
+.progress-bar__level {
+  display: block;
+  height: 4px;
+  background-color: $black;
+}

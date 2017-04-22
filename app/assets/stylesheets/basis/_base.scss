@@ -3,10 +3,32 @@
 }
 
 body {
-  font-size: 16px;
+  font-size: 24px;
   font-family: "Sentinel", "helvetica";
   font-weight: 400;
+  color: $black;
 
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  font-weight: 400;
+  line-height: 1.5em;
+  margin-bottom: $spacing-super-loose;
+}
+
+img {
+  margin-bottom: $spacing-super-loose;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom .1s ease-in-out;
+
+  &:hover {
+    border-bottom: 2px solid $blue;
+  }
 }
