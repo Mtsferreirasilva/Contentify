@@ -5,7 +5,7 @@ class Article
 
   base_uri 'https://mercury.postlight.com'
 
-  ALLOWED_TAGS = %w(img p a h1 h2 h3 h4 h5 h6 h7 em i b strong code mark small blockquote sub sup ins del)
+  ALLOWED_TAGS = %w(img p a h1 h2 h3 h4 h5 h6 h7 em i b strong code mark small blockquote sub sup ins del pre)
   ALLOWED_ATTR = %w(href src)
 
   attr_reader :url
@@ -25,7 +25,7 @@ class Article
   def content
     return false unless @article["content"]
 
-    content = @sanitizer.sanitize(@article["content"], tags: ALLOWED_TAGS, attributes: ALLOWED_ATTR).html_safe
+    content = @sanitizer.sanitize(@article["content"], tags: ALLOWED_TAGS, attributes: ALLOWED_ATTR)
 
     # Remove first tag if it is image.
     html_doc = Nokogiri::HTML(content)

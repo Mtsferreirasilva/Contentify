@@ -17,7 +17,7 @@ gem 'turbolinks', '~> 5'
 gem 'webpacker', github: 'rails/webpacker'
 gem 'rails-html-sanitizer'
 gem 'autoprefixer-rails'
-gem 'nokogiri'
+gem 'nokogiri', '~> 1.7'
 
 group :development, :test do
   gem 'byebug', platform: :mri
