@@ -1,13 +1,10 @@
 .article {
+  position: relative;
   padding: 0 $spacing;
   margin: $spacing-loose * 3 auto;
 
   @media screen and (max-width: $b-tablet) {
-    margin: $spacing-loose * 2 auto;
-  }
-
-  @media screen and (max-width: $b-mobile) {
-    margin: $spacing-loose auto;
+    margin: $spacing-loose * 4 auto;
   }
 }
 
@@ -32,6 +29,7 @@
 .article__details {
   display: flex;
   flex-wrap: wrap;
+  color: $black-3;
   margin-bottom: $spacing-super-loose;
   font-size: 0.8em;
 
@@ -71,5 +69,78 @@
 
   @media screen and (max-width: $b-tablet) {
     padding: $spacing-loose 0;
+  }
+}
+
+.article-controls {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  top: 10px;
+  left: $spacing;
+  z-index: 2;
+
+  @media screen and (max-width: $b-desktop) {
+    position: fixed;
+    height: auto;
+    width: 100%;
+    top: 4px;
+    padding: $spacing 8px;
+    left: 0;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  }
+}
+
+.article-control--shadow {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.article-controls--white {
+  background-color: #fff;
+}
+
+.article-controls__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (max-width: $b-desktop) {
+    flex-direction: row;
+    width: 100%;
+  }
+}
+
+.article-controls__list-item {
+  list-style: none;
+  margin: 0;
+
+  img {
+    margin: 0;
+    width: 22px;
+  }
+
+  @media screen and (max-width: $b-desktop) {
+    margin-left: $spacing;
+
+    &:first-child {
+      flex: 1;
+      margin-left: 0;
+    }
+  }
+}
+
+.article-controls__button {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  padding: $spacing-tight;
+  margin-bottom: 16px;
+  outline: none;
+
+  @media screen and (max-width: $b-desktop) {
+    margin-bottom: 0;
   }
 }

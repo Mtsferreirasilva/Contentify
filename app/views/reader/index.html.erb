@@ -7,12 +7,36 @@
 </script>
 
 <div class="progress-bar">
-  <span class="progress-bar__level progress-bar__level--animate"></span>
+  <span class="progress-bar__level progress-bar__level--animate" title="How much you've seen from the article."></span>
 </div>
 <div class="container">
   <% if @article.errors.any? %>
     <h1>Hmmm Looks like <%= @article.errors.messages[:url].first %> </h1>
   <% else %>
+    <nav class="article-controls article-controls--white">
+      <ul class="article-controls__list">
+        <li class="article-controls__list-item">
+          <button class="article-controls__button">
+            <%= image_tag asset_path('reader_menu/arrow_back.svg') %>
+          </button>
+        </li>
+        <li class="article-controls__list-item">
+          <button class="article-controls__button">
+            <%= image_tag asset_path('reader_menu/text_format.svg') %>
+          </button>
+        </li>
+        <li class="article-controls__list-item">
+          <button class="article-controls__button">
+            <%= image_tag asset_path('reader_menu/background.svg') %>
+          </button>
+        </li>
+        <li class="article-controls__list-item">
+          <button class="article-controls__button">
+            <%= image_tag asset_path('reader_menu/window_size.svg') %>
+          </button>
+        </li>
+      </ul>
+    </nav>
     <article class="article article--small">
       <h1 class="article__title"><%= @article.title %></h1>
       <div class="article__details">
