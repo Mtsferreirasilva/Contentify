@@ -13,6 +13,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'httparty', '~> 0.14.0'
 gem 'dotenv-rails', '~> 2.2'
+gem 'omniauth-google-oauth2', '~> 0.4.1'
 
 gem 'turbolinks', '~> 5'
 gem 'webpacker', github: 'rails/webpacker'
