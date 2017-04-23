@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="11px" viewBox="0 0 20 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_link_black_24px</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Reading-Experience" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Article-Light-Tiempos" transform="translate(-1232.000000, -691.000000)">
+            <g id="Group-2" transform="translate(1214.000000, 668.000000)">
+                <g id="fab">
+                    <g id="ic_link_black_24px" transform="translate(16.000000, 16.000000)">
+                        <g id="Group">
+                            <polygon id="Shape" points="0 0 24 0 24 24.3428571 0 24.3428571"></polygon>
+                            <path d="M3.9,12.1714286 C3.9,10.437 5.29,9.02714286 7,9.02714286 L11,9.02714286 L11,7.1 L7,7.1 C4.24,7.1 2,9.372 2,12.1714286 C2,14.9708571 4.24,17.2428571 7,17.2428571 L11,17.2428571 L11,15.3157143 L7,15.3157143 C5.29,15.3157143 3.9,13.9058571 3.9,12.1714286 L3.9,12.1714286 Z M8,13.1857143 L16,13.1857143 L16,11.1571429 L8,11.1571429 L8,13.1857143 L8,13.1857143 Z M17,7.1 L13,7.1 L13,9.02714286 L17,9.02714286 C18.71,9.02714286 20.1,10.437 20.1,12.1714286 C20.1,13.9058571 18.71,15.3157143 17,15.3157143 L13,15.3157143 L13,17.2428571 L17,17.2428571 C19.76,17.2428571 22,14.9708571 22,12.1714286 C22,9.372 19.76,7.1 17,7.1 L17,7.1 Z" id="Shape" fill="#FFFFFF"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
