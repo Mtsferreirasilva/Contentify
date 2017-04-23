@@ -14,6 +14,9 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  # Handle custom 404
+  config.exceptions_app = self.routes
+
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
   # Enable static asset serving

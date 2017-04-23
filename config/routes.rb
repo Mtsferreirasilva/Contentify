@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root to: 'homepage#index'
 
-  get "*any", via: :all, to: "errors#not_found"
+  %w( 404 422 500 503 ).each do |code|
+    get code, to: 'errors#show', code: code
+  end
 
   get 'auth/facebook/callback', to: 'sessions#create'
   get 'auth/google_oauth2/callback', to: 'sessions#create'
