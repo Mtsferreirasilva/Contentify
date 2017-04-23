@@ -22,10 +22,9 @@ function windowEvent($progressBarNode) {
 }
 
 function calculateProgress() {
-  const endOfArticle = parseInt($('.article').css('margin-bottom').replace('px', ''));
-  const documentHeight = $(document).height() - endOfArticle;
-  const amountScrolled = $(window).height() + $(window).scrollTop();
-  const progress = (amountScrolled) / documentHeight * 100;
+  const documentHeight = $(document).height() - $(window).height();
+  const amountScrolled = $(window).scrollTop();
+  const progress = amountScrolled / documentHeight * 100;
 
   return progress.toFixed(2);
 }

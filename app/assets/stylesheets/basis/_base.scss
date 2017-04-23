@@ -65,6 +65,11 @@ img {
 figure {
   margin: 0;
   text-align: center;
+
+  span {
+    display: inline-block;
+    margin-bottom: $spacing-super-loose;
+  }
 }
 
 a {
