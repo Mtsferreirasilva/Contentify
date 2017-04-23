@@ -12,9 +12,8 @@ import $ from 'jquery';
 
 import searchIcon from '../searchIcon';
 import progressBar from '../progressBar';
+import readerNavbar from '../readerNavbar';
 
 $(document).ready(() => {
-  // new Reader();
-
   searchIcon();
 });

@@ -129,3 +129,16 @@ li {
     margin-bottom: 0;
   }
 }
+
+iframe {
+  display: block;
+  width: 560px;
+  height: 315px;
+  margin: $spacing-loose auto;
+  border: 0;
+
+  @media screen and (max-width: $b-mobile) {
+    width: 100%;
+    height: auto;
+  }
+}

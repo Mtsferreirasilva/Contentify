@@ -6,7 +6,7 @@
   overflow: hidden;
   z-index: 3;
 
-  @media screen and (max-width: $b-tablet) {
+  @media screen and (max-width: $b-desktop) {
     background-color: #FFF;
   }
 }
