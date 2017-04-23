@@ -7,7 +7,7 @@ class Article
 
   ALLOWED_TAGS = %w(img p a h h1 h2 h3 h4 h5 h6 h7 em i b strong code
                     mark small blockquote sub sup ins del pre br ul li span figure label caption iframe)
-  ALLOWED_ATTR = %w(href src for alt title)
+  ALLOWED_ATTR = %w(href src for title aria id)
 
   attr_reader :url
 
