@@ -1,0 +1,73 @@
+.popover {
+  position: relative;
+}
+
+.popover__container {
+  display: flex;
+  align-items: baseline;
+  position: absolute;
+  top: 0;
+  left: 28px;
+  padding: $spacing-tight;
+  background-color: $black-2;
+  border-radius: 50%;
+  border-bottom-left-radius: 0px;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+
+  transform: translateX(-5px);
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(1,.07,0,1);
+}
+
+.popover__container--open {
+  top: -35px;
+  left: 32px;
+  border-radius: 12px;
+  border-bottom-left-radius: 0px;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.popover__button-group {
+  display: flex;
+  align-items: baseline;
+}
+
+.popover__button {
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  outline: none;
+  color: #FFFFFF;
+  padding: $spacing-tight;
+  opacity: 1;
+}
+
+.popover__button--small {
+  font-size: 0.55em;
+  transition: opacity .15s ease-in-out;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.popover__button--medium {
+  font-size: 0.70em;
+  transition: opacity .15s ease-in-out;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.popover__button--large {
+  font-size: 0.85em;
+  transition: opacity .15s ease-in-out;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

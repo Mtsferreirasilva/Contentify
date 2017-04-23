@@ -4,6 +4,7 @@
   $(document).ready(function(){
     progressBar();
     readerNavbar();
+    popover();
   });
 </script>
 
@@ -22,17 +23,43 @@
           </button>
         </li>
         <li class="article-controls__list-item">
-          <button class="article-controls__button">
+          <div class="popover" data-for="text_format">
+            <div class="popover__container">
+              <div class="popover__button-group">
+                <button class="popover__button popover__button--small">small</button>
+                <button class="popover__button popover__button--medium">medium</button>
+                <button class="popover__button popover__button--large">large</button>
+              </div>
+            </div>
+          </div>
+          <button class="article-controls__button" data-popover-open="text_format">
             <%= image_tag asset_path('reader_menu/text_format.svg') %>
           </button>
         </li>
         <li class="article-controls__list-item">
-          <button class="article-controls__button">
+          <div class="popover" data-for="background">
+            <div class="popover__container">
+              <div class="popover__button-group">
+                <button class="popover__button popover__button--medium">clear</button>
+                <button class="popover__button popover__button--medium">dark</button>
+              </div>
+            </div>
+          </div>
+          <button class="article-controls__button" data-popover-open="background">
             <%= image_tag asset_path('reader_menu/background.svg') %>
           </button>
         </li>
         <li class="article-controls__list-item">
-          <button class="article-controls__button">
+          <div class="popover" data-for="window_size">
+            <div class="popover__container">
+              <div class="popover__button-group">
+                <button class="popover__button popover__button--medium">tight</button>
+                <button class="popover__button popover__button--medium">regular</button>
+                <button class="popover__button popover__button--medium">loose</button>
+              </div>
+            </div>
+          </div>
+          <button class="article-controls__button" data-popover-open="window_size">
             <%= image_tag asset_path('reader_menu/window_size.svg') %>
           </button>
         </li>
