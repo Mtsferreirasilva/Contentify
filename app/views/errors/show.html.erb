@@ -1,14 +1,17 @@
 <%- title 'Page not found' %>
 
-<div class="container">
-  <div class="error-404">
-    <h1 class="error-404__title">Limerick 404</h1>
-    <p class="error-404__content">
-      Reading is often such a chore,<br>
-      It’s what Contentify is for!<br>
-      But occasionally things break,<br>
-      Leaving us with a headache,<br>
-      So, here’s an awkward 4-0-4?
-    </p>
+<div class="error-404-page">
+  <div class="container">
+    <div class="error-404">
+      <h1 class="error-404__title">Limerick 404</h1>
+      <p class="error-404__content">
+        Reading is often such a chore,<br>
+        It’s what Contentify is for!<br>
+        But occasionally things break,<br>
+        Leaving us with a headache,<br>
+        So, here’s an awkward 4-0-4?
+      </p>
+      <%= link_to 'Get me outta here!', root_path, class: 'error-404__button' %>
+    </div>
   </div>
 </div>
