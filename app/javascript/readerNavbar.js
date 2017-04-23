@@ -8,8 +8,8 @@ const CLASSES = {
 window.readerNavbar = function readerNavbar() {
   const $articleControlsNode = $(`.${CLASSES.BASE}`);
 
-  window.onscroll = windowEvent.bind(null, $articleControlsNode);
-  window.onresize = windowEvent.bind(null, $articleControlsNode);
+  $(window).on('scroll', windowEvent.bind(null, $articleControlsNode));
+  $(window).on('resize', windowEvent.bind(null, $articleControlsNode));
 }
 
 function windowEvent($articleControlsNode) {

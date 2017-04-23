@@ -13,8 +13,8 @@ window.progressBar = function progressBar() {
     $progressBarNode.removeClass(CLASSES.ANIMATE);
   });
 
-  window.onscroll = windowEvent.bind(null, $progressBarNode);
-  window.onresize = windowEvent.bind(null, $progressBarNode);
+  $(window).on('scroll', windowEvent.bind(null, $progressBarNode));
+  $(window).on('resize', windowEvent.bind(null, $progressBarNode));
 }
 
 function windowEvent($progressBarNode) {
