@@ -8,13 +8,13 @@
   });
 </script>
 
-<div class="progress-bar">
-  <span class="progress-bar__level progress-bar__level--animate" title="How much you've seen from the article."></span>
-</div>
-<div class="container">
-  <% if @article.errors.any? %>
-    <h1>Hmmm Looks like <%= @article.errors.messages[:url].first %> </h1>
-  <% else %>
+<% if @article.errors.any? %>
+  <h1>Hmmm Looks like <%= @article.errors.messages[:url].first %> </h1>
+<% else %>
+  <div class="progress-bar">
+    <span class="progress-bar__level progress-bar__level--animate" title="How much you've seen from the article."></span>
+  </div>
+  <div class="container">
     <nav class="article-controls article-controls--white">
       <ul class="article-controls__list">
         <li class="article-controls__list-item">
@@ -88,8 +88,8 @@
         <%= @article.content %>
       </div>
     </article>
-  <% end %>
-</div>
-<footer class="article-footer">
-  <p class="article-footer__text"><%= @article.title %> • <%= @article.domain %></p>
-</footer>
+  </div>
+  <footer class="article-footer">
+    <p class="article-footer__text"><%= @article.title %> • <%= @article.domain %></p>
+  </footer>
+<% end %>
