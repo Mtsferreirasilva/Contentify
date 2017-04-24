@@ -1,14 +1,15 @@
 $page-width: 1124px;
 
-$unit: 5px;
+$unit: 6px;
 $spacing-tight: $unit;
 $spacing: $unit * 2;
 $spacing-loose: $unit * 4;
 $spacing-super-loose: $unit * 6;
 
-$b-mobile:  414px;
-$b-tablet:  768px;
-$b-desktop:  1000px;
+$b-mobile:  413px;
+$b-tablet:  767px;
+$b-desktop:  1023px;
+$b-large-desktop:  1440px;
 
 $black: #191919;
 $black-2: #222222;
