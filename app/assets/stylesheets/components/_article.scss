@@ -8,7 +8,7 @@
     padding: 0 $spacing-super-loose;
   }
 
-  @media screen and (max-width: $b-mobile) {
+  @media screen and (max-width: $b-tablet) {
     padding: 0 $spacing;
   }
 }
@@ -83,7 +83,7 @@
     transition: box-shadow 0.2s ease-in-out;
   }
 
-  @media screen and (max-width: $b-mobile) {
+  @media screen and (max-width: $b-tablet) {
     padding: $spacing 8px;
   }
 }
