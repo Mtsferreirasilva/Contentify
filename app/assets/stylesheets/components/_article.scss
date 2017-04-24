@@ -2,6 +2,7 @@
   position: relative;
   padding: 0 $spacing;
   margin: $spacing-loose * 3 auto;
+  margin-bottom: 0;
   max-width: 900px;
 
   @media screen and (max-width: $b-desktop) {
@@ -144,4 +145,18 @@
   @media screen and (max-width: $b-desktop) {
     margin-bottom: 0;
   }
+}
+
+.article-footer {
+  position: absolute;
+  border-top: 1px solid #CCCCCC;
+  padding: $spacing;
+  text-align: center;
+  width: 100%;
+  z-index: 3;
+}
+
+.article-footer__text {
+  font-size: 0.9em;
+  margin: 0;
 }
