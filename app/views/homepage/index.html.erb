@@ -1,4 +1,5 @@
 <% if current_user %>
+  <%= image_tag current_user.image, width: '50' %>
   Signed in as <strong><%= current_user.name %></strong>!
   <%= link_to "Sign out", signout_path %>
 <% else %>
