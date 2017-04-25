@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="15px" viewBox="0 0 19 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_format_size_black_24px</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Main" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Articles-Copy" transform="translate(-1148.000000, -52.000000)">
+            <g id="ic_format_size_black_24px" transform="translate(1158.000000, 60.000000) scale(-1, 1) translate(-1158.000000, -60.000000) translate(1146.000000, 48.000000)">
+                <g id="Group">
+                    <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                    <path d="M9,4 L9,7 L14,7 L14,19 L17,19 L17,7 L22,7 L22,4 L9,4 L9,4 Z M3,12 L6,12 L6,19 L9,19 L9,12 L12,12 L12,9 L3,9 L3,12 L3,12 Z" id="Shape" fill="#4A4A4A"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
