@@ -43,10 +43,18 @@ h4, h5, h6 {
   }
 }
 
+br {
+  display: none;
+}
+
 p {
   font-weight: 400;
   line-height: 1.5em;
   margin: $spacing-super-loose 0;
+
+  br {
+    display: inline-block;
+  }
 
   @media screen and (max-width: $b-tablet) {
     margin: $spacing-loose 0;
