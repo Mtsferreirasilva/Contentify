@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 class ReaderController < ApplicationController
   def index
-    @article = Article.new(reader_params[:url])
+    @url = reader_params[:url]
+    @article = Article.new(@url)
   end
 
   private
