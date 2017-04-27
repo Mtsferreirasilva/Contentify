@@ -1,11 +1,15 @@
 .article {
   position: relative;
   padding: 0 $spacing;
-  margin: $spacing-loose * 3 auto;
+  margin: $spacing-loose * 4 auto;
   margin-bottom: 0;
-  max-width: 900px;
+  max-width: 1044px;
 
   @media screen and (max-width: $b-desktop) {
+    max-width: 800px;
+  }
+
+  @media screen and (max-width: $b-tablet-landscape) {
     padding: 0 $spacing-super-loose;
   }
 
@@ -17,15 +21,20 @@
 .article__title {
   margin: 0;
   font-weight: 500;
-  margin-bottom: $spacing;
+  line-height: 1.3;
+  margin-bottom: $spacing-loose;
 }
 
 .article__details {
   display: flex;
   flex-wrap: wrap;
   color: $black-3;
-  margin-bottom: $spacing-super-loose;
+  margin-bottom: $spacing-loose * 2;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -0.1px;
   font-size: 0.8em;
+  font-weight: 500;
 
   span {
     border-right: 1px solid $black;
@@ -51,8 +60,13 @@
 }
 
 .article__content {
-  padding: $spacing-loose 100px;
+  padding: $spacing-loose 0;
   margin: 0 auto;
+  max-width: 700px;
+
+  > :first-child {
+    margin-top: 0;
+  }
 
   img {
     display: block;
@@ -71,10 +85,10 @@
   position: absolute;
   height: 100%;
   top: 10px;
-  left: 20px;
+  left: 0;
   z-index: 2;
 
-  @media screen and (max-width: $b-desktop) {
+  @media screen and (max-width: $b-tablet-landscape) {
     position: fixed;
     height: auto;
     width: 100%;
@@ -105,7 +119,7 @@
   flex-direction: column;
   align-items: center;
 
-  @media screen and (max-width: $b-desktop) {
+  @media screen and (max-width: $b-tablet-landscape) {
     flex-direction: row;
     width: 100%;
   }
@@ -120,7 +134,7 @@
     width: 22px;
   }
 
-  @media screen and (max-width: $b-desktop) {
+  @media screen and (max-width: $b-tablet-landscape) {
     margin-left: $spacing;
 
     &:first-child {
@@ -142,7 +156,7 @@
     border-radius: 0;
   }
 
-  @media screen and (max-width: $b-desktop) {
+  @media screen and (max-width: $b-tablet-landscape) {
     margin-bottom: 0;
   }
 }
