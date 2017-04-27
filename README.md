@@ -1,24 +1,19 @@
-# README
+# Contentify
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Services
 
-Things you may want to cover:
+[![heroku](http://i.imgur.com/5VVREDx.png)](https://dashboard.heroku.com/apps/contentify/metrics/web)
+[![cloudflare](http://i.imgur.com/JJJy6Gb.png)](https://www.cloudflare.com/a/overview/contentify.io)
 
-* Ruby version
+## Development
 
-* System dependencies
+Rails Version: 5.0.2
 
-* Configuration
+### Enviorment Variables
+Add all the credentials to `.env`
 
-* Database creation
+### Webpack server 
+`$ ./bin/webpack-dev-server`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Rails server 
+`$ rails s`
