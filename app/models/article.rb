@@ -42,6 +42,10 @@ class Article
     @article["author"]
   end
 
+  def excerpt
+    @article["excerpt"]
+  end
+
   def date_published
     return false unless @article["date_published"]
 

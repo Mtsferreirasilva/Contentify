@@ -1,5 +1,19 @@
 <%- title @article.title ? @article.title : 'Error' %>
 
+<% meta_tag :description, @article.excerpt %>
+
+<% meta_tag :og_type, 'article' %>
+<% meta_tag :og_description, @article.excerpt %>
+<% meta_tag :og_title, @article.title %>
+<% meta_tag :og_image, @article.lead_image_url %>
+<% meta_tag :og_url, "https://www.contentify.io/reader?url=#{@url}" %>
+
+<% meta_tag :twitter_card, 'summary_large_image' %>
+<% meta_tag :twitter_description, @article.excerpt %>
+<% meta_tag :twitter_title, @article.title %>
+<% meta_tag :twitter_image, @article.lead_image_url %>
+<% meta_tag :twitter_url, "https://www.contentify.io/reader?url=#{@url}" %>
+
 <script>
   $(document).ready(function(){
     progressBar();
