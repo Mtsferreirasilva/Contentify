@@ -1,5 +1,9 @@
 .container {
   position: relative;
-  max-width: $page-width;
+  max-width: 1168px;
   margin: 0 auto;
+
+  @media screen and (max-width: $b-desktop) {
+    max-width: 970px;
+  }
 }

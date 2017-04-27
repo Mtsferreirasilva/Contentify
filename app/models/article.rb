@@ -6,7 +6,7 @@ class Article
   base_uri 'https://mercury.postlight.com'
 
   ALLOWED_TAGS = %w(img p a h h1 h2 h3 h4 h5 h6 h7 em i b strong code mark small blockquote
-                    sub sup ins del pre br ul li span figure label caption iframe)
+                    sub sup ins del pre br ul li span figure label caption iframe video)
   ALLOWED_ATTR = %w(href src for id title aria)
 
   attr_reader :url
