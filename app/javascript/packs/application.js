@@ -13,6 +13,7 @@ import searchIcon from '../searchIcon';
 import progressBar from '../progressBar';
 import readerNavbar from '../readerNavbar';
 import popover from '../popover';
+import fontSize from '../fontSize';
 
 $(document).ready(() => {
   searchIcon();

@@ -19,6 +19,7 @@
     progressBar();
     readerNavbar();
     popover();
+    fontSize();
   });
 </script>
 
@@ -39,10 +40,10 @@
         <li class="article-controls__list-item">
           <div class="popover" data-for="text_format">
             <div class="popover__container">
-              <div class="popover__button-group">
-                <button class="popover__button popover__button--small">small</button>
-                <button class="popover__button popover__button--medium">medium</button>
-                <button class="popover__button popover__button--large">large</button>
+              <div class="popover__button-group" id="font-size-controls">
+                <button class="popover__button popover__button--small" data-value="small">small</button>
+                <button class="popover__button popover__button--medium" data-value="medium">medium</button>
+                <button class="popover__button popover__button--large" data-value="large">large</button>
               </div>
             </div>
           </div>
@@ -79,13 +80,13 @@
         </li>
       </ul>
     </nav>
-    <article class="article article--small">
+    <article class="article article--font-size-medium">
       <h1 class="article__title"><%= @article.title %></h1>
       <div class="article__details">
-        <% if @article.author %>
+        <% unless @article.author.empty? %>
           <span>By <%= @article.author %></span>
         <% end %>
-        <% if @article.domain %>
+        <% unless @article.domain.empty? %>
           <span><%= @article.domain %></span>
         <% end %>
         <% if @article.date_published %>
