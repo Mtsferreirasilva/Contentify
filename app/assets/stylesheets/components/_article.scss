@@ -88,10 +88,6 @@
   left: 0;
   z-index: 2;
 
-  @media screen and (max-width: $b-desktop) {
-    left: 20px;
-  }
-
   @media screen and (max-width: $b-tablet-landscape) {
     position: fixed;
     height: auto;
