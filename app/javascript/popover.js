@@ -30,14 +30,7 @@ function handleClick($popover) {
   const containerWidth = $buttonGroup.width() + SPACING;
   const containerHeight = $buttonGroup.height() + SPACING;
 
-  $popoverContainerNodes.each((index, popoverContainer) => {
-    const $popoverContainer = $(popoverContainer);
-
-    if ($popoverContainer.parent().data().for !== $container.parent().data().for) {
-      $popoverContainer.removeClass(CLASSES.OPEN);
-      $popoverContainer.css({ width: 0, height: 0 });
-    }
-  });
+  closePopover($popoverContainerNodes, $container);
 
   if ($container.hasClass(CLASSES.OPEN)) {
     $container.removeClass(CLASSES.OPEN);
@@ -52,12 +45,21 @@ function handleClick($popover) {
 }
 
 $(window).click(() => {
-  console.log('click');
   const $popoverContainerNodes = $(`.${CLASSES.CONTAINER}`);
+
+  closePopover($popoverContainerNodes);
+});
+
+function closePopover($popoverContainerNodes, $container = false) {
   $popoverContainerNodes.each((index, popoverContainer) => {
     const $popoverContainer = $(popoverContainer);
 
-    $popoverContainer.removeClass(CLASSES.OPEN);
-    $popoverContainer.css({ width: 0, height: 0 });
+    if (!$container) {
+      $popoverContainer.removeClass(CLASSES.OPEN);
+      $popoverContainer.css({ width: 0, height: 0 });
+    } else if ($popoverContainer.parent().data().for !== $container.parent().data().for) {
+      $popoverContainer.removeClass(CLASSES.OPEN);
+      $popoverContainer.css({ width: 0, height: 0 });
+    }
   });
-});
+}
