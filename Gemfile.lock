@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/webpacker.git
-  revision: 740189b9f1f3a7ec35adb12df3361c28f52c4809
+  revision: 86e2d6e7741b0603649e2e855efab04757993550
   specs:
     webpacker (1.1)
       activesupport (>= 4.2)
@@ -55,6 +55,7 @@ GEM
     byebug (9.0.6)
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
+    dalli (2.7.6)
     dotenv (2.2.0)
     dotenv-rails (2.2.0)
       dotenv (= 2.2.0)
@@ -78,6 +79,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    memcachier (0.0.2)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -198,9 +200,11 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   byebug
+  dalli (~> 2.7)
   dotenv-rails (~> 2.2)
   httparty (~> 0.14.0)
   listen (~> 3.0.5)
+  memcachier (~> 0.0.2)
   nokogiri (~> 1.7)
   omniauth-facebook (~> 4.0)
   omniauth-google-oauth2 (~> 0.4.1)

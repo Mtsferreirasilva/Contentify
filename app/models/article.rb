@@ -9,14 +9,16 @@ class Article
                     sub sup ins del pre br ul li span figure label caption iframe)
   ALLOWED_ATTR = %w(href src for id title aria)
 
-  attr_reader :url
+  attr_reader :url, :article
 
   def initialize(url)
+    @sanitizer = Rails::Html::WhiteListSanitizer.new
+    @article = Rails.cache.fetch(url)
+    return @article if @article.present?
     @url = url
     @header = { headers: { 'x-api-key' => ENV.fetch('MERCURY_API_KEY') } }
-    @sanitizer = Rails::Html::WhiteListSanitizer.new
     @article = fetch(url)
-    ensure_valid_url
+    Rails.cache.write("#{url}", @article.to_h, expires_in: 1.month) if ensure_valid_url
   end
 
   def title
