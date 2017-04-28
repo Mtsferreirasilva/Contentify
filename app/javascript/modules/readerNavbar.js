@@ -5,7 +5,7 @@ const CLASSES = {
   SHADOW: 'article-controls--shadow',
 };
 
-window.readerNavbar = function readerNavbar() {
+export default function readerNavbar() {
   const $articleControlsNode = $(`.${CLASSES.BASE}`);
 
   $(window).on('scroll', windowEvent.bind(null, $articleControlsNode));

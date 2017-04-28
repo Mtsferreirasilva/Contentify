@@ -7,7 +7,7 @@ const CLASSES = {
 
 const FONT_SIZE_CONTROLS_ID = 'font-size-controls';
 
-window.fontSize = function fontSize() {
+export default function fontSize() {
   const $articleNode = $(`.${CLASSES.ARTICLE}`);
   const $buttons = $(`#${FONT_SIZE_CONTROLS_ID} button`);
 

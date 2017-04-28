@@ -5,7 +5,7 @@ const CLASSES = {
   ANIMATE: 'progress-bar__level--animate',
 };
 
-window.progressBar = function progressBar() {
+export default function progressBar() {
   const $progressBarNode = $(`.${CLASSES.BASE}`);
 
   $progressBarNode.css('width', `${calculateProgress()}%`);

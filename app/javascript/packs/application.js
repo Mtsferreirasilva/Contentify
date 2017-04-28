@@ -9,12 +9,9 @@
 
 import $ from 'jquery';
 
-import searchIcon from '../searchIcon';
-import progressBar from '../progressBar';
-import readerNavbar from '../readerNavbar';
-import popover from '../popover';
-import fontSize from '../fontSize';
+// import searchIcon from '../searchIcon';
+import reader from '../reader';
 
-$(document).ready(() => {
-  searchIcon();
-});
+// $(document).ready(() => {
+//   searchIcon();
+// });

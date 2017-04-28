@@ -15,12 +15,7 @@
 <% meta_tag :twitter_url, "https://www.contentify.io/reader?url=#{@url}" %>
 
 <script>
-  $(document).ready(function(){
-    progressBar();
-    readerNavbar();
-    popover();
-    fontSize();
-  });
+  $(document).ready(reader);
 </script>
 
 <% if @article.errors.any? %>

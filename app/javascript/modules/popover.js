@@ -10,7 +10,7 @@ const CLASSES = {
   OPEN: 'popover__container--open',
 };
 
-window.popover = function popover() {
+export default function popover() {
   const $activatorNodes = $(`[data-${ACTIVATOR_DATA_ATT}]`);
 
   $activatorNodes.each((index, activator) => {
