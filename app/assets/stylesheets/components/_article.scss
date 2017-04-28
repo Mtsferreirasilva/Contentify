@@ -88,6 +88,10 @@
     max-width: 100%;
   }
 
+  p > img {
+    margin-top: $spacing-loose;
+  }
+
   @media screen and (max-width: $b-desktop) {
     padding: $spacing-loose 0;
   }

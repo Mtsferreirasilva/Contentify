@@ -65,12 +65,12 @@ p {
     display: inline-block;
   }
 
-  @media screen and (max-width: $b-tablet) {
-    margin: $spacing-loose 0;
-  }
-
   &:first-child {
     margin-top: 0;
+  }
+
+  @media screen and (max-width: $b-tablet) {
+    margin: $spacing-loose 0;
   }
 }
 
