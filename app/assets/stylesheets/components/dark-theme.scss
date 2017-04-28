@@ -23,6 +23,11 @@ $text-color: #EEEEEE;
 
   .article__details span {
     color: $text-color;
+    border-right: 1px solid $text-color;
+
+    &:last-child {
+      border-right: 0;
+    }
   }
 
   a {
