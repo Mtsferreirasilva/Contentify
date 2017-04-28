@@ -17,11 +17,13 @@ window.popover = function popover() {
     const popover = $(activator).data().popoverOpen;
     const $popover = $(`[data-for='${popover}']`);
 
-    $(activator).click(handleClick.bind(null, $popover));
+    $(activator).click(handleClick.bind(this, $popover));
   });
 }
 
 function handleClick($popover) {
+  event.stopPropagation();
+
   const $popoverContainerNodes = $(`.${CLASSES.CONTAINER}`);
   const $container = $popover.find(`.${CLASSES.CONTAINER}`);
   const $buttonGroup = $popover.find(`.${CLASSES.BUTTON_GROUP}`);
@@ -48,3 +50,14 @@ function handleClick($popover) {
     });
   }
 }
+
+$(window).click(() => {
+  console.log('click');
+  const $popoverContainerNodes = $(`.${CLASSES.CONTAINER}`);
+  $popoverContainerNodes.each((index, popoverContainer) => {
+    const $popoverContainer = $(popoverContainer);
+
+    $popoverContainer.removeClass(CLASSES.OPEN);
+    $popoverContainer.css({ width: 0, height: 0 });
+  });
+});
