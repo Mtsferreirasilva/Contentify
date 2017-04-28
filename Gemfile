@@ -23,7 +23,7 @@ gem 'autoprefixer-rails'
 gem 'nokogiri', '~> 1.7'
 gem 'pry-rails', '~> 0.3.6'
 gem 'pry-byebug', '~> 3.4'
-gem 'rack-rewrite', '~> 1.5.0'
+gem 'rack-host-redirect'
 
 group :development, :test do
   gem 'byebug', platform: :mri
