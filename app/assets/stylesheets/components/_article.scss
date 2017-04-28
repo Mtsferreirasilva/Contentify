@@ -133,11 +133,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 1;
+  transition: opacity 150ms ease-in-out;
 
   @media screen and (max-width: $b-tablet-landscape) {
     flex-direction: row;
     width: 100%;
   }
+}
+
+.article-controls__list--fixed {
+  position: fixed;
+  top: 0;
+}
+
+.article-controls__list--faded {
+  opacity: 0;
 }
 
 .article-controls__list-item {
