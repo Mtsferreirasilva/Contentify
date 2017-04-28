@@ -2,11 +2,18 @@
   box-sizing: border-box;
 }
 
+h1, h2, h3, h4, h5, h6, a, p, span, blockquote, caption {
+  transition: color $theme-transition-duration ease-in-out;
+}
+
 body {
   font-size: 24px;
   font-family: TiemposText, sans-serif;
   font-weight: 400;
   color: $black;
+  background-color: #FFFFFF;
+
+  transition: color, background-color $theme-transition-duration ease-in-out;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -128,20 +135,23 @@ caption {
   font-size: 0.6em;
 }
 
-ul {
-  margin: $spacing-super-loose 0;
-  list-style: none;
-  padding: 0;
-}
-
 li {
   margin-bottom: $spacing-loose;
-  margin-left: 24px;
-  list-style: disc;
+  list-style-type: disc;
+  list-style-position: outside;
+  padding-left: $spacing-loose;
+  margin-left: $spacing-loose;
+  text-indent: -2em;
 
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+ul {
+  margin: $spacing-super-loose 0;
+  list-style: none;
+  padding: 0;
 }
 
 button {
