@@ -78,10 +78,10 @@
     <article class="article article--font-size-medium">
       <h1 class="article__title"><%= @article.title %></h1>
       <div class="article__details">
-        <% unless @article.author.empty? %>
+        <% if @article.author && @article.author.length > 0 %>
           <span>By <%= @article.author %></span>
         <% end %>
-        <% unless @article.domain.empty? %>
+        <% if @article.domain && @article.domain.length > 0 %>
           <span><%= @article.domain %></span>
         <% end %>
         <% if @article.date_published %>
