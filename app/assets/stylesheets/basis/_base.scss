@@ -118,6 +118,10 @@ pre {
   white-space: pre-wrap;
   font-size: 0.8em;
   margin: 0;
+
+  br {
+    display: block;
+  }
 }
 
 code {
