@@ -47,6 +47,7 @@
   letter-spacing: -0.1px;
   font-size: 0.8em;
   font-weight: 500;
+  transition: color $theme-transition-duration ease-in-out;
 
   span {
     border-right: 1px solid $black;
@@ -99,6 +100,8 @@
   top: 10px;
   left: 0;
   z-index: 2;
+  background-color: #fff;
+  transition: background-color $theme-transition-duration ease-in-out;
 
   @media screen and (max-width: $b-tablet-landscape) {
     position: fixed;
@@ -107,7 +110,7 @@
     top: 4px;
     padding: $spacing 32px;
     left: 0;
-    transition: box-shadow 0.2s ease-in-out;
+    transition: background-color, box-shadow $theme-transition-duration ease-in-out;
   }
 
   @media screen and (max-width: $b-tablet) {
@@ -117,10 +120,6 @@
 
 .article-controls--shadow {
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-}
-
-.article-controls--white {
-  background-color: #fff;
 }
 
 .article-controls__list {
@@ -140,6 +139,8 @@
 .article-controls__list-item {
   list-style: none;
   margin: 0;
+  padding-left: 0;
+  text-indent: 0;
 
   img {
     margin: 0;

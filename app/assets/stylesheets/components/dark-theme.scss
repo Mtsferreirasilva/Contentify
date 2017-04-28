@@ -1,0 +1,36 @@
+$background-color: #222222;
+$text-color: #EEEEEE;
+
+.dark-theme {
+  background-color: $background-color;
+  color: $text-color;
+
+  .popover__container {
+    background-color: $text-color;
+  }
+
+  .article-controls {
+    background-color: $background-color;
+  }
+
+  blockquote {
+    color: #bdbdbd;
+  }
+
+  .article__details span {
+    color: $text-color;
+  }
+
+  a {
+    color: $yellow;
+  }
+
+  .popover__button {
+    color: $black;
+  }
+
+  pre,
+  code {
+    background-color: $black-3;
+  }
+}

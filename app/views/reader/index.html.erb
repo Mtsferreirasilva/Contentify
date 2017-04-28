@@ -25,7 +25,7 @@
     <span class="progress-bar__level progress-bar__level--animate" title="How much you've seen from the article."></span>
   </div>
   <div class="container">
-    <nav class="article-controls article-controls--white">
+    <nav class="article-controls">
       <ul class="article-controls__list">
         <li class="article-controls__list-item">
           <button class="article-controls__button">
@@ -33,9 +33,9 @@
           </button>
         </li>
         <li class="article-controls__list-item">
-          <div class="popover" data-for="text_format">
+          <div class="popover" data-for="text_format" id="font-size-controls">
             <div class="popover__container">
-              <div class="popover__button-group" id="font-size-controls">
+              <div class="popover__button-group">
                 <button class="popover__button popover__button--small" data-value="small">small</button>
                 <button class="popover__button popover__button--medium" data-value="medium">medium</button>
                 <button class="popover__button popover__button--large" data-value="large">large</button>
@@ -47,15 +47,15 @@
           </button>
         </li>
         <li class="article-controls__list-item">
-          <div class="popover" data-for="background">
+          <div class="popover" data-for="theme" id="theme-controls">
             <div class="popover__container">
               <div class="popover__button-group">
-                <button class="popover__button popover__button--medium">clear</button>
-                <button class="popover__button popover__button--medium">dark</button>
+                <button class="popover__button popover__button--medium" data-value="light">light</button>
+                <button class="popover__button popover__button--medium" data-value="dark">dark</button>
               </div>
             </div>
           </div>
-          <button class="article-controls__button" data-popover-open="background">
+          <button class="article-controls__button" data-popover-open="theme">
             <%= image_tag asset_path('reader_menu/background.svg') %>
           </button>
         </li>
