@@ -36,9 +36,15 @@
           <div class="popover" data-for="text_format" id="font-size-controls">
             <div class="popover__container">
               <div class="popover__button-group">
-                <button class="popover__button popover__button--small" data-value="small">small</button>
-                <button class="popover__button popover__button--medium" data-value="medium">medium</button>
-                <button class="popover__button popover__button--large" data-value="large">large</button>
+                <button class="popover__button" data-value="small">
+                  S<span class="hidden">mall</span>
+                </button>
+                <button class="popover__button popover__button--active" data-value="medium">
+                  N<span class="hidden">ormal</span>
+                </button>
+                <button class="popover__button" data-value="large">
+                  L<span class="hidden">arge</span>
+                </button>
               </div>
             </div>
           </div>
@@ -50,8 +56,16 @@
           <div class="popover" data-for="theme" id="theme-controls">
             <div class="popover__container">
               <div class="popover__button-group">
-                <button class="popover__button popover__button--medium" data-value="light">light</button>
-                <button class="popover__button popover__button--medium" data-value="dark">dark</button>
+                <button class="popover__button popover__button--active theme-controls" data-value="light">
+                  <div class="theme-controls__dot-container theme-controls__dot-container--light">
+                    <span class="theme-controls__dot theme-controls__dot--blue"></span>
+                  </div>
+                </button>
+                <button class="popover__button theme-controls" data-value="dark">
+                  <div class="theme-controls__dot-container theme-controls__dot-container--dark">
+                    <span class="theme-controls__dot theme-controls__dot--yellow"></span>
+                  </div>
+                </button>
               </div>
             </div>
           </div>

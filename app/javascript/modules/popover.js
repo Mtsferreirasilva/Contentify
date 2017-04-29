@@ -7,8 +7,13 @@ const SPACING = 10;
 const CLASSES = {
   CONTAINER: 'popover__container',
   BUTTON_GROUP: 'popover__button-group',
-  OPEN: 'popover__container--open',
+  OPEN: 'popover__container--open'
 };
+
+const CONTROLS_LIST_ITEM_CLASSES = {
+  BASE: 'article-controls__list-item',
+  ACTIVE: 'article-controls__list-item--actice'
+}
 
 export default function popover() {
   const $activatorNodes = $(`[data-${ACTIVATOR_DATA_ATT}]`);
@@ -26,40 +31,30 @@ function handleClick($popover) {
 
   const $popoverContainerNodes = $(`.${CLASSES.CONTAINER}`);
   const $container = $popover.find(`.${CLASSES.CONTAINER}`);
-  const $buttonGroup = $popover.find(`.${CLASSES.BUTTON_GROUP}`);
-  const containerWidth = $buttonGroup.width() + SPACING;
-  const containerHeight = $buttonGroup.height() + SPACING;
+  const $listItemNode = $popover.closest(`.${CONTROLS_LIST_ITEM_CLASSES.BASE}`);
 
   closePopover($popoverContainerNodes, $container);
-
-  if ($container.hasClass(CLASSES.OPEN)) {
-    $container.removeClass(CLASSES.OPEN);
-    $container.css({ width: 0, height: 0 });
-  } else {
-    $container.addClass(CLASSES.OPEN);
-    $container.css({
-      width: `${containerWidth}px`,
-      height: `${containerHeight}px`
-    });
-  }
+  $listItemNode.toggleClass(CONTROLS_LIST_ITEM_CLASSES.ACTIVE);
+  $container.toggleClass(CLASSES.OPEN);
 }
-
-$(window).click(() => {
-  const $popoverContainerNodes = $(`.${CLASSES.CONTAINER}`);
-
-  closePopover($popoverContainerNodes);
-});
 
 function closePopover($popoverContainerNodes, $container = false) {
   $popoverContainerNodes.each((index, popoverContainer) => {
     const $popoverContainer = $(popoverContainer);
+    const $listItemNode = $popoverContainer.closest(`.${CONTROLS_LIST_ITEM_CLASSES.BASE}`);
 
     if (!$container) {
       $popoverContainer.removeClass(CLASSES.OPEN);
-      $popoverContainer.css({ width: 0, height: 0 });
+      $listItemNode.removeClass(CONTROLS_LIST_ITEM_CLASSES.ACTIVE);
     } else if ($popoverContainer.parent().data().for !== $container.parent().data().for) {
       $popoverContainer.removeClass(CLASSES.OPEN);
-      $popoverContainer.css({ width: 0, height: 0 });
+      $listItemNode.removeClass(CONTROLS_LIST_ITEM_CLASSES.ACTIVE);
     }
   });
 }
+
+// $(window).click(() => {
+//   const $popoverContainerNodes = $(`.${CLASSES.CONTAINER}`);
+//
+//   closePopover($popoverContainerNodes);
+// });

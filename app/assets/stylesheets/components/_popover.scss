@@ -1,73 +1,79 @@
+$popover-size: 36px;
+
 .popover {
-  position: relative;
+  position: absolute;
+  z-index: -1;
 }
 
 .popover__container {
+  pointer-events: none;
   display: flex;
-  align-items: baseline;
-  position: absolute;
-  top: 0;
-  left: 28px;
-  padding: $spacing-tight;
-  background-color: $black-2;
-  border-radius: 50%;
-  border-bottom-left-radius: 0px;
-  width: 0px;
-  height: 0px;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-
-  transform: translateX(-5px);
+  height: $popover-size;
+  border-radius: 3px;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.15), 0 0 0 rgba(0, 0, 0, 0.15);
   opacity: 0;
-  transition: all 0.35s cubic-bezier(1,.07,0,1);
+  background-color: #FFFFFF;
+
+  transition: all $theme-transition-duration ease-in-out;
+
+  @media screen and (max-width: $b-tablet-landscape) {
+    width: $popover-size;
+    height: 100%;
+  }
 }
 
 .popover__container--open {
-  top: -35px;
-  left: 32px;
-  border-radius: 12px;
-  border-bottom-left-radius: 0px;
+  pointer-events: all;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.15);
   opacity: 1;
-  transform: translateX(0);
 }
 
 .popover__button-group {
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  flex-direction: row;
+  margin-left: $popover-size;
+  margin-top: 0;
+
+  @media screen and (max-width: $b-tablet-landscape) {
+    flex-direction: column;
+    margin-left: 0;
+    margin-top: $popover-size;
+  }
 }
 
 .popover__button {
   border: none;
   border-radius: 0;
   background-color: transparent;
+  padding: 0 $spacing-tight;
   outline: none;
-  color: #FFFFFF;
-  padding: $spacing-tight;
+  font-size: 0.667em;
+  font-weight: 500;
+  opacity: 0.5;
+  transition: color, opacity $theme-transition-duration ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media screen and (max-width: $b-tablet-landscape) {
+    padding: $spacing-tight 0;
+    font-size: 0.8em;
+
+    .hidden {
+      display: none;
+    }
+  }
+}
+
+.popover__button--active {
   opacity: 1;
-}
-
-.popover__button--small {
-  font-size: 0.55em;
-  transition: opacity .15s ease-in-out;
 
   &:hover {
-    opacity: 0.9;
-  }
-}
-
-.popover__button--medium {
-  font-size: 0.70em;
-  transition: opacity .15s ease-in-out;
-
-  &:hover {
-    opacity: 0.9;
-  }
-}
-
-.popover__button--large {
-  font-size: 0.85em;
-  transition: opacity .15s ease-in-out;
-
-  &:hover {
-    opacity: 0.9;
+    opacity: 1;
   }
 }
