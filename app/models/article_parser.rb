@@ -61,8 +61,10 @@ class ArticleParser
   def min_read
     sanitizer = Rails::Html::FullSanitizer.new
     content = sanitizer.sanitize(@article["content"])
-    word_count = content.split(' ').length
 
+    return false if content.nil?
+
+    word_count = content.split(' ').length
     min_read = (word_count / 200).round
 
     min_read > 0 ? min_read : 1

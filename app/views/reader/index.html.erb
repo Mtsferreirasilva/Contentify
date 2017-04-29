@@ -111,7 +111,9 @@
       </div>
     </article>
   </div>
-  <footer class="article-footer">
-    <p class="article-footer__text"><%= @article.title %> • <%= @article.domain %></p>
-  </footer>
+  <% if @article.title || (@article.domain && @article.domain.length > 0) %>
+    <footer class="article-footer">
+      <p class="article-footer__text"><%= @article.title %> • <%= @article.domain %></p>
+    </footer>
+  <% end %>
 <% end %>
