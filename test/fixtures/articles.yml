@@ -1,0 +1,18 @@
+lemonde_article:
+  user_id: 1
+  content:
+    -
+      title: 'Après le premier tour, Macron peaufine sa stratégie, Le Pen part à l’assaut'
+      author: nil
+      date_published: 2017-04-25T00:00:00.000Z
+      dek: nil
+      lead_image_url: http://s1.lemde.fr/image/2017/04/25/644x322/5116875_3_2e86_marine-le-pen-sur-le-plateau-de-france-2-le_94b78d7866570bb69db86aca55c938d9.jpg
+      content: <h1>blablabalbalablaeb</h1>
+      next_page_url: nil
+      url: http://www.lemonde.fr/election-presidentielle-2017/article/2017/04/25/au-lendemain-du-premier-tour-macron-peaufine-sa-strategie-marine-le-pen-part-a-l-assaut_5116871_4854003.html
+      domain: www.lemonde.fr
+      excerpt: La candidate d’extrême droite a choisi de se mettre en congé de la présidence du FN, un geste symbolique. Chez le prétendant d’En marche !, on hésite sur le plan de bataille.
+      word_count: 365
+      direction: ltr
+      total_pages: 1
+      rendered_pages: 1

@@ -1,0 +1,26 @@
+max:
+  id: 1
+  name: maxime
+  email: max@gmail.com
+  uid: 2345678908
+  provider: facebook
+  image: max.url
+  articles_count: 0
+
+mat:
+  id: 2
+  name: mateus
+  email: mat@gmail.com
+  uid: 0854345678986
+  provider: facebook
+  image: mat.url
+  articles_count: 0
+
+kai:
+  id: 3
+  name: kai
+  email: kai@gmail.com
+  uid: 456788653456
+  provider: google
+  image: kai.url
+  articles_count: 0
