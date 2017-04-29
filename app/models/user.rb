@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :articles
+  has_many :articles, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]

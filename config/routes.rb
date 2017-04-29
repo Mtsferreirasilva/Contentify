@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   match '/500', to: 'errors#internal_server_error', via: :all
   %w( 404 422 503 ).each do |code|
-    get code, to: 'errors#show', code: code
+    get code, to: 'errors#not_found', code: code
   end
 
   resources :reader, only: [:index]
