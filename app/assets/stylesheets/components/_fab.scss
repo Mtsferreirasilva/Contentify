@@ -8,7 +8,6 @@
   height: 56px;
   margin-right: 56px;
   border: 0;
-  color: #FFF;
   background-color: $blue;
   border-radius: 50%;
   box-shadow: 0 0 4px 0 rgba(0,0,0,0.12), 0 4px 4px 0 rgba(0,0,0,0.24);
@@ -18,6 +17,10 @@
   svg {
     width: 20px;
     height: 20px;
+
+    path {
+      fill: #ffffff;
+    }
   }
 
   &:hover {
