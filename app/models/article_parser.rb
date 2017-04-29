@@ -55,7 +55,7 @@ class ArticleParser
   end
 
   def domain
-    @article["domain"].strip
+    @article["domain"]
   end
 
   def min_read
@@ -77,6 +77,6 @@ class ArticleParser
   private
 
   def fetch(url)
-    self.class.get("/parser?url=#{url}", @header)
+    self.class.get("/parser?url=#{URI.encode(url)}", @header)
   end
 end
