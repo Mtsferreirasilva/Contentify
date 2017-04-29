@@ -14,13 +14,8 @@
   z-index: 5;
   transition: color, background-color, box-shadow $theme-transition-duration ease-in-out;
 
-  svg {
-    width: 20px;
-    height: 20px;
-
-    path {
-      fill: #ffffff;
-    }
+  polygon {
+    fill: #ffffff;
   }
 
   &:hover {

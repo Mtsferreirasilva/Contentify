@@ -95,6 +95,10 @@
   @media screen and (max-width: $b-desktop) {
     padding: $spacing-loose 0;
   }
+
+  @media screen and (max-width: $b-tablet-landscape) {
+    max-width: 100%;
+  }
 }
 
 .article-controls {
@@ -174,8 +178,8 @@
   display: flex;
   background-color: transparent;
   border: none;
-  padding: $spacing-tight;
-  margin-bottom: 16px;
+  padding: 0;
+  margin-bottom: $spacing;
   outline: none;
 
   path {
