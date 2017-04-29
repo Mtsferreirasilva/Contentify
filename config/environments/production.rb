@@ -1,9 +1,10 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.middleware.use Rack::HostRedirect, {
-    'contentify.herokuapp.com' => 'www.contentify.io'
-  }
+  # == THIS IS BREAKING OUR TEST BUILDS
+  # config.middleware.use Rack::HostRedirect, {
+  #   'contentify.herokuapp.com' => 'www.contentify.io'
+  # }
 
   # Code is not reloaded between requests.
   config.cache_classes = true
