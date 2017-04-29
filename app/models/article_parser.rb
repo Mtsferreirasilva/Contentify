@@ -28,7 +28,7 @@ class ArticleParser
     sanitizer = Rails::Html::WhiteListSanitizer.new
     content = sanitizer.sanitize(@article["content"], tags: ALLOWED_TAGS, attributes: ALLOWED_ATTR)
 
-    return false if content.empty?
+    return false if content.strip.empty?
 
     # Remove first tag if it is image.
     html_doc = Nokogiri::HTML(content)
@@ -55,7 +55,7 @@ class ArticleParser
   end
 
   def domain
-    @article["domain"]
+    @article["domain"].strip
   end
 
   def min_read
