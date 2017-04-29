@@ -1,5 +1,6 @@
 lemonde_article:
   user_id: 1
+  url: http://www.lemonde.fr/election-presidentielle-2017/article/2017/04/25/au-lendemain-du-premier-tour-macron-peaufine-sa-strategie-marine-le-pen-part-a-l-assaut_5116871_4854003.html
   content:
     -
       title: 'Après le premier tour, Macron peaufine sa stratégie, Le Pen part à l’assaut'

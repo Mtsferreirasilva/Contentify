@@ -53,6 +53,7 @@ CREATE TABLE ar_internal_metadata (
 CREATE TABLE articles (
     id integer NOT NULL,
     user_id integer,
+    url character varying,
     content jsonb DEFAULT '"{}"'::jsonb NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -186,6 +187,13 @@ CREATE INDEX index_articles_on_content ON articles USING gin (content);
 
 
 --
+-- Name: index_articles_on_url; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_articles_on_url ON articles USING btree (url);
+
+
+--
 -- Name: index_articles_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -211,13 +219,6 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (re
 --
 
 CREATE INDEX user_article_content_domain_index ON articles USING gin (((content -> 'domain'::text)));
-
-
---
--- Name: user_article_content_url_index; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX user_article_content_url_index ON articles USING gin (((content -> 'url'::text)));
 
 
 --
