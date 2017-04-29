@@ -178,8 +178,9 @@
   margin-bottom: 16px;
   outline: none;
 
-  img {
-    border-radius: 0;
+  path {
+    fill: $black;
+    transition: fill $theme-transition-duration ease-in-out;
   }
 
   @media screen and (max-width: $b-tablet-landscape) {

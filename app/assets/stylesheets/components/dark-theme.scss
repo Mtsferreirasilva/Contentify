@@ -48,4 +48,10 @@ $text-color: #EEEEEE;
   code {
     background-color: $black-3;
   }
+
+  .article-controls__button {
+    path {
+      fill: $text-color;
+    }
+  }
 }
