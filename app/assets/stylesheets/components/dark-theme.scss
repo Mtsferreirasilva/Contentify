@@ -5,6 +5,7 @@ $text-color: #EEEEEE;
   background-color: $background-color;
   color: $text-color;
 
+  .fab,
   .progress-bar__level  {
     background-color: $yellow;
   }
@@ -15,6 +16,10 @@ $text-color: #EEEEEE;
 
   .article-controls {
     background-color: $background-color;
+  }
+
+  figure {
+    color: $text-color;
   }
 
   blockquote {
@@ -34,6 +39,7 @@ $text-color: #EEEEEE;
     color: $yellow;
   }
 
+  .fab,
   .popover__button {
     color: $black;
   }

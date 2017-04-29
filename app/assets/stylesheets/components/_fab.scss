@@ -1,0 +1,31 @@
+.fab {
+  position: fixed;
+  bottom: $spacing-super-loose;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  margin-right: 56px;
+  border: 0;
+  color: #FFF;
+  background-color: $blue;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.12), 0 5px 5px 0 rgba(0,0,0,0.24);
+  z-index: 3;
+  transition: color, background-color, box-shadow $theme-transition-duration ease-in-out;
+
+  img {
+    margin: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.18), 0 5px 5px 1px rgba(0,0,0,0.26);
+  }
+
+  @media screen and (max-width: $b-tablet-landscape) {
+    bottom: $spacing-loose;
+  }
+}
