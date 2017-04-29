@@ -2,7 +2,7 @@
 class ReaderController < ApplicationController
   def index
     @url = reader_params[:url]
-    @article = Article.new(@url)
+    @article = ArticleParser.new(@url)
   end
 
   private
