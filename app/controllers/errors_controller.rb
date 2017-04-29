@@ -1,5 +1,5 @@
 class ErrorsController < ApplicationController
-  def show
+  def not_found
     status_code = params[:code] || 404
     render status: status_code
   end
