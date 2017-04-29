@@ -28,9 +28,9 @@
     <nav class="article-controls">
       <ul class="article-controls__list">
         <li class="article-controls__list-item">
-          <button class="article-controls__button">
+          <%= link_to @url.html_safe, class: 'article-controls__button' %>
             <%= image_tag asset_path('reader_menu/ic_arrow-back.svg') %>
-          </button>
+          <% end %>
         </li>
         <li class="article-controls__list-item">
           <div class="popover" data-for="text_format" id="font-size-controls">
