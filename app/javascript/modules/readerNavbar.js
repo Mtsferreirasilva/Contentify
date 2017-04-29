@@ -29,7 +29,7 @@ export default function readerNavbar() {
   };
 
   lastScrollPosition = $(window).scrollTop();
-  canBeFidexOffset = $(`.${ARTICLE_CONTENT_CLASS}`).offset().top;
+  canBeFidexOffset = $(`.${ARTICLE_CONTENT_CLASS}`).offset().top - 50;
 
   $(window).on('scroll', windowEvent.bind(null, $constrolsNode, $listNode, options));
   $(window).on('resize', _.debounce(windowEvent.bind(null, $constrolsNode, $listNode, options), 10));
