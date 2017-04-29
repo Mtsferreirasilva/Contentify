@@ -9,6 +9,8 @@ class User < ApplicationRecord
         user.email = auth.info.email
         user.name = auth.info.name
         user.image = auth.info.image
+        user.uid = auth.uid
+        user.provider = auth.provider
         user
       else
         where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
