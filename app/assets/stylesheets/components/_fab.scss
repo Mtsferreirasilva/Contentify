@@ -15,8 +15,7 @@
   z-index: 5;
   transition: color, background-color, box-shadow $theme-transition-duration ease-in-out;
 
-  img {
-    margin: 0;
+  svg {
     width: 20px;
     height: 20px;
   }

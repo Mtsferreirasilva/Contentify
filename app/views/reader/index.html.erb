@@ -29,7 +29,7 @@
       <ul class="article-controls__list">
         <li class="article-controls__list-item">
           <%= link_to @url.html_safe, class: 'article-controls__button' do %>
-            <%= image_tag asset_path('reader_menu/ic_arrow-back.svg') %>
+            <%= svg 'reader_menu/ic_arrow-back.svg' %>
           <% end %>
         </li>
         <li class="article-controls__list-item">
@@ -43,7 +43,7 @@
             </div>
           </div>
           <button class="article-controls__button" data-popover-open="text_format">
-            <%= image_tag asset_path('reader_menu/ic_type-size.svg') %>
+            <%= svg 'reader_menu/ic_type-size.svg' %>
           </button>
         </li>
         <li class="article-controls__list-item">
@@ -56,19 +56,19 @@
             </div>
           </div>
           <button class="article-controls__button" data-popover-open="theme">
-            <%= image_tag asset_path('reader_menu/ic_color.svg') %>
+            <%= svg 'reader_menu/ic_color.svg' %>
           </button>
         </li>
         <li class="article-controls__list-item">
           <button class="article-controls__button">
-            <%= image_tag asset_path('reader_menu/ic_storymode.svg') %>
+            <%= svg 'reader_menu/ic_storymode.svg' %>
           </button>
         </li>
       </ul>
     </nav>
     <div class="article__fab">
       <button class="fab">
-        <%= image_tag asset_path('fab/ic_add.svg') %>
+        <%= svg 'fab/ic_add.svg' %>
       </button>
     </div>
     <article class="article article--font-size-medium">
