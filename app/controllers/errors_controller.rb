@@ -1,6 +1,10 @@
 class ErrorsController < ApplicationController
   def show
-    status_code = params[:code] || 500
+    status_code = params[:code] || 404
     render status: status_code
+  end
+
+  def internal_server_error
+    render status: 500
   end
 end
