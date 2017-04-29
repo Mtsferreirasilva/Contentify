@@ -14,7 +14,6 @@ class ArticleParser
   def initialize(url)
     @url = url
     @header = { headers: { 'x-api-key' => ENV.fetch('MERCURY_API_KEY') } }
-    @sanitizer = Rails::Html::WhiteListSanitizer.new
     @article = fetch(url)
     ensure_valid_url
   end
@@ -26,7 +25,10 @@ class ArticleParser
   def content
     return false unless @article["content"]
 
-    content = @sanitizer.sanitize(@article["content"], tags: ALLOWED_TAGS, attributes: ALLOWED_ATTR)
+    sanitizer = Rails::Html::WhiteListSanitizer.new
+    content = sanitizer.sanitize(@article["content"], tags: ALLOWED_TAGS, attributes: ALLOWED_ATTR)
+
+    return false if content.empty?
 
     # Remove first tag if it is image.
     html_doc = Nokogiri::HTML(content)
@@ -57,10 +59,13 @@ class ArticleParser
   end
 
   def min_read
-    min_read = (Integer(@article["word_count"]) / 200).round
-    return 1 if min_read == 0
+    sanitizer = Rails::Html::FullSanitizer.new
+    content = sanitizer.sanitize(@article["content"])
+    word_count = content.split(' ').length
 
-    min_read
+    min_read = (word_count / 200).round
+
+    min_read > 0 ? min_read : 1
   end
 
   def lead_image_url
