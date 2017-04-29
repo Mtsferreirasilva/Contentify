@@ -91,7 +91,23 @@
         <%= image_tag @article.lead_image_url, class: "article__lead-image" %>
       <% end %>
       <div class="article__content">
-        <%= @article.content %>
+        <% if @article.content %>
+          <%= @article.content %>
+        <% else %>
+          <div class="article__content-error">
+            <h5>
+              Sorry! This was a tough one.
+              <br>
+              We couldn't find the content from this website.
+            </h5>
+            <p>
+              &ldquo;Failure is an option here.<br>
+              If things are not failing,<br>
+              you are not innovating enough.&rdquo;<br>
+              Elon Musk
+            </p>
+          </div>
+        <% end %>
       </div>
     </article>
   </div>
