@@ -1,21 +1,30 @@
 import $ from 'jquery';
 
-const CLASSES = {
+const CONTROLS_CLASSES = {
   BASE: 'article-controls',
   SHADOW: 'article-controls--shadow',
 };
 
-export default function readerNavbar() {
-  const $articleControlsNode = $(`.${CLASSES.BASE}`);
+const CONTROLS_LIST_CLASSES = {
+  BASE: 'article-controls__list',
+  STATE: {
+    FIXED: 'article-controls__list--fixed',
+    FADED: 'article-controls__list--faded'
+  }
+};
 
-  $(window).on('scroll', windowEvent.bind(null, $articleControlsNode));
-  $(window).on('resize', windowEvent.bind(null, $articleControlsNode));
+export default function readerNavbar() {
+  const $constrolsNode = $(`.${CONTROLS_CLASSES.BASE}`);
+  const $itemsNode = $(`.${CONTROLS_LIST_CLASSES.BASE}`);
+
+  $(window).on('scroll', windowEvent.bind(null, $constrolsNode));
+  $(window).on('resize', windowEvent.bind(null, $constrolsNode));
 }
 
-function windowEvent($articleControlsNode) {
+function windowEvent($constrolsNode) {
   if ($(window).width() < 1000 && $(window).scrollTop() > 0) {
-    $articleControlsNode.addClass(CLASSES.SHADOW);
+    $constrolsNode.addClass(CONTROLS_CLASSES.SHADOW);
   } else {
-    $articleControlsNode.removeClass(CLASSES.SHADOW);
+    $constrolsNode.removeClass(CONTROLS_CLASSES.SHADOW);
   }
 }
