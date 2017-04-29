@@ -33,6 +33,7 @@ export default function readerNavbar() {
 
   $(window).on('scroll', windowEvent.bind(null, $constrolsNode, $listNode, options));
   $(window).on('resize', _.debounce(windowEvent.bind(null, $constrolsNode, $listNode, options), 10));
+  $(window).trigger('scroll');
 }
 
 function windowEvent($constrolsNode, $listNode, options = {}) {
