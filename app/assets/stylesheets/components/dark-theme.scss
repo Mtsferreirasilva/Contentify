@@ -39,9 +39,14 @@ $text-color: #EEEEEE;
     color: $yellow;
   }
 
-  .fab,
   .popover__button {
     color: $black;
+  }
+
+  .fab {
+    path {
+      fill: $black;
+    }
   }
 
   pre,
