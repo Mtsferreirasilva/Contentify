@@ -1,21 +1,86 @@
 import $ from 'jquery';
+import _ from 'lodash';
 
-const CLASSES = {
+const CONTROLS_CLASSES = {
   BASE: 'article-controls',
-  SHADOW: 'article-controls--shadow',
+  SCROLLED: 'article-controls--border',
 };
 
-export default function readerNavbar() {
-  const $articleControlsNode = $(`.${CLASSES.BASE}`);
+const CONTROLS_LIST_CLASSES = {
+  BASE: 'article-controls__list',
+  STATE: {
+    FIXED: 'article-controls__list--fixed',
+    FADED: 'article-controls__list--faded'
+  }
+};
 
-  $(window).on('scroll', windowEvent.bind(null, $articleControlsNode));
-  $(window).on('resize', windowEvent.bind(null, $articleControlsNode));
+const ARTICLE_CONTENT_CLASS = 'article__content';
+
+const SPACING_BEFORE_CONTROLS = 60;
+
+let lastScrollPosition;
+let canBeFidexOffset;
+
+export default function readerNavbar() {
+  const $constrolsNode = $(`.${CONTROLS_CLASSES.BASE}`);
+  const $listNode = $(`.${CONTROLS_LIST_CLASSES.BASE}`);
+  const options = {
+    listNodeOffsetTop: $listNode.offset().top
+  };
+
+  lastScrollPosition = $(window).scrollTop();
+  canBeFidexOffset = $(`.${ARTICLE_CONTENT_CLASS}`).offset().top;
+
+  $(window).on('scroll', windowEvent.bind(null, $constrolsNode, $listNode, options));
+  $(window).on('resize', _.debounce(windowEvent.bind(null, $constrolsNode, $listNode, options), 10));
 }
 
-function windowEvent($articleControlsNode) {
-  if ($(window).width() < 1000 && $(window).scrollTop() > 0) {
-    $articleControlsNode.addClass(CLASSES.SHADOW);
+function windowEvent($constrolsNode, $listNode, options = {}) {
+  if ($(window).width() >= 1024) {
+    $constrolsNode.removeClass(CONTROLS_CLASSES.SCROLLED);
+
+    handleDesktop($listNode, options.listNodeOffsetTop);
   } else {
-    $articleControlsNode.removeClass(CLASSES.SHADOW);
+    $listNode.removeClass(CONTROLS_LIST_CLASSES.STATE.FIXED);
+    $listNode.removeClass(CONTROLS_LIST_CLASSES.STATE.FADED);
+
+    handleMobile($constrolsNode);
   }
+}
+
+function handleDesktop($listNode, listNodeOffsetTop) {
+  const offsetedScrollTop = $(window).scrollTop() + SPACING_BEFORE_CONTROLS;
+
+  requestAnimationFrame(() => {
+    if (offsetedScrollTop > listNodeOffsetTop) {
+      // when it should be fixed code
+      $listNode.addClass(CONTROLS_LIST_CLASSES.STATE.FIXED);
+
+      handleDesktopScrollDirections($listNode);
+    } else {
+      // when it should be static code
+      $listNode.removeClass(CONTROLS_LIST_CLASSES.STATE.FIXED);
+    }
+  });
+}
+
+function handleDesktopScrollDirections($listNode) {
+  if ($(window).scrollTop() > lastScrollPosition && $(window).scrollTop() > canBeFidexOffset){
+    // downscroll code
+    $listNode.addClass(CONTROLS_LIST_CLASSES.STATE.FADED);
+  } else {
+     // upscroll code
+     $listNode.removeClass(CONTROLS_LIST_CLASSES.STATE.FADED);
+  }
+  lastScrollPosition = $(window).scrollTop();
+}
+
+function handleMobile($constrolsNode) {
+  requestAnimationFrame(() => {
+    if ($(window).scrollTop() > 0) {
+      $constrolsNode.addClass(CONTROLS_CLASSES.SCROLLED);
+    } else {
+      $constrolsNode.removeClass(CONTROLS_CLASSES.SCROLLED);
+    }
+  });
 }
