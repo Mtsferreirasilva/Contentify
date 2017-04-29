@@ -14,14 +14,15 @@ const CONTROLS_LIST_CLASSES = {
   }
 };
 
-const ARTICLE_CONTENT_CLASS = 'article__content';
+const ARTICLE_LEAD_IMAGE_CLASS = 'article__lead-image';
 
 const SPACING_BEFORE_CONTROLS = 60;
 
 let lastScrollPosition;
-let canBeFidexOffset;
+let canBeFixedOffset;
 
 export default function readerNavbar() {
+  const $leadImageNode = $(`.${ARTICLE_LEAD_IMAGE_CLASS}`);
   const $constrolsNode = $(`.${CONTROLS_CLASSES.BASE}`);
   const $listNode = $(`.${CONTROLS_LIST_CLASSES.BASE}`);
   const options = {
@@ -29,7 +30,9 @@ export default function readerNavbar() {
   };
 
   lastScrollPosition = $(window).scrollTop();
-  canBeFidexOffset = $(`.${ARTICLE_CONTENT_CLASS}`).offset().top - 50;
+
+  // Can be fixed only after half the lead image is past
+  canBeFixedOffset = $leadImageNode.offset().top + ($leadImageNode.height() / 2);
 
   $(window).on('scroll', windowEvent.bind(null, $constrolsNode, $listNode, options));
   $(window).on('resize', _.debounce(windowEvent.bind(null, $constrolsNode, $listNode, options), 10));
@@ -38,10 +41,12 @@ export default function readerNavbar() {
 
 function windowEvent($constrolsNode, $listNode, options = {}) {
   if ($(window).width() >= 1024) {
+    // Reseting nodes
     $constrolsNode.removeClass(CONTROLS_CLASSES.SCROLLED);
 
     handleDesktop($listNode, options.listNodeOffsetTop);
   } else {
+    // Reseting nodes
     $listNode.removeClass(CONTROLS_LIST_CLASSES.STATE.FIXED);
     $listNode.removeClass(CONTROLS_LIST_CLASSES.STATE.FADED);
 
@@ -66,7 +71,7 @@ function handleDesktop($listNode, listNodeOffsetTop) {
 }
 
 function handleDesktopScrollDirections($listNode) {
-  if ($(window).scrollTop() > lastScrollPosition && $(window).scrollTop() > canBeFidexOffset){
+  if ($(window).scrollTop() > lastScrollPosition && $(window).scrollTop() > canBeFixedOffset){
     // downscroll code
     $listNode.addClass(CONTROLS_LIST_CLASSES.STATE.FADED);
   } else {
