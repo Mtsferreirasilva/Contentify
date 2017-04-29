@@ -81,6 +81,11 @@
       </ul>
     </nav>
     <div class="article__fab">
+      <%= form_tag('/reader/save_article') do -%>
+        <div><%= hidden_field_tag 'url', @article.url %></div>
+        <div><%= hidden_field_tag 'article', @article.article.to_json %></div>
+        <div><%= submit_tag 'Save', class: 'fab' %></div>
+      <% end -%>
       <button class="fab">
         <%= svg 'fab/ic_add.svg' %>
       </button>
