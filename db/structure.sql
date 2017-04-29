@@ -210,14 +210,14 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (re
 -- Name: user_article_content_domain_index; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX user_article_content_domain_index ON articles USING btree (((content ->> 'domain'::text)));
+CREATE INDEX user_article_content_domain_index ON articles USING gin (((content -> 'domain'::text)));
 
 
 --
 -- Name: user_article_content_url_index; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX user_article_content_url_index ON articles USING btree (((content ->> 'url'::text)));
+CREATE INDEX user_article_content_url_index ON articles USING gin (((content -> 'url'::text)));
 
 
 --
