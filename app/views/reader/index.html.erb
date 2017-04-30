@@ -81,16 +81,11 @@
       </ul>
     </nav>
     <div class="article__fab">
-      <!-- <%= form_tag('/reader/save_article') do %>
+      <%= button_to save_article_reader_index_path, class: 'fab' do %>
         <%= hidden_field_tag 'url', @article.url %>
         <%= hidden_field_tag 'article', @article.article.to_json %>
-        <%= submit_tag 'Save', class: 'fab' do %>
-          <%= svg 'fab/ic_add.svg' %>
-        <% end %>
-      <% end %> -->
-      <button class="fab">
         <%= svg 'fab/ic_add.svg' %>
-      </button>
+      <% end %>
     </div>
     <article class="article article--font-size-medium">
       <h1 class="article__title"><%= @article.title %></h1>
