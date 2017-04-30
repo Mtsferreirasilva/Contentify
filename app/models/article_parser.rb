@@ -9,20 +9,16 @@ class ArticleParser
                     sub sup ins del pre br ul li span figure label caption iframe)
   ALLOWED_ATTR = %w(href src for id title aria)
 
-  attr_reader :url
-  attr_accessor :article
+  attr_reader :url, :article
 
   def initialize(url)
     @url = url
     @article = {}
     return unless valid_url?(url)
 
-    @article = Rails.cache.fetch(@url)
-    return if @article
-
     @header = { headers: { 'x-api-key' => ENV.fetch('MERCURY_API_KEY') } }
     @article = fetch(url)
-    Rails.cache.write("#{@url}", @article.to_h, expires_in: 1.month) if valid_mercury_response?
+    valid_mercury_response
   end
 
   def title

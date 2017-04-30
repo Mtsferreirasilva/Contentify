@@ -62,7 +62,6 @@ GEM
     concurrent-ruby (1.0.5)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
-    dalli (2.7.6)
     devise (4.2.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -93,7 +92,6 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
-    memcachier (0.0.2)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -235,12 +233,10 @@ DEPENDENCIES
   autoprefixer-rails
   bugsnag (~> 5.3)
   byebug
-  dalli (~> 2.7)
   devise (~> 4.2)
   dotenv-rails (~> 2.2)
   httparty (~> 0.14.0)
   listen (~> 3.0.5)
-  memcachier (~> 0.0.2)
   minitest-rails (~> 3.0)
   minitest-reporters (~> 1.1)
   nokogiri (~> 1.7)
