@@ -20,7 +20,7 @@ module UrlValidator
     url_valid
   end
 
-  def valid_mercury_response
+  def valid_mercury_response?
     url_valid = nil
     if @article.nil? || @article['error'].present?
       url_valid = false
