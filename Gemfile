@@ -29,7 +29,9 @@ gem 'rack-host-redirect'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'sqlite3', '~> 1.3'
+  gem 'webmock', '~> 3.0'
+  gem 'minitest-rails', '~> 3.0'
+  gem 'minitest-reporters', '~> 1.1'
 end
 
 group :development do
