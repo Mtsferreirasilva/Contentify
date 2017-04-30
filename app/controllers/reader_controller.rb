@@ -8,14 +8,24 @@ class ReaderController < ApplicationController
   end
 
   def save_article
-    # Handle authentication
-    article = JSON.parse(reader_params[:article])
-    binding.pry
-    current_user.articles.create(content: article)
+    article_json = JSON.parse(reader_params[:article])
+    article = Article.new(url: reader_params[:url], content: article_json, user_id: current_user.id)
+
     @url = reader_params[:url]
     @article = ArticleParser.new(reader_params[:url])
-    # render js response instead
-    render :index
+
+    respond_to do |format|
+      begin
+        article.save
+        format.html { redirect_to request.referer, notice: 'Article was successfully saved!' }
+        format.json { render :index, status: :created }
+      rescue ActiveRecord::RecordNotUnique => exception
+          Rails.logger.info "Article already saved for this user: #{exception}..."
+          Bugsnag.notify(exception) if Rails.env.production?
+          format.html { render :index, notice: 'Article already saved!' }
+          format.json { render json: exception, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
