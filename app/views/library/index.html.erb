@@ -1,3 +1,17 @@
 <%= render 'shared/navbar' %>
 
 <h2>Library</h2>
+
+<h3>Your saved articles</h3>
+
+<% @articles.each do |article| %>
+  <p><%= article.title %></p>
+  <p><%= article.url %></p>
+  <p><%= article.min_read %></p>
+  <p><%= article.date_published %></p>
+  <p><%= article.domain %></p>
+  <p><%= article.author %></p>
+  <p><%= image_tag article.lead_image_url %></p>
+  <p><%= article.short_description %></p>
+  -------------------------
+<% end %>
