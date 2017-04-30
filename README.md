@@ -6,6 +6,7 @@
 [![cloudflare](http://i.imgur.com/JJJy6Gb.png)](https://www.cloudflare.com/a/overview/contentify.io)
 [![bugsnag](http://i.imgur.com/Ti8ASGe.png)](https://app.bugsnag.com/contentify/contentify/)
 [![mercury](http://i.imgur.com/rPtygA2.png)](https://mercury.postlight.com/web-parser/)
+[![analytics](http://i.imgur.com/oIRDSl1.png)](https://analytics.google.com/analytics/web/#report/defaultid/a28701911w144310886p148973418/)
 
 ## Development
 
