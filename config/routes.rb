@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     get code, to: 'errors#not_found', code: code
   end
 
-  resources :reader, only: [:index]
+  resources :reader, only: [:index] do
+    collection do
+      post :save_article
+    end
+  end
   resources :library, only: [:index]
 end
