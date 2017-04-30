@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class ReaderController < ApplicationController
   before_action :authenticate_user!, only: [:save_article]
+  skip_before_action :verify_authenticity_token, only: [:save_article]
 
   def index
     @url = reader_params[:url]
