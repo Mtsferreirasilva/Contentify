@@ -1,0 +1,37 @@
+$theme-controls-size: 22px;
+
+.theme-controls {
+
+}
+
+.theme-controls__dot-container {
+  width: $theme-controls-size;
+  height: $theme-controls-size;
+  padding: 5px;
+  border-radius: 3px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.theme-controls__dot-container--light {
+  background-color: #FFFFFF;
+}
+
+.theme-controls__dot-container--dark {
+  background-color: $black;
+}
+
+.theme-controls__dot {
+  display: block;
+  border-radius: 50%;
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.theme-controls__dot--blue {
+  background-color: $blue;
+}
+
+.theme-controls__dot--yellow {
+  background-color: $yellow;
+}
