@@ -12,7 +12,7 @@ class ReaderController < ApplicationController
     article = Article.new(url: reader_params[:url], content: article_json, user_id: current_user.id)
 
     @url = reader_params[:url]
-    @article = ArticleParser.new(reader_params[:url])
+    @article = ArticleParser.new(@url)
 
     respond_to do |format|
       begin
@@ -20,10 +20,10 @@ class ReaderController < ApplicationController
         format.html { redirect_to request.referer, notice: 'Article was successfully saved!' }
         format.json { render :index, status: :created }
       rescue ActiveRecord::RecordNotUnique => exception
-          Rails.logger.info "Article already saved for this user: #{exception}..."
-          Bugsnag.notify(exception) if Rails.env.production?
-          format.html { render :index, notice: 'Article already saved!' }
-          format.json { render json: exception, status: :unprocessable_entity }
+        Rails.logger.info "Article already saved for this user: #{exception}..."
+        Bugsnag.notify(exception) if Rails.env.production?
+        format.html { render :index, notice: 'Article already saved!' }
+        format.json { render json: exception, status: :unprocessable_entity }
       end
     end
   end
