@@ -81,14 +81,11 @@
       </ul>
     </nav>
     <div class="article__fab">
-      <%= button_to save_article_reader_index_path, class: 'fab' do %>
-        <%= hidden_field_tag 'url', @article.url %>
-        <%= hidden_field_tag 'article', @article.article.to_json %>
+      <button class="fab">
         <%= svg 'fab/ic_add.svg' %>
-      <% end %>
+      </button>
     </div>
     <article class="article article--font-size-medium">
-      <%= notice %>
       <h1 class="article__title"><%= @article.title %></h1>
       <div class="article__details">
         <% if @article.author && @article.author.length > 0 %>
