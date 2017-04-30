@@ -9,13 +9,16 @@ class ArticleParser
                     sub sup ins del pre br ul li span figure label caption iframe)
   ALLOWED_ATTR = %w(href src for id title aria)
 
-  attr_reader :url
+  attr_reader :url, :article
 
   def initialize(url)
     @url = url
+    @article = {}
+    return unless valid_url?(url)
+
     @header = { headers: { 'x-api-key' => ENV.fetch('MERCURY_API_KEY') } }
     @article = fetch(url)
-    ensure_valid_url
+    valid_mercury_response
   end
 
   def title
@@ -77,6 +80,6 @@ class ArticleParser
   private
 
   def fetch(url)
-    self.class.get("/parser?url=#{URI.encode(url)}", @header)
+    self.class.get("/parser?url=#{url}", @header)
   end
 end

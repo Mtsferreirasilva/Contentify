@@ -6,24 +6,30 @@ module UrlValidator
     include ActiveModel::Validations
   end
 
-  def ensure_valid_url
-    validates_with Validator
-    return unless valid?
+  def valid_url?(url)
+    errors[:url] << 'your url is empty ma friend' if url.blank?
+    return false if url.blank?
 
-    invalid_url = @article.parsed_response.nil? || @article.parsed_response['error']
-    return errors[:url] << 'your url suck bitch!' if invalid_url
+    begin
+      uri = URI.parse(url)
+      url_valid = uri.is_a?(URI::HTTP) && !uri.host.nil?
+    rescue URI::InvalidURIError
+      url_valid = false
+    end
+    errors[:url] << 'your url suck bitch!' unless url_valid
+    url_valid
   end
 
-  class Validator < ActiveModel::Validator
-    def validate(record)
-      return record.errors[:url] << 'your url suck bitch!' if record.url.nil?
-
-      begin
-        uri = URI.parse(record.url)
-        uri.is_a?(URI::HTTP) && !uri.host.nil?
-      rescue URI::InvalidURIError
-        record.errors[:url] << 'your url suck bitch!'
-      end
+  def valid_mercury_response
+    url_valid = nil
+    if @article.nil? || @article['error'].present?
+      url_valid = false
+    elsif @article.present?
+      url_valid = true
+    else
+      url_valid true
     end
+    errors[:url] << 'your url suck bitch!' unless url_valid
+    url_valid
   end
 end
