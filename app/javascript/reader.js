@@ -3,6 +3,7 @@ import readerNavbar from './modules/readerNavbar';
 import popover from './modules/popover';
 import fontSize from './modules/fontSize';
 import theme from './modules/theme';
+import removeLoadingPage from './modules/removeLoadingPage';
 
 window.reader = function reader() {
   progressBar();
@@ -10,4 +11,6 @@ window.reader = function reader() {
   popover();
   fontSize();
   theme();
+
+  removeLoadingPage();
 }

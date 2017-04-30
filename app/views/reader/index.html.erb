@@ -15,8 +15,13 @@
 <% meta_tag :twitter_url, "https://www.contentify.io/reader?url=#{@url}" %>
 
 <script>
-  $(document).ready(reader);
+  window.onload = reader;
 </script>
+
+<div class="loading-screen">
+  <span class="loading-screen__logo">C</span>
+  <span class="loading-screen__message">Contentifying...</span>
+</div>
 
 <% if @article.errors.any? %>
   <h1>Hmmm Looks like <%= @article.errors.messages[:url].first %> </h1>
