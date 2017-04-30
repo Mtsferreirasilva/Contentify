@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class ReaderController < ApplicationController
-  before_action :set_session, only: [:save_article]
+  before_action :authenticate_user!, only: [:save_article]
 
   def index
     @url = reader_params[:url]
@@ -32,10 +32,5 @@ class ReaderController < ApplicationController
 
   def reader_params
     params.permit(:url, :article)
-  end
-
-  def set_session
-    session["user_return_to"] = request.referer
-    authenticate_user! unless user_signed_in?
   end
 end
