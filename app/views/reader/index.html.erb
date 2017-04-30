@@ -88,6 +88,7 @@
       <% end %>
     </div>
     <article class="article article--font-size-medium">
+      <%= notice %>
       <h1 class="article__title"><%= @article.title %></h1>
       <div class="article__details">
         <% if @article.author && @article.author.length > 0 %>

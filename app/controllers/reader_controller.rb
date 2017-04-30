@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class ReaderController < ApplicationController
-  before_action :authenticate_user!, only: [:save_article]
+  before_action :set_session, only: [:save_article]
 
   def index
     @url = reader_params[:url]
@@ -22,9 +22,9 @@ class ReaderController < ApplicationController
       rescue ActiveRecord::RecordNotUnique => exception
         Rails.logger.info "Article already saved for this user: #{exception}..."
         Bugsnag.notify(exception) if Rails.env.production?
-        format.html { render :index, notice: 'Article already saved!' }
-        format.json { render json: exception, status: :unprocessable_entity }
       end
+      format.html { redirect_to request.referer, notice: 'Article already saved!' }
+      format.json { render json: exception, status: :unprocessable_entity }
     end
   end
 
@@ -32,5 +32,10 @@ class ReaderController < ApplicationController
 
   def reader_params
     params.permit(:url, :article)
+  end
+
+  def set_session
+    session["user_return_to"] = request.referer
+    authenticate_user! unless user_signed_in?
   end
 end
