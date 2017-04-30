@@ -1,0 +1,41 @@
+.loading-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-screen__logo {
+  font-size: 4em;
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: $spacing;
+  animation: pulsate 800ms cubic-bezier(.57,.65,.15,1.32) infinite alternate 500ms;
+}
+
+.loading-screen__message {
+  font-size: 1em;
+  font-style: italic;
+}
+
+@keyframes pulsate {
+    0% {
+      transform: scale(0.7);
+      opacity: 0.9;
+    }
+    20% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+}
