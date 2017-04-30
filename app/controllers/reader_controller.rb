@@ -23,7 +23,7 @@ class ReaderController < ApplicationController
         Rails.logger.info "Article already saved for this user: #{exception}..."
         Bugsnag.notify(exception) if Rails.env.production?
       end
-      format.html { redirect_to request.referer, notice: 'Article already saved!' }
+      format.html { redirect_to request.referer, notice: 'Article was already saved!' }
       format.json { render json: exception, status: :unprocessable_entity }
     end
   end
