@@ -31,7 +31,7 @@ class ArticleParser
 
     contentify_article = contentify_content
     return false unless contentify_article
-    
+
     article["content"] = contentify_article
   end
 
