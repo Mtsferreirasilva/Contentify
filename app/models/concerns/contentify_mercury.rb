@@ -10,7 +10,11 @@ module ContentifyMercury
     content = sanitizer.sanitize(@article["content"], tags: ALLOWED_TAGS, attributes: ALLOWED_ATTR)
     return false if content.strip.empty?
 
-    remove_first_image_tag(content)
+    html_doc = Nokogiri::HTML(content)
+    remove_first_image_tag(html_doc)
+    fix_incorrect_image_path(html_doc)
+
+    html_doc.to_s.html_safe
   end
 
   def contentify_date
@@ -31,13 +35,29 @@ module ContentifyMercury
 
   private
 
-  def remove_first_image_tag(content)
-    html_doc = Nokogiri::HTML(content)
+  def remove_first_image_tag(html_doc)
     first_element = html_doc.root.first_element_child.children.first.name
     if first_element == 'figure' || first_element == 'img'
       html_doc.root.first_element_child.children.first.remove
     end
+  end
 
-    html_doc.to_s.html_safe
+  def fix_incorrect_image_path(html_doc)
+    html_doc.children.xpath("//img").each do |img|
+      truncate_link = img.attributes['src'].value
+      url = URI(truncate_link).scheme + "://" + URI(truncate_link).host + URI(truncate_link).path
+      break unless url.scan(/#{url}/).any?
+
+      invalid_params = URI(truncate_link).query
+      break if invalid_params.nil?
+      valid_params = "?"
+
+      invalid_params.each_char do |char|
+        break if char == ","
+        valid_params += char
+      end
+
+      img.attributes['src'].value = url + valid_params
+    end
   end
 end
