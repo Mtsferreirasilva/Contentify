@@ -45,8 +45,7 @@ class ArticleParser
 
   def date_published
     return false unless @article["date_published"]
-
-    DateTime.parse(@article["date_published"]).strftime('%B %d, %Y')
+    @article["date_published"] = contentify_date
   end
 
   def domain

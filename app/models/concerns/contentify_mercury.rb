@@ -13,6 +13,10 @@ module ContentifyMercury
     remove_first_image_tag(content)
   end
 
+  def contentify_date
+    DateTime.parse(@article["date_published"]).strftime('%B %d, %Y')
+  end
+
   private
 
   def remove_first_image_tag(content)
