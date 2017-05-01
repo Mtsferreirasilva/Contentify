@@ -53,7 +53,10 @@ class ArticleParser
   end
 
   def min_read
-    contentify_min_read
+    min_read = contentify_min_read
+    return false unless min_read
+
+    @article["min_read"] = min_read
   end
 
   def lead_image_url
