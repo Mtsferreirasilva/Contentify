@@ -2,7 +2,7 @@
 
 <h2>Library</h2>
 
-<h3>Your saved articles</h3>
+<h3>Your saved articles: <%= current_user.articles_count %> </h3>
 
 <% @articles.each do |article| %>
   <p><%= article.title %></p>
