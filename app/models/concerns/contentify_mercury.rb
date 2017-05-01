@@ -49,6 +49,7 @@ module ContentifyMercury
       break unless url.scan(/#{url}/).any?
 
       invalid_params = URI(truncate_link).query
+      break if invalid_params.nil?
       valid_params = "?"
 
       invalid_params.each_char do |char|
