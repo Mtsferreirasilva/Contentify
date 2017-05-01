@@ -17,6 +17,18 @@ module ContentifyMercury
     DateTime.parse(@article["date_published"]).strftime('%B %d, %Y')
   end
 
+  def contentify_min_read
+    sanitizer = Rails::Html::FullSanitizer.new
+    content = sanitizer.sanitize(@article["content"])
+
+    return false if content.nil?
+
+    word_count = content.split(' ').length
+    min_read = (word_count / 200).round
+
+    min_read > 0 ? min_read : 1
+  end
+
   private
 
   def remove_first_image_tag(content)
