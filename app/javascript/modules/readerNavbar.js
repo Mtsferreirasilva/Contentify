@@ -32,7 +32,11 @@ export default function readerNavbar() {
   lastScrollPosition = $(window).scrollTop();
 
   // Can be fixed only after half the lead image is past
-  canBeFixedOffset = $leadImageNode.offset().top + ($leadImageNode.height() / 2);
+  if ($leadImageNode.length === 0) {
+    canBeFixedOffset = 200;
+  } else {
+    canBeFixedOffset = $leadImageNode.offset().top + ($leadImageNode.height() / 2);
+  }
 
   $(window).on('scroll', windowEvent.bind(null, $constrolsNode, $listNode, options));
   $(window).on('resize', _.debounce(windowEvent.bind(null, $constrolsNode, $listNode, options), 10));
