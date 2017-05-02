@@ -1,166 +1,41 @@
 <%- title @article.title ? @article.title : 'Error' %>
 
-<% meta_tag :description, @article.excerpt %>
+<% meta_tag :description, @article.excerpt if @article.excerpt %>
 
 <% meta_tag :og_type, 'article' %>
-<% meta_tag :og_description, @article.excerpt %>
-<% meta_tag :og_title, @article.title %>
-<% meta_tag :og_image, @article.lead_image_url %>
+<% meta_tag :og_description, @article.excerpt if @article.excerpt %>
+<% meta_tag :og_title, @article.title if @article.title %>
+<% meta_tag :og_image, @article.lead_image_url if @article.lead_image_url %>
 <% meta_tag :og_url, "https://www.contentify.io/reader?url=#{@url}" %>
 
 <% meta_tag :twitter_card, 'summary_large_image' %>
-<% meta_tag :twitter_description, @article.excerpt %>
-<% meta_tag :twitter_title, @article.title %>
-<% meta_tag :twitter_image, @article.lead_image_url %>
+<% meta_tag :twitter_description, @article.excerpt if @article.excerpt %>
+<% meta_tag :twitter_title, @article.title if @article.title %>
+<% meta_tag :twitter_image, @article.lead_image_url if @article.lead_image_url %>
 <% meta_tag :twitter_url, "https://www.contentify.io/reader?url=#{@url}" %>
 
 <script>
   window.onload = reader;
 </script>
 
-<div class="loading-screen">
-  <span class="loading-screen__logo">C</span>
-  <span class="loading-screen__message">Contentifying...</span>
-</div>
+<%= render partial: 'loading_screen' %>
 
 <% if @article.errors.any? %>
   <h1>Hmmm Looks like <%= @article.errors.messages[:url].first %> </h1>
 <% else %>
-  <div class="progress-bar">
-    <span class="progress-bar__level progress-bar__level--animate" title="How much you've seen from the article."></span>
-  </div>
+  <%= render partial: 'progress_bar' %>
+
   <div class="container">
-    <nav class="article-controls">
-      <ul class="article-controls__list">
-        <li class="article-controls__list-item">
-          <%= link_to @url.html_safe, class: 'article-controls__button' do %>
-            <%= svg 'reader_menu/ic_arrow-back.svg' %>
-          <% end %>
-        </li>
-        <li class="article-controls__list-item">
-          <div class="popover" data-for="text_format" id="font-size-controls">
-            <div class="popover__container">
-              <div class="popover__button-group">
-                <button class="popover__button" data-value="small">
-                  S<span class="hidden">mall</span>
-                </button>
-                <button class="popover__button popover__button--active" data-value="medium">
-                  N<span class="hidden">ormal</span>
-                </button>
-                <button class="popover__button" data-value="large">
-                  L<span class="hidden">arge</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <button class="article-controls__button" data-popover-open="text_format">
-            <%= svg 'reader_menu/ic_type-size.svg' %>
-          </button>
-        </li>
-        <li class="article-controls__list-item">
-          <div class="popover" data-for="theme" id="theme-controls">
-            <div class="popover__container">
-              <div class="popover__button-group">
-                <button class="popover__button popover__button--active theme-controls" data-value="light">
-                  <div class="theme-controls__dot-container theme-controls__dot-container--light">
-                    <span class="theme-controls__dot theme-controls__dot--blue"></span>
-                  </div>
-                </button>
-                <button class="popover__button theme-controls" data-value="dark">
-                  <div class="theme-controls__dot-container theme-controls__dot-container--dark">
-                    <span class="theme-controls__dot theme-controls__dot--yellow"></span>
-                  </div>
-                </button>
-              </div>
-            </div>
-          </div>
-          <button class="article-controls__button" data-popover-open="theme">
-            <%= svg 'reader_menu/ic_color.svg' %>
-          </button>
-        </li>
-        <li class="article-controls__list-item">
-          <button class="article-controls__button">
-            <%= svg 'reader_menu/ic_storymode.svg' %>
-          </button>
-        </li>
-      </ul>
-    </nav>
+    <%= render partial: 'controls' %>
+
     <% unless @show_fab %>
-      <div class="article__fab">
-        <%= button_to save_article_reader_index_path,
-          class: 'fab',
-          data: {
-            fab_role: 'save-page',
-            fab_activate_modal: !user_signed_in?
-          } do %>
-          <%= hidden_field_tag 'url', @article.url %>
-          <%= hidden_field_tag 'article', @article.article.to_json %>
-          <%= svg 'fab/ic_add.svg' %>
-        <% end %>
-        <% unless user_signed_in? %>
-          <div class="fab-modal" data-fab-modal-for="save-page">
-            <div class="fab-modal__container">
-              <div class="fab-modal__body">
-                <h2 class="fab-modal__title">Sign in before saving a page, bitch!</h2>
-                <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
-                <div class="fab-modal__separator">
-                  <span></span>
-                  <span>or</span>
-                  <span></span>
-                </div>
-                <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
-              </div>
-              <div class="fab-modal__footer">
-                <button type="button" class="fab-modal__button">close</h2>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
+      <%= render partial: 'fab' %>
     <% end %>
-    <article class="article article--font-size-medium">
-      <h1 class="article__title"><%= @article.title %></h1>
-      <div class="article__details">
-        <% if @article.author && @article.author.length > 0 %>
-          <span>By <%= @article.author %></span>
-        <% end %>
-        <% if @article.domain && @article.domain.length > 0 %>
-          <span><%= @article.domain %></span>
-        <% end %>
-        <% if @article.date_published %>
-          <span><%= @article.date_published %></span>
-        <% end %>
-        <% if @article.min_read %>
-          <span><%= @article.min_read %> min read</span>
-        <% end %>
-      </div>
-      <% if @article.lead_image_url %>
-        <%= image_tag @article.lead_image_url, class: "article__lead-image" %>
-      <% end %>
-      <div class="article__content">
-        <% if @article.content %>
-          <%= @article.content %>
-        <% else %>
-          <div class="article__content-error">
-            <h5>
-              Sorry! This was a tough one.
-              <br>
-              We couldn't find the content from this website.
-            </h5>
-            <p>
-              &ldquo;Failure is an option here.<br>
-              If things are not failing,<br>
-              you are not innovating enough.&rdquo;<br>
-              Elon Musk
-            </p>
-          </div>
-        <% end %>
-      </div>
-    </article>
+
+    <%= render partial: 'article' %>
   </div>
+
   <% if @article.title || (@article.domain && @article.domain.length > 0) %>
-    <footer class="article-footer">
-      <p class="article-footer__text"><%= @article.title %> • <%= @article.domain %></p>
-    </footer>
+    <%= render partial: 'footer' %>
   <% end %>
 <% end %>
