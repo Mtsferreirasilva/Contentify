@@ -1,3 +1,5 @@
+$progress-bar-size: 4px;
+
 .article {
   position: relative;
   padding: 0 $spacing;
@@ -116,7 +118,7 @@
     height: auto;
     width: 100%;
     top: 0;
-    padding: ($spacing + 4px) 32px $spacing;
+    padding: ($spacing + $progress-bar-size) 32px $spacing;
     left: 0;
   }
 

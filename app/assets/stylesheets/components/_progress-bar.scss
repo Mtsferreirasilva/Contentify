@@ -1,3 +1,5 @@
+$progress-bar-size: 4px;
+
 .progress-bar {
   position: fixed;
   top: 0;
@@ -9,7 +11,7 @@
 
 .progress-bar__level {
   display: block;
-  height: 4px;
+  height: $progress-bar-size;
   background-color: $black;
   width: 0%;
 }
