@@ -18,24 +18,24 @@
   window.onload = reader;
 </script>
 
-<%= render partial: 'loading_screen' %>
+<%= render 'loading_screen' %>
 
 <% if @article.errors.any? %>
   <h1>Hmmm Looks like <%= @article.errors.messages[:url].first %> </h1>
 <% else %>
-  <%= render partial: 'progress_bar' %>
+  <%= render 'progress_bar' %>
 
   <div class="container">
-    <%= render partial: 'controls' %>
+    <%= render 'controls' %>
 
     <% unless @show_fab %>
-      <%= render partial: 'fab' %>
+      <%= render 'fab' %>
     <% end %>
 
-    <%= render partial: 'article' %>
+    <%= render 'article' %>
   </div>
 
   <% if @article.title || (@article.domain && @article.domain.length > 0) %>
-    <%= render partial: 'footer' %>
+    <%= render 'footer' %>
   <% end %>
 <% end %>
