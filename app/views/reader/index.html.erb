@@ -18,7 +18,9 @@
   window.onload = reader;
 </script>
 
-<%= render 'loading_screen' %>
+<% unless Rails.env.development? %>
+  <%= render 'loading_screen' %>
+<% end %>
 
 <% if @article.errors.any? %>
   <h1>Hmmm Looks like <%= @article.errors.messages[:url].first %> </h1>
