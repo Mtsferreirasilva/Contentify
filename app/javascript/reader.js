@@ -4,6 +4,7 @@ import popover from './modules/popover';
 import fontSize from './modules/fontSize';
 import theme from './modules/theme';
 import removeLoadingPage from './modules/removeLoadingPage';
+import fab from './modules/fab';
 
 window.reader = function reader() {
   progressBar();
@@ -11,6 +12,7 @@ window.reader = function reader() {
   popover();
   fontSize();
   theme();
+  fab();
 
   removeLoadingPage();
 }
