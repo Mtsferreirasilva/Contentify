@@ -9,9 +9,4 @@
 
 import $ from 'jquery';
 
-// import searchIcon from '../searchIcon';
 import reader from '../reader';
-
-// $(document).ready(() => {
-//   searchIcon();
-// });
