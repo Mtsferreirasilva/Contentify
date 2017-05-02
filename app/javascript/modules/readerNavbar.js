@@ -46,7 +46,7 @@ export default function readerNavbar() {
   }
 
   $(window).on('scroll', windowEvent.bind($(window), $constrolsNode, $listNode, $fabNode, options));
-  $(window).on('resize', _.debounce(windowEvent.bind(null, $constrolsNode, $listNode, $fabNode, options), 10));
+  $(window).on('resize', _.debounce(windowEvent.bind($(window), $constrolsNode, $listNode, $fabNode, options), 10));
   $(window).mousemove(_.debounce(showAll.bind(null, $constrolsNode, $listNode, $fabNode), 50));
   $(window).trigger('scroll');
 }
