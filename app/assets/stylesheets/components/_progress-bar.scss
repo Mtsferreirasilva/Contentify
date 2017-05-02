@@ -5,10 +5,6 @@
   right: 0;
   overflow: hidden;
   z-index: 3;
-
-  @media screen and (max-width: $b-desktop) {
-    background-color: #FFF;
-  }
 }
 
 .progress-bar__level {
