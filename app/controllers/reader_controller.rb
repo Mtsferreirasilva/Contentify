@@ -6,6 +6,7 @@ class ReaderController < ApplicationController
   def index
     @url = reader_params[:url]
     @article = ArticleParser.new(@url)
+    @show_fab = Article.where(url: @url, user_id: current_user.id).any? if current_user
   end
 
   def save_article
