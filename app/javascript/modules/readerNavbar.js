@@ -45,9 +45,16 @@ export default function readerNavbar() {
     canBeFixedOffset = $leadImageNode.offset().top + ($leadImageNode.height() / 2);
   }
 
-  $(window).on('scroll', windowEvent.bind(null, $constrolsNode, $listNode, $fabNode, options));
+  $(window).on('scroll', windowEvent.bind($(window), $constrolsNode, $listNode, $fabNode, options));
   $(window).on('resize', _.debounce(windowEvent.bind(null, $constrolsNode, $listNode, $fabNode, options), 10));
+  $(window).mousemove(_.debounce(showAll.bind(null, $constrolsNode, $listNode, $fabNode), 50));
   $(window).trigger('scroll');
+}
+
+function showAll($constrolsNode, $listNode, $fabNode) {
+  $constrolsNode.removeClass(CONTROLS_CLASSES.SCROLLED);
+  $listNode.removeClass(CONTROLS_LIST_CLASSES.STATE.FADED);
+  $fabNode.removeClass(FAB_CLASSES.SCROLLED);
 }
 
 function windowEvent($constrolsNode, $listNode, $fabNode, options = {}) {
@@ -63,6 +70,14 @@ function windowEvent($constrolsNode, $listNode, $fabNode, options = {}) {
 
     handleMobile($constrolsNode, $fabNode);
   }
+
+  $(window).off('mousemove');
+
+  clearTimeout($.data(this, 'scrollTimer'));
+  $.data(this, 'scrollTimer', setTimeout(function() {
+    // do something for 250
+    $(window).mousemove(_.debounce(showAll.bind(null, $constrolsNode, $listNode, $fabNode), 50));
+  }, 250));
 }
 
 // DESKTOP ========================================================================
