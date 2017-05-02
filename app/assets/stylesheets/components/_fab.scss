@@ -23,11 +23,34 @@
   }
 
   &:active {
+    background-color: darken($blue, 1%);
     box-shadow: 0 0 4px 0 rgba(0,0,0,0.16), 0 4px 4px 2px rgba(0,0,0,0.26);
   }
 
   @media screen and (max-width: $b-tablet-landscape) {
     bottom: $spacing-loose;
+  }
+}
+
+.fab--collapsed {
+  animation-name: collapsed;
+  animation-duration: 400ms;
+  animation-delay: 100ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(1,.16,.56,.93);
+  transform-origin: center;
+}
+
+@keyframes collapsed {
+  0% {
+    transform: scale(1) rotate(0);
+  }
+  20% {
+    box-shadow: 0 0 0px 0 rgba(0,0,0,0.16), 0 0px 0px 0px rgba(0,0,0,0.26);
+    transform: scale(1.1) rotate(100deg);
+  }
+  100% {
+    transform: scale(0) rotate(720deg);
   }
 }
 
