@@ -2,6 +2,7 @@ import $ from 'jquery';
 
 const CLASSES = {
   BASE: 'fab',
+  COLLAPSED: 'fab--collapsed',
   MODAL_OPEN: 'fab-modal--open',
   MODAL_BUTTON: 'fab-modal__button'
 };
@@ -62,12 +63,13 @@ function performFabAction(fabRole) {
 }
 
 function savePage() {
-  const $fabForm = $(`.button_to`).closest('form');
+  const $fabNode = $(`.${CLASSES.BASE}`);
+  const $fabForm = $fabNode.closest('form');
 
   $.post("/reader/save_article", $fabForm.serialize())
     .done((data) => {
       console.log(data.status);
-      alert(data.status);
+      $fabNode.addClass(CLASSES.COLLAPSED);
     })
     .fail((data) => {
       alert(data.status);

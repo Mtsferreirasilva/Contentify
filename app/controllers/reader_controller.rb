@@ -18,7 +18,6 @@ class ReaderController < ApplicationController
         format.json { render json: { status: "created"  } }
       rescue ActiveRecord::RecordNotUnique => exception
         Rails.logger.info "Article already saved for this user: #{exception}..."
-        Bugsnag.notify(exception) if Rails.env.production?
       end
       format.json { render json: { status: "unprocessable_entity"  } }
     end
