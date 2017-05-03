@@ -52,6 +52,7 @@ module ContentifyMercury
       url.each_char do |char|
         validating_url += char
         break if ["jpg", "png", "gif"].include? validating_url[-3..-1]
+        break if "jpeg" == validating_url[-4..1]
       end
 
       img.attributes['src'].value = validating_url
