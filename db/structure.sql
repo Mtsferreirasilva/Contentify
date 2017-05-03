@@ -89,6 +89,39 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: settings; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE settings (
+    id integer NOT NULL,
+    user_id integer,
+    font_size character varying,
+    theme character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE settings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE settings_id_seq OWNED BY settings.id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -141,6 +174,13 @@ ALTER TABLE ONLY articles ALTER COLUMN id SET DEFAULT nextval('articles_id_seq':
 
 
 --
+-- Name: settings id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY settings ALTER COLUMN id SET DEFAULT nextval('settings_id_seq'::regclass);
+
+
+--
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -169,6 +209,14 @@ ALTER TABLE ONLY articles
 
 ALTER TABLE ONLY schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: settings settings_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY settings
+    ADD CONSTRAINT settings_pkey PRIMARY KEY (id);
 
 
 --
@@ -201,6 +249,13 @@ CREATE INDEX index_articles_on_user_id ON articles USING btree (user_id);
 
 
 --
+-- Name: index_settings_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_settings_on_user_id ON settings USING btree (user_id);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -230,6 +285,14 @@ ALTER TABLE ONLY articles
 
 
 --
+-- Name: settings fk_rails_5676777bf1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY settings
+    ADD CONSTRAINT fk_rails_5676777bf1 FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -239,6 +302,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170423193523'),
 ('20170429002250'),
 ('20170429045042'),
-('20170429050417');
+('20170429050417'),
+('20170503032048');
 
 
