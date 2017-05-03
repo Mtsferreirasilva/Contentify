@@ -7,6 +7,7 @@ const SPACING = 10;
 const CLASSES = {
   CONTAINER: 'popover__container',
   BUTTON_GROUP: 'popover__button-group',
+  BUTTON: 'popover__button',
   OPEN: 'popover__container--open'
 };
 
@@ -22,7 +23,7 @@ export default function popover() {
     const popover = $(activator).data().popoverOpen;
     const $popover = $(`[data-for='${popover}']`);
 
-    $(activator).click(handleClick.bind(this, $popover));
+    $(activator).on('click', handleClick.bind(null, $popover));
   });
 }
 
@@ -53,8 +54,17 @@ function closePopover($popoverContainerNodes, $container = false) {
   });
 }
 
-// $(window).click(() => {
-//   const $popoverContainerNodes = $(`.${CLASSES.CONTAINER}`);
-//
-//   closePopover($popoverContainerNodes);
-// });
+$(window).on('click', (e) => {
+  const $popoverContainerNodes = $(`.${CLASSES.CONTAINER}`);
+  const $popoverButtonNodes = $(`.${CLASSES.BUTTON}`);
+
+  let clickContainsControls = false;
+
+  $popoverButtonNodes.each((index, button) => {
+    if (button.contains(e.target)) { clickContainsControls = true; }
+  });
+
+  if (!clickContainsControls) {
+    closePopover($popoverContainerNodes);
+  }
+});

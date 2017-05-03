@@ -106,17 +106,17 @@ $progress-bar-size: 4px;
 .article-controls {
   display: flex;
   position: absolute;
-  height: 100%;
   top: 10px;
   left: 0;
   z-index: 2;
-  background-color: #fff;
+  background-color: transparent;
   transition: background-color, top $theme-transition-duration ease-in-out;
 
   @media screen and (max-width: $b-tablet-landscape) {
     position: fixed;
     height: auto;
     width: 100%;
+    background-color: #ffffff;
     top: 0;
     padding: ($spacing + $progress-bar-size) 32px $spacing;
     left: 0;

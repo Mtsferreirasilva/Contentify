@@ -15,7 +15,9 @@ $text-color: #EEEEEE;
   }
 
   .article-controls {
-    background-color: $background-color;
+    @media screen and (max-width: $b-tablet-landscape) {
+      background-color: $background-color;
+    }
   }
 
   figure {
