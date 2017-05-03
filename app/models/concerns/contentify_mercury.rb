@@ -48,6 +48,14 @@ module ContentifyMercury
       url = URI(truncate_link).scheme + "://" + URI(truncate_link).host + URI(truncate_link).path
       break unless url.scan(/#{url}/).any?
 
+      validating_url = ""
+      url.each_char do |char|
+        validating_url += char
+        break if ["jpg", "png", "gif"].include? validating_url[-3..-1]
+      end
+
+      img.attributes['src'].value = validating_url
+
       invalid_params = URI(truncate_link).query
       break if invalid_params.nil?
       valid_params = "?"
