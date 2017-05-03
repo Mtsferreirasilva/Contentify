@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 class ReaderController < ApplicationController
-  before_action :authenticate_user!, only: [:save_article]
   skip_before_action :verify_authenticity_token, only: [:save_article]
+  before_action :authenticate_user!, only: [:save_article]
+  before_action :set_setting
 
   def index
     @url = reader_params[:url]
@@ -28,5 +29,9 @@ class ReaderController < ApplicationController
 
   def reader_params
     params.permit(:url, :article)
+  end
+
+  def set_setting
+    @setting = Setting.find_by(user_id: current_user.id) if current_user
   end
 end

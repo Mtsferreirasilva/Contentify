@@ -20,6 +20,6 @@ class Users::SettingsController < ApplicationController
   end
 
   def set_setting
-    @setting = Setting.find(user_id: current_user.id)
+    @setting = Setting.find_by(user_id: current_user.id)
   end
 end
