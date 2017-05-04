@@ -1,6 +1,7 @@
 <div class="article__fab">
   <%= button_to save_article_reader_index_path,
     class: 'fab',
+    remote: true,
     data: {
       fab_role: 'save-page',
       fab_activate_modal: !user_signed_in?
