@@ -47,6 +47,8 @@ module ContentifyMercury
       truncate_link = img.attributes['src'].value
       validating_url = URI(truncate_link).scheme + "://" + URI(truncate_link).host + URI(truncate_link).path
 
+      break unless URI(truncate_link).query
+
       validating_url.each_char do |char|
         validating_url += char
         break if ["jpg", "png", "gif"].include? validating_url[-3..-1]
