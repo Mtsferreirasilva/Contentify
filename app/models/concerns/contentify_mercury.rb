@@ -45,28 +45,15 @@ module ContentifyMercury
   def fix_incorrect_image_path(html_doc)
     html_doc.children.xpath("//img").each do |img|
       truncate_link = img.attributes['src'].value
-      url = URI(truncate_link).scheme + "://" + URI(truncate_link).host + URI(truncate_link).path
-      break unless url.scan(/#{url}/).any?
+      validating_url = URI(truncate_link).scheme + "://" + URI(truncate_link).host + URI(truncate_link).path
 
-      validating_url = ""
-      url.each_char do |char|
+      validating_url.each_char do |char|
         validating_url += char
         break if ["jpg", "png", "gif"].include? validating_url[-3..-1]
         break if "jpeg" == validating_url[-4..1]
       end
 
       img.attributes['src'].value = validating_url
-
-      invalid_params = URI(truncate_link).query
-      break if invalid_params.nil?
-      valid_params = "?"
-
-      invalid_params.each_char do |char|
-        break if char == ","
-        valid_params += char
-      end
-
-      img.attributes['src'].value = url + valid_params
     end
   end
 end
