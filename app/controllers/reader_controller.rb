@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class ReaderController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:save_article]
   before_action :authenticate_user!, only: [:save_article]
   before_action :set_setting
 
