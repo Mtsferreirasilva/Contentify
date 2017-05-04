@@ -1,9 +1,11 @@
 class User < ApplicationRecord
+  has_one :setting
   has_many :articles, dependent: :destroy
   has_one :setting
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
+
   class << self
     def from_omniauth(auth)
       user = User.find_by(email: auth.info.email)

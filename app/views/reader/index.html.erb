@@ -14,8 +14,12 @@
 <% meta_tag :twitter_image, @article.lead_image_url if @article.lead_image_url %>
 <% meta_tag :twitter_url, "https://www.contentify.io/reader?url=#{@url}" %>
 
+<% content_for :body_class, "dark-theme" if @setting.dark? %>
+
 <script>
-  window.onload = reader;
+  window.onload = function() {
+    new Reader();
+  }
 </script>
 
 <% unless Rails.env.development? %>

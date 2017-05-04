@@ -6,13 +6,14 @@ import theme from './modules/theme';
 import removeLoadingPage from './modules/removeLoadingPage';
 import fab from './modules/fab';
 
-window.reader = function reader() {
-  progressBar();
-  readerNavbar();
-  popover();
-  fontSize();
-  theme();
-  fab();
-
-  removeLoadingPage();
+window.Reader = class Reader {
+  constructor() {
+    fontSize();
+    theme();
+    progressBar();
+    readerNavbar();
+    popover();
+    fab();
+    removeLoadingPage();
+  }
 }
