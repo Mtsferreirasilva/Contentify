@@ -2,12 +2,13 @@
   <%= button_to save_article_reader_index_path,
     class: 'fab',
     remote: true,
+    params: {
+      article: @article.article.to_json
+    },
     data: {
       fab_role: 'save-page',
       fab_activate_modal: !user_signed_in?
     } do %>
-    <%= hidden_field_tag 'url', @article.url %>
-    <%= hidden_field_tag 'article', @article.article.to_json %>
     <%= svg 'fab/ic_add.svg' %>
   <% end %>
   <% unless user_signed_in? %>
