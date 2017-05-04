@@ -17,11 +17,11 @@ class ReaderController < ApplicationController
     respond_to do |format|
       begin
         article.save
-        format.json { render json: { status: "created"  } }
+        format.json { render json: { status: "created" } }
       rescue ActiveRecord::RecordNotUnique => exception
         Rails.logger.info "Article already saved for this user: #{exception}..."
       end
-      format.json { render json: { status: "unprocessable_entity"  } }
+      format.json { render json: { status: "unprocessable_entity" } }
     end
   end
 
@@ -32,7 +32,7 @@ class ReaderController < ApplicationController
   end
 
   def set_setting
-    @setting = if user_signed_in?
+    @setting = if current_user
       Setting.find_by(user_id: current_user.id)
     else
       Setting.new(font_size: 'normal', theme: 'light')
