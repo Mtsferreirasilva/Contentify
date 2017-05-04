@@ -2,7 +2,7 @@
 class ReaderController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:save_article]
   before_action :authenticate_user!, only: [:save_article]
-  before_action :set_setting
+  before_action :set_setting, only: [:index]
 
   def index
     @url = reader_params[:url]
@@ -32,6 +32,10 @@ class ReaderController < ApplicationController
   end
 
   def set_setting
-    @setting = Setting.find_by(user_id: current_user.id) if current_user
+    @setting = if user_signed_in?
+      Setting.find_by(user_id: current_user.id)
+    else
+      Setting.new(font_size: 'normal', theme: 'light')
+    end
   end
 end
