@@ -13,7 +13,7 @@ class ReaderController < ApplicationController
 
   def save_article
     article_json = JSON.parse(reader_params[:article])
-    article = Article.new(url: reader_params[:url], content: article_json, user_id: current_user.id)
+    article = Article.new(url: article_json["url"], content: article_json, user_id: current_user.id)
 
     respond_to do |format|
       begin
