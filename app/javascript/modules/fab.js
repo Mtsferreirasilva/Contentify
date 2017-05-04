@@ -65,15 +65,22 @@ function performFabAction(fabRole) {
 function savePage() {
   const $fabNode = $(`.${CLASSES.BASE}`);
   const $fabForm = $fabNode.closest('form');
+  const authenticity_token = $fabForm.find('[name="authenticity_token"]').attr('value');
 
-  $.post("/reader/save_article", $fabForm.serialize())
-    .done((data) => {
-      console.log(data.status);
-      $fabNode.addClass(CLASSES.COLLAPSED);
-    })
-    .fail((data) => {
-      alert(data.status);
-    });
+  $.ajax({
+    type: "POST",
+    beforeSend: (request) => {
+      request.setRequestHeader("X-CSRF-Token", authenticity_token);
+    },
+    url: "/reader/save_article",
+    data: $fabForm.serialize()
+  }).done((data) => {
+    console.log(data.status);
+    $fabNode.addClass(CLASSES.COLLAPSED);
+  })
+  .fail((data) => {
+    alert(data.status);
+  });
 }
 
 function checkStatus(response) {
