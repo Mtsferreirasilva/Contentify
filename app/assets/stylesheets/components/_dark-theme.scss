@@ -5,6 +5,11 @@ $text-color: #EEEEEE;
   background-color: $background-color;
   color: $text-color;
 
+  .loading-screen {
+    background-color: $background-color;
+    color: $text-color;
+  }
+
   .fab,
   .progress-bar__level  {
     background-color: $yellow;

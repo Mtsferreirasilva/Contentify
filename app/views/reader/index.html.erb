@@ -22,7 +22,7 @@
   }
 </script>
 
-<% unless Rails.env.development? %>
+<% if Rails.env.development? %>
   <%= render 'loading_screen' %>
 <% end %>
 
