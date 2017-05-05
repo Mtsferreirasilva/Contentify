@@ -5,7 +5,7 @@ class Users::SettingsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @setting.update(setting_params)
+      if @setting.update(font_size: setting_params[:font_size], theme: setting_params[:theme])
         format.json { render json: { status: "created"  } }
       else
         format.json { render json: { status: "unprocessable_entity"  } }
@@ -16,7 +16,7 @@ class Users::SettingsController < ApplicationController
   private
 
   def setting_params
-    params.require(:setting).permit(:font_size, :theme)
+    params.permit(:font_size, :theme)
   end
 
   def set_setting

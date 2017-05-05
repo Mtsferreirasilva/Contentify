@@ -46,6 +46,10 @@ $text-color: #EEEEEE;
   }
 
   .fab {
+    &:active {
+      background-color: darken($yellow, 1%);
+    }
+
     polygon {
       fill: $black;
     }

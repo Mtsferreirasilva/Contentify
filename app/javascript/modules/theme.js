@@ -1,5 +1,7 @@
 import $ from 'jquery';
 
+import updateSettings from './updateSettings';
+
 const TARGET = 'body';
 
 const CLASSES = {
@@ -36,6 +38,7 @@ function updateTheme($targetNode, value) {
   } else {
     $targetNode.removeClass(CLASSES.DARK_THEME);
   }
+  updateSettings();
 }
 
 function clearAll() {

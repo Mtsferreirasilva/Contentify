@@ -75,7 +75,6 @@ function savePage() {
     url: "/reader/save_article",
     data: $fabForm.serialize()
   }).done((data) => {
-    console.log(data.status);
     $fabNode.addClass(CLASSES.COLLAPSED);
   })
   .fail((data) => {

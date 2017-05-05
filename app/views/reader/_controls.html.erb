@@ -1,6 +1,6 @@
 <nav class="article-controls">
   <% if user_signed_in? %>
-    <%= button_to settings_path, id: 'settings', class: 'form-hidden' do %>
+    <%= button_to settings_path, id: 'settings', class: 'form-hidden', remote: true do %>
       <%= hidden_field_tag 'font_size', @setting.font_size %>
       <%= hidden_field_tag 'theme', @setting.theme %>
     <% end %>
