@@ -1,5 +1,7 @@
 import $ from 'jquery';
 
+import updateSettings from './updateSettings';
+
 const CLASSES = {
   ARTICLE: 'article',
   SIZE: 'article--font-size-'
@@ -35,6 +37,7 @@ function updateArticleFontSize($articleNode, value) {
       return (className.match(/(^|\s)article--font-size-\S+/g) || []).join(' ');
     });
     $articleNode.addClass(`${CLASSES.SIZE}${value}`);
+    updateSettings();
   }
 }
 
