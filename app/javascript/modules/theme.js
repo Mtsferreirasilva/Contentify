@@ -32,10 +32,13 @@ function updateTheme($targetNode, value) {
   clearAll();
 
   $button.addClass(BUTTON_ACTIVE_CLASS);
+  $('meta[name=theme-color]').remove();
 
   if (value === 'dark') {
+    $('head').append('<meta name="theme-color" content="#222222">');
     $targetNode.addClass(CLASSES.DARK_THEME);
   } else {
+    $('head').append('<meta name="theme-color" content="#FFFFFF">');
     $targetNode.removeClass(CLASSES.DARK_THEME);
   }
   updateSettings();

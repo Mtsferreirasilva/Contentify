@@ -14,6 +14,7 @@
 <% meta_tag :twitter_image, @article.lead_image_url if @article.lead_image_url %>
 <% meta_tag :twitter_url, "https://www.contentify.io/reader?url=#{@url}" %>
 
+<% meta_tag :theme_color, "#222222" if @setting.dark? %>
 <% content_for :body_class, "dark-theme" if @setting.dark? %>
 
 <script>
