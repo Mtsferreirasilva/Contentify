@@ -10,14 +10,6 @@ $progress-bar-size: 4px;
   @media screen and (max-width: $b-desktop) {
     max-width: 800px;
   }
-
-  @media screen and (max-width: $b-tablet-landscape) {
-    padding: 0 $spacing-super-loose;
-  }
-
-  @media screen and (max-width: $b-tablet) {
-    padding: 0 $spacing-loose;
-  }
 }
 
 .article--font-size-small {
@@ -180,7 +172,7 @@ $progress-bar-size: 4px;
   }
 }
 
-.article-controls__list-item--actice {
+.article-controls__list-item--active {
   .article-controls__button path {
     fill: $black !important;
   }

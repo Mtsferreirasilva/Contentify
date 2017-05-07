@@ -31,6 +31,26 @@ $popover-size: 36px;
   opacity: 1;
 }
 
+.popover__container--vertical {
+  width: 36px;
+  height: 100%;
+
+  .popover__button-group {
+    flex-direction: column;
+    margin-left: 0;
+    margin-top: $popover-size;
+  }
+
+  .popover__button {
+    padding: $spacing-tight 0;
+    font-size: 0.8em;
+  }
+
+  .hidden {
+    display: none;
+  }
+}
+
 .popover__button-group {
   display: flex;
   align-items: center;

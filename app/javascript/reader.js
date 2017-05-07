@@ -12,7 +12,7 @@ window.Reader = class Reader {
     theme();
     progressBar();
     readerNavbar();
-    popover();
+    popover('article-controls__list-item');
     fab();
     removeLoadingPage();
   }

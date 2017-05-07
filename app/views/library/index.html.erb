@@ -1,19 +1,32 @@
-<h2>Library</h2>
+<%- title 'Library' %>
 
-<h3>Your saved articles: <%= current_user.articles_count %> </h3>
+<% meta_tag :theme_color, "#222222" if @setting.dark? %>
+<% content_for :body_class, "dark-theme" if @setting.dark? %>
 
-<% if @articles.any? %>
-  <% @articles.each do |article| %>
-    <p style="font-size: 14px;">
-      <%= article.title %>
-      <%= article.url %><br>
-      Min read: <%= article.min_read %><br>
-      <%= article.date_published %><br>
-      <%= article.domain %><br>
-      By <%= article.author %><br>
-      <%= image_tag article.lead_image_url if article.lead_image_url %><br>
-      <%= article.short_description %>
-    </p>
-    -------------------------
+<script>
+  window.onload = function() {
+    new Library();
+  }
+</script>
+
+<%= render '/shared/navbar' %>
+
+<div class="container">
+  <h1>Your articles (<%= current_user.articles_count %>) </h3>
+
+  <% if @articles.any? %>
+    <% @articles.each do |article| %>
+      <p style="font-size: 14px;">
+        <%= article.title %>
+        <%= article.url %><br>
+        Min read: <%= article.min_read %><br>
+        <%= article.date_published %><br>
+        <%= article.domain %><br>
+        By <%= article.author %><br>
+        <%= image_tag article.lead_image_url if article.lead_image_url %><br>
+        <%= article.short_description %>
+      </p>
+      -------------------------
+    <% end %>
   <% end %>
-<% end %>
+</div>
