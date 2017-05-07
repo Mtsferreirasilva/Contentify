@@ -10,3 +10,4 @@
 import $ from 'jquery';
 
 import reader from '../reader';
+import library from '../library';

@@ -11,12 +11,14 @@ const CLASSES = {
   OPEN: 'popover__container--open'
 };
 
-const CONTROLS_LIST_ITEM_CLASSES = {
-  BASE: 'article-controls__list-item',
-  ACTIVE: 'article-controls__list-item--actice'
-}
+let CONTROLS_LIST_ITEM_CLASSES = {};
 
-export default function popover() {
+export default function popover(controlsListBaseClass) {
+  CONTROLS_LIST_ITEM_CLASSES = {
+    BASE: controlsListBaseClass,
+    ACTIVE: `${controlsListBaseClass}--active`
+  };
+
   const $activatorNodes = $(`[data-${ACTIVATOR_DATA_ATT}]`);
 
   $activatorNodes.each((index, activator) => {

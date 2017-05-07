@@ -1,0 +1,50 @@
+<ul class="navbar__controls">
+  <%= button_to settings_path, id: 'settings', class: 'form-hidden', remote: true do %>
+    <%= hidden_field_tag 'font_size', @setting.font_size %>
+    <%= hidden_field_tag 'theme', @setting.theme %>
+  <% end %>
+  <li class="navbar__controls-item">
+    <div class="popover" data-for="text_format" id="font-size-controls">
+      <div class="popover__container popover__container--vertical">
+        <div class="popover__button-group">
+          <button class="popover__button <%= 'popover__button--active' if @setting.small? %>" data-value="small">
+            S<span class="hidden">mall</span>
+          </button>
+          <button class="popover__button <%= 'popover__button--active' if @setting.normal? %>" data-value="normal">
+            N<span class="hidden">ormal</span>
+          </button>
+          <button class="popover__button <%= 'popover__button--active' if @setting.large? %>" data-value="large">
+            L<span class="hidden">arge</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <button class="navbar__controls-button" data-popover-open="text_format">
+      <%= svg 'reader_menu/ic_type-size.svg' %>
+    </button>
+  </li>
+  <li class="navbar__controls-item">
+    <div class="popover" data-for="theme" id="theme-controls">
+      <div class="popover__container popover__container--vertical">
+        <div class="popover__button-group">
+          <button class="popover__button <%= 'popover__button--active' if @setting.light? %> theme-controls" data-value="light">
+            <div class="theme-controls__dot-container theme-controls__dot-container--light">
+              <span class="theme-controls__dot theme-controls__dot--blue"></span>
+            </div>
+          </button>
+          <button class="popover__button <%= 'popover__button--active' if @setting.dark? %> theme-controls" data-value="dark">
+            <div class="theme-controls__dot-container theme-controls__dot-container--dark">
+              <span class="theme-controls__dot theme-controls__dot--yellow"></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+    <button class="navbar__controls-button" data-popover-open="theme">
+      <%= svg 'reader_menu/ic_color.svg' %>
+    </button>
+  </li>
+  <li class="navbar__controls-item">
+    <%= image_tag current_user.image, class: 'navbar__controls-image' %>
+  </li>
+</ul>

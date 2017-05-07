@@ -46,6 +46,7 @@ $text-color: #EEEEEE;
     color: $yellow;
   }
 
+  input,
   .popover__button {
     color: $black;
   }
@@ -65,9 +66,19 @@ $text-color: #EEEEEE;
     background-color: $black-3;
   }
 
+  .navbar__controls-button,
   .article-controls__button {
     path {
       fill: $text-color;
+    }
+  }
+
+  .search__input {
+    color: #9B9B9B;
+
+    &:focus {
+      color: $black;
+      background-color: rgba(255, 255, 255, 1);
     }
   }
 }

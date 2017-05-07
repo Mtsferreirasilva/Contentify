@@ -1,0 +1,84 @@
+$image-size: 36px;
+
+.navbar {
+  padding: $spacing-loose 0;
+  border-bottom: 1px solid #CCCCCC;
+
+  @media screen and (max-width: $b-tablet) {
+    padding: $spacing 0;
+  }
+}
+
+.navbar__wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navbar__logo {
+  display: flex;
+  font-style: italic;
+  font-weight: 600;
+  margin-right: $spacing;
+
+  @media screen and (max-width: $b-tablet) {
+    width: 100vw;
+    font-size: 1.3em;
+    justify-content: center;
+    margin-bottom: $spacing;
+  }
+}
+
+.navbar__search {
+  flex: 1;
+}
+
+.navbar__controls {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  z-index: 2;
+}
+
+.navbar__controls-item {
+  display: flex;
+  margin: 0;
+  margin-left: $spacing;
+  padding: 0;
+  text-indent: 0;
+  list-style: none;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.navbar__controls-button {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  outline: none;
+
+  path {
+    fill: $black;
+    transition: fill $theme-transition-duration ease-in-out;
+  }
+
+  @media screen and (max-width: $b-tablet-landscape) {
+    margin-bottom: 0;
+  }
+}
+
+.navbar__controls-item--active {
+  .navbar__controls-button path {
+    fill: $black !important;
+  }
+}
+
+.navbar__controls-image {
+  margin: 0;
+  height: $image-size;
+  width: $image-size;
+  border-radius: 3px;
+}
