@@ -1,17 +1,17 @@
 <article class="article article--font-size-<%= @setting.font_size %>">
   <h1 class="article__title"><%= @article.title %></h1>
   <div class="article__details">
-    <% if @article.author && @article.author.length > 0 %>
-      <span>By <%= @article.author %></span>
-    <% end %>
     <% if @article.domain && @article.domain.length > 0 %>
       <span><%= @article.domain %></span>
+    <% end %>
+    <% if @article.min_read %>
+      <span><%= @article.min_read %> min</span>
     <% end %>
     <% if @article.date_published %>
       <span><%= @article.date_published %></span>
     <% end %>
-    <% if @article.min_read %>
-      <span><%= @article.min_read %> min read</span>
+    <% if @article.author && @article.author.length > 0 %>
+      <span><%= @article.author %></span>
     <% end %>
   </div>
   <% if @article.lead_image_url %>

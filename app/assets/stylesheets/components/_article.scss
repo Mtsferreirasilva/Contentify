@@ -9,6 +9,7 @@ $progress-bar-size: 4px;
 
   @media screen and (max-width: $b-desktop) {
     max-width: 800px;
+    padding: 0;
   }
 }
 
