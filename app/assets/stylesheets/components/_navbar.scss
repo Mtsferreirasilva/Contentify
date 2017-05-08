@@ -6,6 +6,7 @@ $image-size: 36px;
 
   @media screen and (max-width: $b-tablet) {
     padding: $spacing 0;
+    padding-top: $spacing-tight;
   }
 }
 
@@ -25,6 +26,7 @@ $image-size: 36px;
     width: 100vw;
     font-size: 1.3em;
     justify-content: center;
+    margin-right: 0;
     margin-bottom: $spacing;
   }
 }

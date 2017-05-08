@@ -15,18 +15,42 @@
   <h1>Your articles (<%= current_user.articles_count %>) </h3>
 
   <% if @articles.any? %>
-    <% @articles.each do |article| %>
-      <p style="font-size: 14px;">
-        <%= article.title %>
-        <%= article.url %><br>
-        Min read: <%= article.min_read %><br>
-        <%= article.date_published %><br>
-        <%= article.domain %><br>
-        By <%= article.author %><br>
-        <%= image_tag article.lead_image_url if article.lead_image_url %><br>
-        <%= article.short_description %>
-      </p>
-      -------------------------
-    <% end %>
+    <ul class="pages-list">
+      <% @articles.each do |article| %>
+        <li class="pages-list__item">
+          <%= link_to reader_index_path(url: article.url), class: 'pages-list__link' do %>
+            <div class="pages-list__wrapper">
+              <div class="pages-list__content">
+                <div class="pages-list__title">
+                  <h4>
+                    <%= article.title %>
+                  </h4>
+                </div>
+                <div class="pages-list__details">
+                  <% if article.domain && article.domain.length > 0 %>
+                    <span><%= article.domain %></span>
+                  <% end %>
+                  <% if article.min_read %>
+                    <span><%= article.min_read %> min</span>
+                  <% end %>
+                  <% if article.date_published %>
+                    <span><%= article.date_published %></span>
+                  <% end %>
+                  <% if article.author && article.author.length > 0 %>
+                    <span><%= article.author %></span>
+                  <% end %>
+                </div>
+                <div class="pages-list__text">
+                  <p><%= article.short_description %></p>
+                </div>
+              </div>
+              <div class="pages-list__image">
+                <%= image_tag article.lead_image_url if article.lead_image_url %><br>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   <% end %>
 </div>

@@ -2,10 +2,6 @@
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, a, p, span, blockquote, caption {
-  transition: color $theme-transition-duration ease-in-out;
-}
-
 body {
   font-size: 24px;
   font-family: TiemposText, sans-serif;
@@ -26,6 +22,10 @@ body {
 h1 {
   font-size: 2em;
   font-weight: 500;
+
+  @media screen and (max-width: $b-tablet) {
+    font-size: 1.6em;
+  }
 }
 
 h2, h3 {
