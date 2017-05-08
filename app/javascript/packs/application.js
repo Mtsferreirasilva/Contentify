@@ -11,3 +11,8 @@ import $ from 'jquery';
 
 import reader from '../reader';
 import library from '../library';
+
+$(document).on('turbolinks:load', function() {
+  window.onload = null;
+  console.log('load');
+});

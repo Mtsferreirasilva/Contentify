@@ -3,10 +3,10 @@
 <% meta_tag :theme_color, "#222222" if @setting.dark? %>
 <% content_for :body_class, "dark-theme" if @setting.dark? %>
 
-<script>
-  window.onload = function() {
+<script data-no-turbolink>
+  $(document).on('turbolinks:load', function() {
     new Library();
-  }
+  });
 </script>
 
 <%= render '/shared/navbar' %>
