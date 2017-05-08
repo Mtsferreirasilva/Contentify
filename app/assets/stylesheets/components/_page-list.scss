@@ -56,8 +56,11 @@
 
 .pages-list__title {
   font-size: 1em;
-  margin-top: 0;
   margin-bottom: $spacing + $spacing-tight;
+
+  h4 {
+    margin-top: 0;
+  }
 }
 
 .pages-list__title__remove {
