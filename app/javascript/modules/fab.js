@@ -15,8 +15,8 @@ export default function fab() {
   const $fabNode = $(`.${CLASSES.BASE}`);
   const $fabModalButton = $(`.${CLASSES.MODAL_BUTTON}`);
 
-  $fabNode.click(handleClick.bind($fabNode));
-  $fabModalButton.click(handleClose.bind($fabNode));
+  $fabNode.on('click', handleClick.bind($fabNode));
+  $fabModalButton.on('click', handleClose.bind($fabNode));
 }
 
 function handleClose() {

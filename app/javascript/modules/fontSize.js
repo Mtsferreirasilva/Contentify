@@ -21,7 +21,13 @@ export default function fontSize() {
     const $button = $(button);
     const value = $button.data('value');
 
-    $button.click(updateArticleFontSize.bind($button, $articleNode, value));
+    $button.on('click', updateArticleFontSize.bind($button, $articleNode, value));
+  });
+
+  $(document).on('turbolinks:request-start', function() {
+    $buttons.each((index, button) => {
+      $(button).off('click');
+    });
   });
 }
 

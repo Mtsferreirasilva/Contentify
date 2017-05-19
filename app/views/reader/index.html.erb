@@ -18,8 +18,8 @@
 <% content_for :body_class, "dark-theme" if @setting.dark? %>
 
 <script>
-  $(document).on('turbolinks:load', function() {
-    new Reader();
+  Page(function() {
+    new Contentify.Reader();
   });
 </script>
 

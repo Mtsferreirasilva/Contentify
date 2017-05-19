@@ -15,6 +15,10 @@ export default function progressBar() {
 
   $(window).on('scroll', windowEvent.bind(null, $progressBarNode));
   $(window).on('resize', windowEvent.bind(null, $progressBarNode));
+
+  $(document).on('turbolinks:request-start', function() {
+    $(window).off('scroll resize');
+  });
 }
 
 function windowEvent($progressBarNode) {
