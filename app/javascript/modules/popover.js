@@ -27,6 +27,12 @@ export default function popover(controlsListBaseClass) {
 
     $(activator).on('click', handleClick.bind(null, $popover));
   });
+
+  $(document).on('turbolinks:request-start', function() {
+    $activatorNodes.each((index, activator) => {
+      $(activator).off('click');
+    });
+  });
 }
 
 function handleClick($popover) {

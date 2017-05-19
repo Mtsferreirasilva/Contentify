@@ -6,7 +6,7 @@ import theme from './modules/theme';
 import removeLoadingPage from './modules/removeLoadingPage';
 import fab from './modules/fab';
 
-window.Reader = class Reader {
+window.Contentify.Reader = class Reader {
   constructor() {
     fontSize();
     theme();
