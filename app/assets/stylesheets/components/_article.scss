@@ -36,12 +36,11 @@ $progress-bar-size: 4px;
   display: flex;
   flex-wrap: wrap;
   color: $black-3;
-  margin-bottom: $spacing-loose * 2;
+  margin-bottom: $spacing-loose;
   text-transform: uppercase;
   line-height: 1;
-  letter-spacing: -0.1px;
-  font-size: 0.8em;
-  font-weight: 500;
+  font-size: em(22px);
+  font-weight: 300;
   transition: color $theme-transition-duration ease-in-out;
 
   span {

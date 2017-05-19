@@ -55,8 +55,8 @@
 }
 
 .pages-list__title {
-  font-size: 1em;
-  margin-bottom: $spacing + $spacing-tight;
+  font-size: em(24px);
+  margin-bottom: $spacing-tight;
 
   h4 {
     margin-top: 0;
@@ -87,10 +87,10 @@
   display: flex;
   flex-wrap: wrap;
   color: $black-3;
-  margin-bottom: 10px;
+  margin-bottom: $spacing-tight;
   line-height: 1;
   letter-spacing: -0.1px;
-  font-size: 0.667em;
+  font-size: em(16px);
   font-weight: 500;
 
   span {
@@ -108,7 +108,7 @@
 }
 
 .pages-list__text {
-  font-size: 0.667em;
+  font-size: em(16px);
   max-height: 137px;
   overflow: hidden;
   position: relative;
@@ -126,7 +126,8 @@
   }
 
   p {
-   margin-bottom: 0;
+    line-height: 24px;
+    margin-bottom: 0;
   }
 }
 

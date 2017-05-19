@@ -3,7 +3,7 @@
 }
 
 body {
-  font-size: 24px;
+  font-size: $desktop-base-font-size;
   font-family: TiemposText, sans-serif;
   font-weight: 400;
   color: $black;
@@ -15,24 +15,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   @media screen and (max-width: $b-mobile) {
-    font-size: 18px;
+    font-size: $mobile-base-font-size;
   }
 }
 
 h1 {
-  font-size: 2em;
+  font-size: em(40px);
   font-weight: 500;
 
   @media screen and (max-width: $b-tablet) {
-    font-size: 1.6em;
+    font-size: em(30px);
   }
 }
 
 h2, h3 {
   font-size: 1.4em;
   font-weight: 500;
-  margin-top: $spacing-loose * 2;
-  margin-bottom: $spacing-loose;
+  margin-top: em($spacing-loose);
+  margin-bottom: em($spacing);
   letter-spacing: -0.1px;
   line-height: 1.5;
 
@@ -66,8 +66,8 @@ br {
 
 p {
   font-weight: 400;
-  line-height: 1.5;
-  margin: $spacing-super-loose 0;
+  line-height: 30px;
+  margin: em(30px) 0;
 
   br {
     display: inline-block;
@@ -75,10 +75,6 @@ p {
 
   &:first-child {
     margin-top: 0;
-  }
-
-  @media screen and (max-width: $b-tablet) {
-    margin: $spacing-loose 0;
   }
 }
 
@@ -90,8 +86,9 @@ img {
 
 figure {
   margin: 0;
+  margin-bottom: $spacing;
   text-align: center;
-  font-size: 0.8em;
+  font-size: 0.9em;
   color: $black-3;
 
   span {
@@ -129,7 +126,7 @@ pre {
   background-color: #f3f3f3;
   padding: $spacing-loose;
   white-space: pre-wrap;
-  font-size: 0.8em;
+  font-size: 0.9em;
   margin: 0;
 
   br {
@@ -161,12 +158,16 @@ li {
   margin-bottom: $spacing-loose;
   list-style-type: disc;
   list-style-position: outside;
-  padding-left: $spacing-loose;
-  margin-left: $spacing-loose;
+  padding-left: 1em;
+  margin-left: 1em;
   text-indent: -2em;
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  p {
+    display: inline;
   }
 }
 

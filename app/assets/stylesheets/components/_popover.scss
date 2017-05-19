@@ -43,7 +43,7 @@ $popover-size: 36px;
 
   .popover__button {
     padding: $spacing-tight 0;
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
 
   .hidden {
@@ -71,7 +71,7 @@ $popover-size: 36px;
   background-color: transparent;
   padding: 0 $spacing-tight;
   outline: none;
-  font-size: 0.667em;
+  font-size: 15px;
   font-weight: 500;
   opacity: 0.5;
   transition: color, opacity $theme-transition-duration ease-in-out;
@@ -82,7 +82,7 @@ $popover-size: 36px;
 
   @media screen and (max-width: $b-tablet-landscape) {
     padding: $spacing-tight 0;
-    font-size: 0.8em;
+    font-size: 0.9em;
 
     .hidden {
       display: none;
