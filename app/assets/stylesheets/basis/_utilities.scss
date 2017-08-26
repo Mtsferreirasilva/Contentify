@@ -1,0 +1,4 @@
+@function em($size) {
+  $remSize: $size / $desktop-base-font-size;
+  @return #{$remSize}em;
+}
