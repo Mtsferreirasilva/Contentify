@@ -7,7 +7,7 @@
   <% end %>
   <ul class="article-controls__list">
     <li class="article-controls__list-item">
-      <%= link_to library_index_path, class: 'article-controls__button' do %>
+      <%= link_to @article.url, class: 'article-controls__button' do %>
         <%= svg 'reader_menu/ic_arrow-back.svg' %>
       <% end %>
     </li>
@@ -52,10 +52,12 @@
         <%= svg 'reader_menu/ic_color.svg' %>
       </button>
     </li>
-    <li class="article-controls__list-item">
-      <button class="article-controls__button">
-        <%= svg 'reader_menu/ic_storymode.svg' %>
-      </button>
-    </li>
+    <% if @show_feature %>
+      <li class="article-controls__list-item">
+        <button class="article-controls__button">
+          <%= svg 'reader_menu/ic_storymode.svg' %>
+        </button>
+      </li>
+    <% end %>
   </ul>
 </nav>
