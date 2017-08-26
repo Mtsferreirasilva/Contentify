@@ -3,5 +3,6 @@ export function setSettings(obj) {
 }
 
 export function getSettings() {
-  return JSON.parse(localStorage.getItem('contentify'));
+  const storedItem = localStorage.getItem('contentify');
+  return storedItem ? JSON.parse(storedItem) : {};
 }
