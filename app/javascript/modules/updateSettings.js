@@ -14,6 +14,7 @@ export default function updateSettings() {
   if (!document.body.contains(document.getElementById(SETTINGS.ID))) {
     updateLocalStorage();
   } else {
+    updateLocalStorage();
     const $settingsNode = $(`#${SETTINGS.ID}`);
     const $settingsForm = $settingsNode.parent();
 

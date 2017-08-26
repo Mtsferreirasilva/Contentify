@@ -1,4 +1,5 @@
 import { getSettings } from './lib/localStorage';
+import { isUserSignedIn } from './lib/user';
 import progressBar from './modules/progressBar';
 import readerNavbar from './modules/readerNavbar';
 import popover from './modules/popover';
@@ -18,7 +19,9 @@ window.Contentify.Reader = class Reader {
     readerNavbar();
     popover(ARTICLE_CONTROLS_LIST_ITEM_CLASS);
     fab();
-    this.updateSettingsFromLocalStorage();
+    if (!isUserSignedIn()) {
+      this.updateSettingsFromLocalStorage();
+    }
     removeLoadingPage();
   }
 
