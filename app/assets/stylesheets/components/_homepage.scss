@@ -1,3 +1,137 @@
-// Place all the styles related to the Homepage controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$avata-image-size: 40px;
+$section-padding: 150px;
+$section-padding-mobile: 100px;
+$footer-padding: 200px;
+$footer-padding-mobile: 100px;
+$badge-list-item-max-width: 300px;
+
+.home-nav {
+  display: flex;
+  align-items: center;
+  margin: $spacing-loose 0;
+}
+
+.home-nav__brand {
+  flex: 1;
+  font-weight: 600;
+  font-style: italic;
+  font-size: em(26px);
+}
+
+.home-nav__list {
+  display: flex;
+  margin: 0;
+}
+
+.home-nav__list-item {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-position: unset;
+  list-style: none;
+  margin-left: $spacing-loose;
+  padding-left: $spacing-loose;
+
+}
+
+.home-nav__list--with-border {
+  .home-nav__list-item {
+    border-left: 1px solid #d5d5d5;
+
+    &:first-child {
+      border-left: none;
+    }
+  }
+}
+
+.home-user-info-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.home-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: em(18px);
+  margin-right: $spacing-tight;
+}
+
+.home-user-info__avatar {
+  width: $avata-image-size;
+  height: $avata-image-size;
+  margin: 0;
+  margin-right: $spacing-tight;
+}
+
+.home-user-info__name {
+  font-weight: 500;
+}
+
+.home-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $section-padding 0;
+}
+
+.home-title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: $spacing-loose;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 2.5em;
+
+  @media screen and (max-width: $b-tablet) {
+    font-size: 1.8em;
+  }
+}
+
+.home-text {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  max-width: 600px;
+  font-size: em(32px);
+  line-height: em(28px);
+
+  @media screen and (max-width: $b-tablet) {
+    font-size: em(24px);
+    padding: 0 $spacing;
+  }
+}
+
+.home-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $footer-padding 0;
+
+  @media screen and (max-width: $b-tablet) {
+    padding: $footer-padding-mobile 0;
+  }
+}
+
+.home-badge-list {
+  display: flex;
+  justify-content: center;
+  margin-top: $spacing-loose;
+  margin-bottom: 0;
+}
+
+.home-badge-list__item {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-position: unset;
+  list-style: none;
+  max-width: $badge-list-item-max-width;
+
+  img {
+    display: flex;
+    margin: 0;
+  }
+}
