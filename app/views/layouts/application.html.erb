@@ -25,6 +25,13 @@
     <meta name="twitter:description" content="<%= yield_meta_tag(:twitter_description, description) %>">
     <meta name="twitter:image" content="<%= yield_meta_tag(:twitter_image, asset_url('fb/icon200.png')) %>">
 
+    <link rel="icon" sizes="192x192" href="<%= asset_path 'contentify192x192.png' %>">
+    <link rel="icon" sizes="128x128" href="<%= asset_path 'contentify128x128.png' %>">
+    <link rel="apple-touch-icon" sizes="128x128" href="<%= asset_path 'contentify128x128.png' %>">
+    <link rel="apple-touch-icon-precomposed" sizes="128x128" href="<%= asset_path 'contentify128x128.png' %>">
+
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+
     <%= favicon_link_tag 'favicon.png', type: 'image/png' %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
