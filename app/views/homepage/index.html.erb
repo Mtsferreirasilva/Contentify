@@ -8,12 +8,12 @@
 
 <div class="container">
   <nav class="home-nav">
-    <div class="home-nav__brand">Contentify</div>
+    <%= link_to "Contentify", @brand_link, class: 'home-nav__brand link link--plain' %>
     <ul class="home-nav__list <%= user_signed_in? ? 'home-nav__list--with-border' : '' %>">
       <% if !user_signed_in? && @show_feature %>
         <li class="home-nav__list-item">
           <!-- <%= link_to "Continue with Facebook", user_facebook_omniauth_authorize_path %> -->
-          <%= link_to "Continue with Google", user_google_oauth2_omniauth_authorize_path, class: 'link link--plain' %>
+          <%= link_to "Continue with Google", user_google_oauth2_omniauth_authorize_path, class: 'link link--link' %>
         </li>
       <% end %>
       <li class="home-nav__list-item">
@@ -24,7 +24,7 @@
           <div class="home-user-info-wrapper">
             <div class="home-user-info">
               <span class="home-user-info__name"><%= current_user.name %> </span>
-              <%= link_to "Sign out", destroy_user_session_path, class: 'link link--plain' %>
+              <%= link_to "Sign out", destroy_user_session_path, class: 'link link--link' %>
             </div>
             <%= image_tag current_user.image, class: 'home-user-info__avatar' %>
           </div>

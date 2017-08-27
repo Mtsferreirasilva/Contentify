@@ -28,6 +28,16 @@ $link-background-hover: #f8f8f8;
 
   &:hover,
   &:focus {
+    background-color: $link-background;
+  }
+}
+
+.link--link {
+  text-decoration: none;
+  padding: 0;
+
+  &:hover,
+  &:focus {
     text-decoration: underline;
     background-color: $link-background;
   }
