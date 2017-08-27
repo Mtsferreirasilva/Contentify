@@ -1,14 +1,50 @@
-<% if user_signed_in? %>
-  <%= image_tag current_user.image, width: '50' %>
-  Signed in as <strong><%= current_user.name %></strong>!
-  <%= link_to "Sign out", destroy_user_session_path %>
-<% else %>
-  <ul>
-      <li>
-        <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
+<% content_for :head do -%>
+  <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:300' %>
+<% end -%>
+
+<script>
+  Page();
+</script>
+
+<div class="container">
+  <nav class="home-nav">
+    <div class="home-nav__brand">Contentify</div>
+    <ul class="home-nav__list <%= user_signed_in? ? 'home-nav__list--with-border' : '' %>">
+      <% if !user_signed_in? && @show_feature %>
+        <li class="home-nav__list-item">
+          <!-- <%= link_to "Continue with Facebook", user_facebook_omniauth_authorize_path %> -->
+          <%= link_to "Continue with Google", user_google_oauth2_omniauth_authorize_path, class: 'link link--plain' %>
+        </li>
+      <% end %>
+      <li class="home-nav__list-item">
+        <%= link_to 'Get extension', @extension_url, class: 'link', target: '_blank' %>
       </li>
-      <li>
-        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+      <% if user_signed_in? && @show_feature %>
+        <li class="home-nav__list-item">
+          <div class="home-user-info-wrapper">
+            <div class="home-user-info">
+              <span class="home-user-info__name"><%= current_user.name %> </span>
+              <%= link_to "Sign out", destroy_user_session_path, class: 'link link--plain' %>
+            </div>
+            <%= image_tag current_user.image, class: 'home-user-info__avatar' %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <section class="home-section">
+    <h1 class="home-title">Get rid of clutter</h1>
+    <p class="home-text">Contentify transforms articles you read into elegant reading experiences</p>
+  </section>
+
+  <footer class="home-footer">
+    <h1 class="home-title">Accessible, Anytime, Anywhere.</h1>
+    <p class="home-text">Only one click away with the extension</p>
+    <ul class="home-badge-list">
+      <li class="home-badge-list__item">
+        <%= link_to image_tag('ChromeWebStore_badge.png'), @extension_url, class: 'link link--large', target: '_blank' %>
       </li>
-  </ul>
-<% end %>
+    </ul>
+  </section>
+</div>
