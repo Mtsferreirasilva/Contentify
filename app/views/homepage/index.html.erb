@@ -23,7 +23,7 @@
         <li class="home-nav__list-item">
           <div class="home-user-info-wrapper">
             <div class="home-user-info">
-              <span class="home-user-info__name"><%= current_user.name %> </span>
+              <%= link_to current_user.name, library_index_path, class: 'home-user-info__name link link--link' %>
               <%= link_to "Sign out", destroy_user_session_path, class: 'link link--link' %>
             </div>
             <%= image_tag current_user.image, class: 'home-user-info__avatar' %>
