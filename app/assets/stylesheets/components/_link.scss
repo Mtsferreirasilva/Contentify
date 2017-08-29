@@ -1,12 +1,11 @@
 $link-background: transparent;
-$link-background-hover: #f8f8f8;
+$link-background-hover: #f5f5f5;
 
 .link {
   display: inline-block;
   padding: $spacing-tight;
   background-color: $link-background;
-  border-radius: 5px;
-  font-size: em(18px);
+  border-radius: 3px;
   color: $black;
   text-decoration: none;
 

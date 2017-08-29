@@ -4,6 +4,7 @@ $section-padding-mobile: 100px;
 $footer-padding: 200px;
 $footer-padding-mobile: 100px;
 $badge-list-item-max-width: 300px;
+$facebook-color: #4065B4;
 
 .home-nav {
   display: flex;
@@ -26,19 +27,20 @@ $badge-list-item-max-width: 300px;
 .home-nav__list-item {
   display: flex;
   align-items: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: em(16px);
   margin: 0;
   padding: 0;
   text-indent: 0;
   list-style-position: unset;
   list-style: none;
-  margin-left: $spacing-loose;
-  padding-left: $spacing-loose;
-
+  margin-left: $spacing;
 }
 
 .home-nav__list--with-border {
   .home-nav__list-item {
     border-left: 1px solid #d5d5d5;
+    padding-left: $spacing;
 
     &:first-child {
       border-left: none;
@@ -93,6 +95,7 @@ $badge-list-item-max-width: 300px;
 .home-text {
   text-align: center;
   font-family: 'Roboto', sans-serif;
+  font-weight: 300;
   margin: 0;
   max-width: 600px;
   font-size: em(32px);
@@ -133,5 +136,24 @@ $badge-list-item-max-width: 300px;
   img {
     display: flex;
     margin: 0;
+  }
+}
+
+.home-facebook-link {
+  display: flex;
+  align-items: center;
+  background-color: $facebook-color;
+  padding: 8px $spacing;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background $theme-transition-duration ease-in-out;
+
+  svg {
+    margin-right: $spacing;
+  }
+
+  &:hover {
+    background-color: darken($facebook-color, 4%);
   }
 }
