@@ -1,5 +1,5 @@
 <% content_for :head do -%>
-  <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:300' %>
+  <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:300,400' %>
 <% end -%>
 
 <script>
@@ -12,8 +12,10 @@
     <ul class="home-nav__list <%= user_signed_in? ? 'home-nav__list--with-border' : '' %>">
       <% if !user_signed_in? && @show_feature %>
         <li class="home-nav__list-item">
-          <!-- <%= link_to "Continue with Facebook", user_facebook_omniauth_authorize_path %> -->
-          <%= link_to "Continue with Google", user_google_oauth2_omniauth_authorize_path, class: 'link link--link' %>
+          <!-- TODO change to user_facebook_omniauth_authorize_path -->
+          <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'home-facebook-link' do %>
+            <%= svg 'facebook_logo.svg' %> Continue with Facebook
+          <% end %>
         </li>
       <% end %>
       <li class="home-nav__list-item">
