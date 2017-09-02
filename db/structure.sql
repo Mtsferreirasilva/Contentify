@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.2
--- Dumped by pg_dump version 9.6.2
+-- Dumped from database version 9.6.3
+-- Dumped by pg_dump version 9.6.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -77,6 +77,43 @@ CREATE SEQUENCE articles_id_seq
 --
 
 ALTER SEQUENCE articles_id_seq OWNED BY articles.id;
+
+
+--
+-- Name: login_providers; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE login_providers (
+    id integer NOT NULL,
+    user_id integer,
+    name character varying,
+    uid character varying,
+    access_token character varying,
+    access_token_secret character varying,
+    refresh_token character varying,
+    expires_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: login_providers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE login_providers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: login_providers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE login_providers_id_seq OWNED BY login_providers.id;
 
 
 --
@@ -174,6 +211,13 @@ ALTER TABLE ONLY articles ALTER COLUMN id SET DEFAULT nextval('articles_id_seq':
 
 
 --
+-- Name: login_providers id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY login_providers ALTER COLUMN id SET DEFAULT nextval('login_providers_id_seq'::regclass);
+
+
+--
 -- Name: settings id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -201,6 +245,14 @@ ALTER TABLE ONLY ar_internal_metadata
 
 ALTER TABLE ONLY articles
     ADD CONSTRAINT articles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: login_providers login_providers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY login_providers
+    ADD CONSTRAINT login_providers_pkey PRIMARY KEY (id);
 
 
 --
@@ -249,6 +301,13 @@ CREATE INDEX index_articles_on_user_id ON articles USING btree (user_id);
 
 
 --
+-- Name: index_login_providers_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_login_providers_on_user_id ON login_providers USING btree (user_id);
+
+
+--
 -- Name: index_settings_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -293,6 +352,14 @@ ALTER TABLE ONLY settings
 
 
 --
+-- Name: login_providers fk_rails_ec5ee0fc5a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY login_providers
+    ADD CONSTRAINT fk_rails_ec5ee0fc5a FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -303,6 +370,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170429002250'),
 ('20170429045042'),
 ('20170429050417'),
-('20170503032048');
+('20170503032048'),
+('20170902025345');
 
 

@@ -12,8 +12,7 @@
     <ul class="home-nav__list <%= user_signed_in? ? 'home-nav__list--with-border' : '' %>">
       <% if !user_signed_in? && @show_feature %>
         <li class="home-nav__list-item">
-          <!-- TODO change to user_facebook_omniauth_authorize_path -->
-          <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'home-facebook-link' do %>
+          <%= link_to user_facebook_omniauth_authorize_path, class: 'home-facebook-link' do %>
             <%= svg 'facebook_logo.svg' %> Continue with Facebook
           <% end %>
         </li>
