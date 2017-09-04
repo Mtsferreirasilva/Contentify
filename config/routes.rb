@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users
+    resources :articles
+    resources :settings
+
+    root to: "users#index"
+  end
+
   root to: 'homepage#index'
 
   match '/500', to: 'errors#internal_server_error', via: :all
