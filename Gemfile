@@ -16,6 +16,7 @@ gem 'httparty', '~> 0.14.0'
 gem 'dotenv-rails', '~> 2.2'
 gem 'devise', '~> 4.2'
 gem 'omniauth-facebook', '~> 4.0'
+gem 'activerecord-typedstore'
 
 gem 'turbolinks', '~> 5'
 gem 'webpacker', github: 'rails/webpacker'

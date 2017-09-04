@@ -180,7 +180,8 @@ CREATE TABLE users (
     image character varying,
     articles_count integer DEFAULT 0 NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    settings json
 );
 
 
@@ -371,6 +372,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170429045042'),
 ('20170429050417'),
 ('20170503032048'),
-('20170902025345');
+('20170902025345'),
+('20170904204338');
 
 

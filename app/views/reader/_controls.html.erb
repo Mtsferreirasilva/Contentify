@@ -1,8 +1,8 @@
 <nav class="article-controls">
   <% if user_signed_in? %>
     <%= button_to settings_path, id: 'settings', class: 'form-hidden', remote: true do %>
-      <%= hidden_field_tag 'font_size', @setting.font_size %>
-      <%= hidden_field_tag 'theme', @setting.theme %>
+      <%= hidden_field_tag 'font_size', @user.settings[:font_size] %>
+      <%= hidden_field_tag 'theme', @user.settings[:theme] %>
     <% end %>
   <% end %>
   <ul class="article-controls__list">
@@ -15,13 +15,13 @@
       <div class="popover" data-for="text_format" id="font-size-controls">
         <div class="popover__container">
           <div class="popover__button-group">
-            <button class="popover__button <%= 'popover__button--active' if @setting.small? %>" data-value="small">
+            <button class="popover__button <%= 'popover__button--active' if @user.settings[:font_size] == "small" %>" data-value="small">
               S<span class="hidden">mall</span>
             </button>
-            <button class="popover__button <%= 'popover__button--active' if @setting.normal? %>" data-value="normal">
+            <button class="popover__button <%= 'popover__button--active' if @user.settings[:font_size] == "normal" %>" data-value="normal">
               N<span class="hidden">ormal</span>
             </button>
-            <button class="popover__button <%= 'popover__button--active' if @setting.large? %>" data-value="large">
+            <button class="popover__button <%= 'popover__button--active' if @user.settings[:font_size] == "large" %>" data-value="large">
               L<span class="hidden">arge</span>
             </button>
           </div>
@@ -35,12 +35,12 @@
       <div class="popover" data-for="theme" id="theme-controls">
         <div class="popover__container">
           <div class="popover__button-group">
-            <button class="popover__button <%= 'popover__button--active' if @setting.light? %> theme-controls" data-value="light">
+            <button class="popover__button <%= 'popover__button--active' if @user.settings[:theme] == "light" %> theme-controls" data-value="light">
               <div class="theme-controls__dot-container theme-controls__dot-container--light">
                 <span class="theme-controls__dot theme-controls__dot--blue"></span>
               </div>
             </button>
-            <button class="popover__button <%= 'popover__button--active' if @setting.dark? %> theme-controls" data-value="dark">
+            <button class="popover__button <%= 'popover__button--active' if @user.settings[:theme] == "dark" %> theme-controls" data-value="dark">
               <div class="theme-controls__dot-container theme-controls__dot-container--dark">
                 <span class="theme-controls__dot theme-controls__dot--yellow"></span>
               </div>
