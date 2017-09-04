@@ -1,31 +1,41 @@
-class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  def facebook
-    @user = User.from_omniauth(request.env["omniauth.auth"])
+# frozen_string_literal: true
+module Users
+  class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+    def facebook
+      provider = LoginProvider.where(name: auth.provider, uid: auth.uid).first
 
-    if @user.persisted?
-      @user.build_setting(font_size: 'normal', theme: 'light')
-      @user.save
-      sign_in_and_redirect @user
-    else
-      session["devise.facebook_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
+      if provider.present?
+        user = provider.user
+      else
+        user = User.create(
+          email: auth.info.email,
+          name: auth.info.name,
+          image: auth.info.image,
+          password: Devise.friendly_token[0,20]
+        )
+
+        user.login_providers.create(
+          name: auth.provider,
+          uid: auth.uid,
+          access_token: auth.credentials.token,
+          expires_at: Time.at(auth.credentials.expires_at),
+        )
+
+        user.build_setting(font_size: 'normal', theme: 'light')
+        user.save
+      end
+
+      sign_in_and_redirect user, event: :authentication
     end
-  end
 
-  def google_oauth2
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-
-    if @user.persisted?
-      @user.build_setting(font_size: 'normal', theme: 'light')
-      @user.save
-      sign_in_and_redirect @user
-    else
-      session["devise.google_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
+    def failure
+      redirect_to root_path
     end
-  end
 
-  def failure
-    redirect_to root_path
+    private
+
+    def auth
+      request.env['omniauth.auth']
+    end
   end
 end

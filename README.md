@@ -19,8 +19,6 @@ BUGSNAG_API_KEY [KEY]
 DATABASE_URL [URL]
 FACEBOOK_ID [KEY]
 FACEBOOK_SECRET [KEY]
-GOOGLE_ID [KEY]
-GOOGLE_SECRET [KEY]
 LANG = [en_US.UTF-8, ...]
 MEMCACHIER_PASSWORD [KEY]
 MEMCACHIER_SERVERS [KEY]
@@ -35,8 +33,8 @@ SECRET_KEY_BASE
 SHOW_FEATURE [true|false]
 ```
 
-### Webpack server 
+### Webpack server
 `$ ./bin/webpack-dev-server`
 
-### Rails server 
+### Rails server
 `$ rails s`
