@@ -21,7 +21,6 @@ module Users
           expires_at: Time.at(auth.credentials.expires_at),
         )
 
-        user.build_setting(font_size: 'normal', theme: 'light')
         user.save
       end
 

@@ -2,14 +2,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_filter :set_setting, :show_feature
+  before_action :set_user, :show_feature
 
-  def set_setting
-    @setting = if current_user
-      Setting.find_by(user_id: current_user.id)
-    else
-      Setting.new(font_size: 'normal', theme: 'light')
-    end
+  def set_user
+    @user = User.where(id: current_user&.id).first_or_initialize
   end
 
   def show_feature
