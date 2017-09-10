@@ -2,6 +2,7 @@
   "name": "Contentify",
   "description": "",
   "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
   },
   "env": {
     "FACEBOOK_ID": {
@@ -29,6 +30,9 @@
       "required": true
     },
     "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "SHOW_FEATURE": {
       "required": true
     }
   },
