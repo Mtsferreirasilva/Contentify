@@ -1,7 +1,7 @@
 <%- title 'Library' %>
 
-<% meta_tag :theme_color, "#222222" if @user.settings[:theme] == "dark" %>
-<% content_for :body_class, "dark-theme" if @user.settings[:theme] == "dark" %>
+<% meta_tag :theme_color, "#222222" if current_user.settings[:theme] == "dark" %>
+<% content_for :body_class, "dark-theme" if current_user.settings[:theme] == "dark" %>
 
 <script>
   Page(function() {
