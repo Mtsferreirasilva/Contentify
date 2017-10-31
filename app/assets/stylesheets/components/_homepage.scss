@@ -10,6 +10,10 @@ $facebook-color: #4065B4;
   display: flex;
   align-items: center;
   margin: $spacing-loose 0;
+
+  @media screen and (max-width: $b-mobile) {
+    flex-direction: column;
+  }
 }
 
 .home-nav__brand {
@@ -17,6 +21,10 @@ $facebook-color: #4065B4;
   font-weight: 600;
   font-style: italic;
   font-size: em(26px);
+
+  @media screen and (max-width: $b-mobile) {
+    margin-bottom: $spacing-loose;
+  }
 }
 
 .home-nav__list {
@@ -35,6 +43,12 @@ $facebook-color: #4065B4;
   list-style-position: unset;
   list-style: none;
   margin-left: $spacing;
+
+  @media screen and (max-width: $b-tablet) {
+    &:last-child {
+      display: none;
+    }
+  }
 }
 
 .home-nav__list--with-border {
