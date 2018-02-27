@@ -16,7 +16,7 @@ module UrlValidator
     rescue URI::InvalidURIError
       url_valid = false
     end
-    errors[:url] << 'your url suck bitch!' unless url_valid
+    errors[:url] << 'Bad URL!' unless url_valid
     url_valid
   end
 
@@ -29,7 +29,7 @@ module UrlValidator
     else
       url_valid true
     end
-    errors[:url] << 'your url suck bitch!' unless url_valid
+    errors[:url] << 'Bad URL!' unless url_valid
     url_valid
   end
 end

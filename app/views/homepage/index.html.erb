@@ -3,7 +3,9 @@
 <% end -%>
 
 <script>
-  Page();
+  Page(function() {
+    new Contentify.Homepage();
+  });
 </script>
 
 <div class="container">
@@ -37,11 +39,11 @@
   <section class="home-section">
     <h1 class="home-title">Get rid of clutter</h1>
     <p class="home-text">Contentify transforms articles you read into elegant reading experiences</p>
-  </section>
-
-  <footer class="home-footer">
-    <h1 class="home-title">Accessible, Anytime, Anywhere.</h1>
-    <p class="home-text">Only one click away with the extension</p>
+    <div class="home-search-wrapper">
+      <label class="label-hidden" for="search-field">Article URL</label>
+      <input id="search-field" class="home-search-field" type="search" value="" placeholder="e.g. nytimes.com" autofocus />
+      <button class="home-search-button home-search-button--disabled" disabled>Contentify it</button>
+    </div>
     <ul class="home-badge-list">
       <li class="home-badge-list__item">
         <%= link_to image_tag('ChromeWebStore_badge.png'), @extension_url, class: 'link link--large', target: '_blank' %>

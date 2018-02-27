@@ -183,6 +183,7 @@ ul {
 
 button {
   outline: none;
+  border: 0;
 }
 
 iframe {
@@ -196,4 +197,8 @@ iframe {
     width: 100%;
     height: auto;
   }
+}
+
+input {
+  font-family: TiemposText, sans-serif;
 }
