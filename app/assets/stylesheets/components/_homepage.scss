@@ -22,7 +22,7 @@ $search-field-padding-right: 130px;
   font-size: em(26px);
 
   @media screen and (max-width: $b-mobile) {
-    margin-bottom: $spacing-loose;
+    margin-bottom: $spacing;
   }
 }
 
@@ -43,10 +43,8 @@ $search-field-padding-right: 130px;
   list-style: none;
   margin-left: $spacing;
 
-  @media screen and (max-width: $b-tablet) {
-    &:last-child {
-      display: none;
-    }
+  &:first-child {
+    margin-left: 0;
   }
 }
 

@@ -22,6 +22,9 @@
       <li class="home-nav__list-item">
         <%= link_to 'Get extension', @extension_url, class: 'link', target: '_blank' %>
       </li>
+      <li class="home-nav__list-item">
+        <%= link_to 'About it', @project_link, class: 'link', target: '_blank' %>
+      </li>
       <% if user_signed_in? && @show_feature %>
         <li class="home-nav__list-item">
           <div class="home-user-info-wrapper">
