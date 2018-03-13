@@ -44,7 +44,6 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '~> 0.20.0'
   gem 'bugsnag', '~> 5.3'
   gem 'dalli', '~> 2.7'
   gem 'memcachier', '~> 0.0.2'
